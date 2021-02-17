@@ -35,7 +35,7 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
-
+    /**TODO: сделать вывод без null'ов в конце */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
