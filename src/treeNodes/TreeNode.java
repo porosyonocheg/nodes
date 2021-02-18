@@ -17,7 +17,7 @@ public class TreeNode {
     /**
      * Конструктор содержит
      *
-     * @param val - численное значение данного узла
+     * @param val  численное значение данного узла
      */
     TreeNode(int val) {
         this.val = val;
@@ -26,9 +26,9 @@ public class TreeNode {
     /**
      * Конструктор содержит
      *
-     * @param val   - численное значение данного узла
-     * @param left  - ссылка на левый дочерний узел
-     * @param right - ссылка на правый дочерний узел
+     * @param val    численное значение данного узла
+     * @param left   ссылка на левый дочерний узел
+     * @param right  ссылка на правый дочерний узел
      */
     TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;

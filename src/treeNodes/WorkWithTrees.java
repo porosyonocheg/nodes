@@ -3,7 +3,7 @@ package treeNodes;
 /**Данный класс описывает примеры реализации некоторых методов работы с деревьями
  * @author  Сергей Шершавин*/
 
-/**TODO: создать отдельный раздел тестирования и перенести туда этот класс*/
+/**TODO: создать методы автоматической генерации деревьев из массива/списка и т.п.*/
 
 public class WorkWithTrees {
 
@@ -23,17 +23,8 @@ public class WorkWithTrees {
         TreeNode left1 = new TreeNode(-2, a, b);
         TreeNode right1 = new TreeNode(2, j, e);
         TreeNode root = new TreeNode(0, left1, right1);
-        System.out.println(root); // [0, -2, 2, -4, -1, 1, 4, -6, -3, null, null, null, null, 3, 5, -7, -5,
-                                  // null, null, null, null, null, 7, null, null, null, null, 6]
-        System.out.println(new MinDepthOfTree(root).execute()); // 3: 0 -> 2 -> 1 или 0 -> -2 -> -1
-        System.out.println(new MaxDepthOfTree(root).execute()); // 6: 0 -> 2 -> 4 -> 5 -> 7 -> 6
-        System.out.println(new FindElementInBST(root, 7).execute()); // [7, 6]
-        System.out.println(new Cousins(root, 5, -6).execute()); // true
-        System.out.println(new BalancedBinaryTree(a).execute()); // true
-        System.out.println(new InvertTree(root).execute()); // [0, 2, -2, 4, 1, -1, -4, 5, 3, null, null, null, null,
-                                                  // -3, -6, 7, null, null, null, null, null, -5, -7, null, 6]
-        System.out.println(new AverageOfLevels(right1).execute()); // [2.0, 2.5, 4.0, 7.0, 6.0]
-       // System.out.println(new SimmetricTree(root).execute()); //false
+
+       System.out.println(new SimmetricTree(root).execute()); //false
         l = new TreeNode(6);
         k = new TreeNode(7,null,l);
         d = new TreeNode(5, k, null);
