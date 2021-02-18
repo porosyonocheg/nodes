@@ -35,7 +35,7 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
-    /**TODO: сделать вывод без null'ов в конце */
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -54,6 +54,10 @@ public class TreeNode {
                     queue.offer(node.right);
             }
         }
-        return builder.delete(builder.length()-2, builder.length()).toString();
+        for (int i = builder.length()-1; i >=0; i--) {
+            if (Character.isDigit(builder.charAt(i))) break;
+            builder.deleteCharAt(i);
+        }
+        return builder.toString();
     }
 }
