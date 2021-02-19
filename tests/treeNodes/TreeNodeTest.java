@@ -2,6 +2,9 @@ package treeNodes;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class TreeNodeTest {
@@ -74,5 +77,26 @@ public class TreeNodeTest {
         assertFalse((Boolean) new BalancedBinaryTree(root).execute());
         assertFalse((Boolean) new BalancedBinaryTree(e).execute());
         assertTrue((Boolean) new BalancedBinaryTree(i).execute());
+    }
+
+    @Test
+    public void subtreeOfAnotherTree() {
+        assertTrue((Boolean) new SubtreeOfAnotherTree(root, f).execute());
+        assertFalse((Boolean) new SubtreeOfAnotherTree(right1, left1).execute());
+        assertFalse((Boolean) new SubtreeOfAnotherTree(b, left1).execute());
+        assertTrue((Boolean) new SubtreeOfAnotherTree(root, root).execute());
+    }
+
+    @Test
+    public void binaryTreePaths() {
+        List<String> testList = new ArrayList<>();
+        testList.add("0 -> -2 -> -4 -> -6 -> -7");
+        testList.add("0 -> -2 -> -4 -> -6 -> -5");
+        testList.add("0 -> -2 -> -4 -> -3");
+        testList.add("0 -> -2 -> -1");
+        testList.add("0 -> 2 -> 1");
+        testList.add("0 -> 2 -> 4 -> 3");
+        testList.add("0 -> 2 -> 4 -> 5 -> 7 -> 6");
+        assertEquals(testList, new BinaryTreePaths(root).execute());
     }
 }
