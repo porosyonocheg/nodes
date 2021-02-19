@@ -80,11 +80,51 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void simmetricTree() {
+        assertFalse((Boolean) new SimmetricTree(root).execute());
+        l.val = 6;
+        k.val = 7;
+        k.left = null;
+        k.right = l;
+        d.val = 5;
+        d.left = k;
+        d.right = null;
+        c.val = 3;
+        b.val = 1;
+        a.val = 4;
+        left1.val = 2;
+        assertTrue((Boolean) new SimmetricTree(root).execute());
+    }
+
+    @Test
+    public void sameTree() {
+        assertFalse((Boolean) new SameTree(right1, left1).execute());
+        assertTrue((Boolean) new SameTree(right1, right1).execute());
+    }
+
+    @Test
     public void subtreeOfAnotherTree() {
         assertTrue((Boolean) new SubtreeOfAnotherTree(root, f).execute());
         assertFalse((Boolean) new SubtreeOfAnotherTree(right1, left1).execute());
         assertFalse((Boolean) new SubtreeOfAnotherTree(b, left1).execute());
         assertTrue((Boolean) new SubtreeOfAnotherTree(root, root).execute());
+    }
+
+    @Test
+    public void similarLeavesTrees() {
+        assertFalse((Boolean) new SimilarLeavesTrees(right1, left1).execute());
+        l.val = 6;
+        k.val = 7;
+        k.left = null;
+        k.right = l;
+        d.val = 5;
+        d.left = k;
+        d.right = null;
+        c.val = 3;
+        b.val = 1;
+        a.val = 4;
+        left1.val = 2;
+        assertTrue((Boolean) new SimilarLeavesTrees(right1, right1).execute());
     }
 
     @Test
