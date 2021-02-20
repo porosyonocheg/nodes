@@ -139,4 +139,26 @@ public class TreeNodeTest {
         testList.add("0 -> 2 -> 4 -> 5 -> 7 -> 6");
         assertEquals(testList, new BinaryTreePaths(root).execute());
     }
+
+    @Test
+    public void mergeTwoBinaryTrees() {
+        TreeNode left12 = new TreeNode(-3, d, c);
+        TreeNode right12 = new TreeNode(3, i, f);
+        TreeNode root1 = new TreeNode(0, left12, right12);
+        assertEquals(root1, new MergeTwoBinaryTrees(right1, left1).execute());
+    }
+
+    @Test
+    public void univalentBinaryTree() {
+        TreeNode left13 = new TreeNode(1);
+        TreeNode left23 = new TreeNode(1);
+        TreeNode right13 = new TreeNode(1);
+        TreeNode right23 = new TreeNode(1);
+        TreeNode left12 = new TreeNode(1,left13, right13);
+        TreeNode right12 = new TreeNode(1, left23, right23);
+        TreeNode root1 = new TreeNode(1, left12, right12);
+        assertTrue((Boolean) new UnivalentBinaryTree(root1).execute());
+        left23.val = 0;
+        assertFalse((Boolean) new UnivalentBinaryTree(root1).execute());
+    }
 }
