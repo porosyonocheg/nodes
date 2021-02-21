@@ -1,5 +1,8 @@
 package treeNodes;
 
+/** Создаёт бинарное дерево поиска из отсортированного массива
+ * @author  Сергей Шершавин*/
+
 public class SortedArrayToBST {
     private int[] nums;
     public SortedArrayToBST(int[] nums) {
