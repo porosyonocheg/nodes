@@ -11,7 +11,7 @@ public class FindElementInBST extends Command {
         this.target = target;
     }
 
-    public TreeNode searchBST(TreeNode root, int target) {
+    private TreeNode searchBST(TreeNode root, int target) {
         if (root == null) return null;
         if (root.val == target) return root;
         if (root.val > target) return searchBST(root.left, target);

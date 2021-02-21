@@ -80,8 +80,8 @@ public class TreeNodeTest {
     }
 
     @Test
-    public void simmetricTree() {
-        assertFalse((Boolean) new SimmetricTree(root).execute());
+    public void symmetricTree() {
+        assertFalse((Boolean) new SymmetricTree(root).execute());
         l.val = 6;
         k.val = 7;
         k.left = null;
@@ -93,7 +93,7 @@ public class TreeNodeTest {
         b.val = 1;
         a.val = 4;
         left1.val = 2;
-        assertTrue((Boolean) new SimmetricTree(root).execute());
+        assertTrue((Boolean) new SymmetricTree(root).execute());
     }
 
     @Test
@@ -160,5 +160,34 @@ public class TreeNodeTest {
         assertTrue((Boolean) new UnivalentBinaryTree(root1).execute());
         left23.val = 0;
         assertFalse((Boolean) new UnivalentBinaryTree(root1).execute());
+    }
+
+    @Test
+    public void sortedArrayToBST() {
+        assertNull( new SortedArrayToBST(new int[]{}).execute());
+        TreeNode left13 = new TreeNode(2);
+        TreeNode left23 = new TreeNode(6);
+        TreeNode right13 = new TreeNode(4);
+        TreeNode right23 = new TreeNode(8);
+        TreeNode left12 = new TreeNode(3,left13, right13);
+        TreeNode right12 = new TreeNode(7, left23, right23);
+        TreeNode root1 = new TreeNode(5, left12, right12);
+        assertEquals(root1, new SortedArrayToBST(new int[]{2,3,4,5,6,7,8}).execute());
+        TreeNode l = new TreeNode(-5);
+        TreeNode k = new TreeNode(-7);
+        TreeNode j = new TreeNode(1);
+        TreeNode i = new TreeNode(3);
+        TreeNode g = new TreeNode(7);
+        TreeNode f = new TreeNode(5);
+        TreeNode h = new TreeNode(6, f, g);
+        TreeNode d = new TreeNode(-6, k, l);
+        TreeNode c = new TreeNode(-3);
+        TreeNode b = new TreeNode(-1);
+        TreeNode left1 = new TreeNode(-2, c, b);
+        TreeNode a = new TreeNode(-4, d, left1);
+        TreeNode right1 = new TreeNode(2, j, i);
+        TreeNode e = new TreeNode(4, right1, h);
+        TreeNode root = new TreeNode(0, a, e);
+        assertEquals(root, new SortedArrayToBST(new int[]{-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7}).execute());
     }
 }

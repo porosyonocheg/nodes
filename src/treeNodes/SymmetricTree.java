@@ -4,8 +4,8 @@ package treeNodes;
  * относительно воображаемый оси, проходящей через корень)
  * @author Сергей Шершавин*/
 
-public class SimmetricTree extends Command{
-    public SimmetricTree(TreeNode root) {
+public class SymmetricTree extends Command{
+    public SymmetricTree(TreeNode root) {
         super(root);
     }
 
