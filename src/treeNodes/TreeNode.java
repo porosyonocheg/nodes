@@ -1,6 +1,7 @@
 package treeNodes;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 /** Узел бинарного дерева
@@ -35,6 +36,27 @@ public class TreeNode {
         this.val = val;
         this.left = left;
         this.right = right;
+    }
+
+    /**
+     * Конструктор содержит
+     *
+     * @param values  список численных значений узлов дерева
+     */
+    TreeNode (List<Integer> values) {
+         this.val = values.get(0);
+         this.left = addNode(values, 1);
+         this.right = addNode(values, 2);
+    }
+
+    private TreeNode addNode(List<Integer> values, int index) {
+        if (index < values.size()) {
+            TreeNode node = new TreeNode(values.get(index));
+            node.left = addNode(values, 2*index+1);
+            node.right = addNode(values, 2*index+2);
+            return node;
+        }
+        return null;
     }
 
     @Override

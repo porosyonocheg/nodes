@@ -220,4 +220,12 @@ public class TreeNodeTest {
         list.add(8);
         assertEquals(list, new FindModeInBST(root1).execute());
     }
+
+    @Test
+    public void findSumInBST() {
+        assertFalse((Boolean) new FindSumInBST(root, 14).execute());
+        assertTrue((Boolean) new FindSumInBST(root, -13).execute());
+        assertTrue((Boolean) new FindSumInBST(root1, 14).execute());
+        assertFalse((Boolean) new FindSumInBST(root1, 4).execute());
+    }
 }
