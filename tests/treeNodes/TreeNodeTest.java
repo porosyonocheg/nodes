@@ -228,4 +228,10 @@ public class TreeNodeTest {
         assertTrue((Boolean) new FindSumInBST(root1, 14).execute());
         assertFalse((Boolean) new FindSumInBST(root1, 4).execute());
     }
+
+    @Test
+    public void sumOfLeftLeaves() {
+        assertEquals(3, new SumOfLeftLeaves(root).execute());
+        assertEquals(8, new SumOfLeftLeaves(root1).execute());
+    }
 }
