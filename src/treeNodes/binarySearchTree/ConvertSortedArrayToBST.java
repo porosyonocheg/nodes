@@ -1,11 +1,13 @@
-package treeNodes;
+package treeNodes.binarySearchTree;
+
+import treeNodes.TreeNode;
 
 /** Создаёт бинарное дерево поиска из отсортированного массива
  * @author  Сергей Шершавин*/
 
-public class SortedArrayToBST {
+public class ConvertSortedArrayToBST {
     private int[] nums;
-    public SortedArrayToBST(int[] nums) {
+    public ConvertSortedArrayToBST(int[] nums) {
         this.nums = nums;
     }
 
@@ -18,7 +20,7 @@ public class SortedArrayToBST {
         return root;
     }
 
-    Object execute() {
+    public Object execute() {
         if (nums.length == 0) return null;
         return constructBinaryTree(nums, 0, nums.length-1);
     }

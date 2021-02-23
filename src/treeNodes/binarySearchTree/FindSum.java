@@ -1,4 +1,7 @@
-package treeNodes;
+package treeNodes.binarySearchTree;
+
+import treeNodes.Command;
+import treeNodes.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,12 +9,12 @@ import java.util.List;
 /** Выясняет есть ли в бинарном дереве поиска два узла, сумма значений которых равна заданному параметру
  * @author Сергей Шершавин*/
 
-public class FindSumInBST extends Command {
+public class FindSum extends Command {
     private int target;
 
     /**Коструктор содержит
      * @param target  - искомое значение суммы двух узлов*/
-    public FindSumInBST(TreeNode root, int target) {
+    public FindSum(TreeNode root, int target) {
         super(root);
         this.target = target;
     }
@@ -24,7 +27,7 @@ public class FindSumInBST extends Command {
         createListFromBST(node.right,values);
     }
     @Override
-    Object execute() {
+    public Object execute() {
         List<Integer> list = new ArrayList<>();
         createListFromBST(root, list);
         for (int i = 0, j = list.size()-1; i < j;) {

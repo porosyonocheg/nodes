@@ -14,7 +14,7 @@ public class AverageOfLevels extends Command{
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         List<Double> result = new ArrayList<>();
         if (root == null) return result;
         Queue<TreeNode> queue = new LinkedList<>();

@@ -1,6 +1,7 @@
 package treeNodes;
 
 import org.junit.Test;
+import treeNodes.binarySearchTree.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,9 +59,9 @@ public class TreeNodeTest {
 
     @Test
     public void findElementInBST() {
-        assertEquals("7, 6", new FindElementInBST(root, 7).execute().toString());
-        assertEquals("-6, -7, -5", new FindElementInBST(root, -6).execute().toString());
-        assertEquals("3", new FindElementInBST(root, 3).execute().toString());
+        assertEquals("7, 6", new FindElement(root, 7).execute().toString());
+        assertEquals("-6, -7, -5", new FindElement(root, -6).execute().toString());
+        assertEquals("3", new FindElement(root, 3).execute().toString());
     }
 
     @Test
@@ -170,8 +171,8 @@ public class TreeNodeTest {
     TreeNode root1 = new TreeNode(5, left12, right12);
     @Test
     public void sortedArrayToBST() {
-        assertNull( new SortedArrayToBST(new int[]{}).execute());
-        assertEquals(root1, new SortedArrayToBST(new int[]{2,3,4,5,6,7,8}).execute());
+        assertNull( new ConvertSortedArrayToBST(new int[]{}).execute());
+        assertEquals(root1, new ConvertSortedArrayToBST(new int[]{2,3,4,5,6,7,8}).execute());
         TreeNode l = new TreeNode(-5);
         TreeNode k = new TreeNode(-7);
         TreeNode j = new TreeNode(1);
@@ -187,7 +188,7 @@ public class TreeNodeTest {
         TreeNode right1 = new TreeNode(2, j, i);
         TreeNode e = new TreeNode(4, right1, h);
         TreeNode root = new TreeNode(0, a, e);
-        assertEquals(root, new SortedArrayToBST(new int[]{-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7}).execute());
+        assertEquals(root, new ConvertSortedArrayToBST(new int[]{-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7}).execute());
     }
     @Test
     public void findModeInBST() {
@@ -209,7 +210,7 @@ public class TreeNodeTest {
         List<Integer> list = new ArrayList<>();
         list.add(-4);
         list.add(4);
-        assertEquals(list, new FindModeInBST(root).execute());
+        assertEquals(list, new FindMode(root).execute());
         list = new ArrayList<>();
         list.add(2);
         list.add(3);
@@ -218,15 +219,36 @@ public class TreeNodeTest {
         list.add(6);
         list.add(7);
         list.add(8);
-        assertEquals(list, new FindModeInBST(root1).execute());
+        assertEquals(list, new FindMode(root1).execute());
     }
 
     @Test
     public void findSumInBST() {
-        assertFalse((Boolean) new FindSumInBST(root, 14).execute());
-        assertTrue((Boolean) new FindSumInBST(root, -13).execute());
-        assertTrue((Boolean) new FindSumInBST(root1, 14).execute());
-        assertFalse((Boolean) new FindSumInBST(root1, 4).execute());
+        assertFalse((Boolean) new FindSum(root, 14).execute());
+        assertTrue((Boolean) new FindSum(root, -13).execute());
+        assertTrue((Boolean) new FindSum(root1, 14).execute());
+        assertFalse((Boolean) new FindSum(root1, 4).execute());
+    }
+
+    @Test
+    public void rangeSumInBST() {
+        assertEquals(15, new RangeSum(root1,4,6).execute());
+        assertEquals(11, new RangeSum(root,-4,6).execute());
+    }
+
+    @Test
+    public void minimumAbsoluteDifferenceInBST() {
+        List<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(4);
+        list.add(16);
+        list.add(1);
+        list.add(7);
+        list.add(13);
+        list.add(18);
+        root1 = new TreeNode(list);
+        assertEquals(1, new MinimumAbsoluteDifference(root).execute());
+        assertEquals(2, new MinimumAbsoluteDifference(root1).execute());
     }
 
     @Test

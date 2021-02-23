@@ -9,7 +9,7 @@ public class MaxDepthOfTree extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         return maxDepth(root);
     }
 

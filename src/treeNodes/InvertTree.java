@@ -20,7 +20,7 @@ public class InvertTree extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         return invertTree(root);
     }
 }

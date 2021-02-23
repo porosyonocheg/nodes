@@ -53,7 +53,7 @@ public class Cousins extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         return isCousins(root, firstNodeValue, secondNodeValue);
     }
 }

@@ -24,7 +24,7 @@ public class BinaryTreePaths extends Command{
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         List<String> result = new ArrayList<>();
         if (root != null) {
             if (root.left == null && root.right == null) result.add(String.valueOf(root.val));

@@ -9,11 +9,11 @@ import java.util.Objects;
  */
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode() {
+    public TreeNode() {
     }
 
     /**
@@ -21,7 +21,7 @@ public class TreeNode {
      *
      * @param val  численное значение данного узла
      */
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
@@ -32,7 +32,7 @@ public class TreeNode {
      * @param left   ссылка на левый дочерний узел
      * @param right  ссылка на правый дочерний узел
      */
-    TreeNode(int val, TreeNode left, TreeNode right) {
+    public TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
@@ -43,7 +43,7 @@ public class TreeNode {
      *
      * @param values  список численных значений узлов дерева
      */
-    TreeNode (List<Integer> values) {
+    public TreeNode (List<Integer> values) {
          this.val = values.get(0);
          this.left = addNode(values, 1);
          this.right = addNode(values, 2);

@@ -1,9 +1,12 @@
-package treeNodes;
+package treeNodes.binarySearchTree;
+
+import treeNodes.Command;
+import treeNodes.TreeNode;
 
 /** Подсчёт суммы значений всех узлов бинарного дерева поиска в заданном диапазоне
  * @author Сергей Шершавин*/
 
-public class RangeSumOfBST extends Command {
+public class RangeSum extends Command {
     private int low;
     private int high;
     private int sum;
@@ -11,7 +14,7 @@ public class RangeSumOfBST extends Command {
     /**Конструктор содержит
      * @param low  нижняя граница диапазона
      * @param high верхняя граница диапазона*/
-    public RangeSumOfBST(TreeNode root, int low, int high) {
+    public RangeSum(TreeNode root, int low, int high) {
         super(root);
         this.low = low;
         this.high = high;
@@ -43,7 +46,7 @@ public class RangeSumOfBST extends Command {
     }
 
     @Override
-    Object execute() {
+    public Object execute() {
         return rangeSumBST(root, low, high);
     }
 }

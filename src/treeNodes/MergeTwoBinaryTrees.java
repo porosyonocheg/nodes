@@ -23,7 +23,7 @@ public class MergeTwoBinaryTrees extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         return mergeTrees(root, target);
     }
 }

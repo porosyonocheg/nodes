@@ -1,12 +1,15 @@
-package treeNodes;
+package treeNodes.binarySearchTree;
+
+import treeNodes.Command;
+import treeNodes.TreeNode;
 
 /** Поиск узла в бинарном дереве поиска по значению. За корректность входных данных отвечает клиентская сторона.
  * @author Сергей Шершавин*/
 
-public class FindElementInBST extends Command {
+public class FindElement extends Command {
     private int target;
 
-    public FindElementInBST(TreeNode root, int target) {
+    public FindElement(TreeNode root, int target) {
         super(root);
         this.target = target;
     }
@@ -19,7 +22,7 @@ public class FindElementInBST extends Command {
     }
 
     @Override
-    Object execute() {
+    public Object execute() {
         return searchBST(root, target);
     }
 }

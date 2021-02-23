@@ -22,7 +22,7 @@ public class MinDepthOfTree extends Command{
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         if (root == null) return 0;
         searchMinDepth(root, 0);
         return minDepth;

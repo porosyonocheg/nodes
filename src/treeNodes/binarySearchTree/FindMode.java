@@ -1,4 +1,7 @@
-package treeNodes;
+package treeNodes.binarySearchTree;
+
+import treeNodes.Command;
+import treeNodes.TreeNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,9 +11,9 @@ import java.util.Map;
 /** Находит в бинарном дереве поиска чаще всего повторяющиеся значения узлов.
  * @author  Сергей Шершавин*/
 
-public class FindModeInBST extends Command {
+public class FindMode extends Command {
     private int maxFreq = 0;
-    public FindModeInBST(TreeNode root) {
+    public FindMode(TreeNode root) {
         super(root);
     }
         /**Подсчитывает число повторов значений, добавляет их во вспомогательную мапу, устанавливает значение
@@ -25,7 +28,7 @@ public class FindModeInBST extends Command {
         /**По совпадению значений в мапе, полученной во вспомогательном методе, с maxFreq получаем набор значений,
          * добавляемый  список result*/
     @Override
-    Object execute() {
+    public Object execute() {
         Map<Integer, Integer> map = new HashMap<>();
         List<Integer> result = new ArrayList<>();
         countNodeRepeats(root, map);

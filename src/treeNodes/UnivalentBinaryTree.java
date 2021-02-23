@@ -22,7 +22,7 @@ public class UnivalentBinaryTree extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         if (root.left == null && root.right == null) return true;
         if (root.left == null) return isUnivalentTree(root.right, root.val);
         if (root.right == null) return isUnivalentTree(root.left, root.val);

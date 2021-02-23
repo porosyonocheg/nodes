@@ -19,7 +19,7 @@ public class BalancedBinaryTree extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         return isBalancedBinaryTree(root) != -1;
     }
 }

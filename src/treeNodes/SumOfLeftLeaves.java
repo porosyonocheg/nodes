@@ -21,7 +21,7 @@ public class SumOfLeftLeaves extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         return sumOfLeftLeaves(root);
     }
 }

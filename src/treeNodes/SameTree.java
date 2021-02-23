@@ -18,7 +18,7 @@ public class SameTree extends Command {
     }
 
     @Override
-    Object execute() {
+    protected Object execute() {
         return isSameTree(root, target);
     }
 }

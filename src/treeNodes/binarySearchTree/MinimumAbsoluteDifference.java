@@ -1,11 +1,14 @@
-package treeNodes;
+package treeNodes.binarySearchTree;
+
+import treeNodes.Command;
+import treeNodes.TreeNode;
 
 /** Подсчитывает минимальную разницу между значениями узлов в бинарном дереве поиска
  * @author Сергей Шершавин*/
 
-public class MinimumAbsoluteDifferenceInBST extends Command {
+public class MinimumAbsoluteDifference extends Command {
 
-    public MinimumAbsoluteDifferenceInBST(TreeNode root) {
+    public MinimumAbsoluteDifference(TreeNode root) {
         super(root);
     }
 
@@ -25,7 +28,7 @@ public class MinimumAbsoluteDifferenceInBST extends Command {
     }
 
     @Override
-    Object execute() {
+    public Object execute() {
         return getMinimumDifference(root);
     }
 }
