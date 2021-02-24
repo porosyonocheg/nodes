@@ -258,6 +258,12 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void trimBST() {
+        assertEquals("0, -1, 2, null, null, 1, 3", new Trim(root,-1,3).execute().toString());
+        assertEquals("3, 2", new Trim(root1,2,3).execute().toString());
+    }
+
+    @Test
     public void sumOfLeftLeaves() {
         assertEquals(3, new SumOfLeftLeaves(root).execute());
         assertEquals(8, new SumOfLeftLeaves(root1).execute());
