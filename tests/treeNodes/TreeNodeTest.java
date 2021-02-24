@@ -252,6 +252,12 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void convertToIncreasingOrderTree() {
+        assertEquals("2, null, 3, null, 4, null, 5, null, 6, null, 7, null, 8", new ConvertToIncreasingOrderTree(root1).execute().toString());
+        assertEquals("-7, null, -6, null, -5, null, -4, null, -3, null, -2, null, -1, null, 0, null, 1, null, 2, null, 3, null, 4, null, 5, null, 6, null, 7", new ConvertToIncreasingOrderTree(root).execute().toString());
+    }
+
+    @Test
     public void sumOfLeftLeaves() {
         assertEquals(3, new SumOfLeftLeaves(root).execute());
         assertEquals(8, new SumOfLeftLeaves(root1).execute());

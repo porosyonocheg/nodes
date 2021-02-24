@@ -17,7 +17,7 @@ public class SymmetricTree extends Command{
     }
 
     @Override
-    protected Object execute() {
+    public Object execute() {
         if (root == null) return true;
         return isSymmetric(root.left, root.right);
     }

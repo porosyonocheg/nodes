@@ -10,5 +10,5 @@ public abstract class Command {
         this.root = root;
     }
 
-    protected abstract Object execute();
+    public abstract Object execute();
 }

@@ -23,7 +23,7 @@ public class SimilarLeavesTrees extends Command {
 
     /**Сравниваем полученные списки для двух деревьев, сначала по размеру, затем поэлементно*/
     @Override
-    protected Object execute() {
+    public Object execute() {
         List<Integer> listOfRoot = new ArrayList<>();
         findLeaves(root, listOfRoot);
         List<Integer> listOfTarget = new ArrayList<>();

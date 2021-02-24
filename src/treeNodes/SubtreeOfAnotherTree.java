@@ -22,7 +22,7 @@ public class SubtreeOfAnotherTree extends Command {
     }
 
     @Override
-    protected Object execute() {
+    public Object execute() {
         LinkedList<TreeNode> nodes = new LinkedList<>();
         nodes.add(root);
         while (!nodes.isEmpty()) {
