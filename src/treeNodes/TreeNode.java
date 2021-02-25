@@ -61,6 +61,24 @@ public class TreeNode {
         return null;
     }
 
+    public void insertNewNode(int value) {
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.offer(this);
+        while (!queue.isEmpty()) {
+            TreeNode currentNode = queue.pop();
+            if (currentNode.left == null) {
+                currentNode.left = new TreeNode(value);
+                return;
+            }
+            else queue.offer(currentNode.left);
+            if (currentNode.right == null) {
+                currentNode.right = new TreeNode(value);
+                return;
+            }
+            else queue.offer(currentNode.right);
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

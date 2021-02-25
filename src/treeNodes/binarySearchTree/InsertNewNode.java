@@ -14,7 +14,7 @@ public class InsertNewNode extends Command {
         this.value = value;
     }
 
-    private TreeNode insertIntoBST(TreeNode root, int val) {
+     private TreeNode insertIntoBST(TreeNode root, int val) {
         if (root == null) return new TreeNode(val);
         if (val < root.val) {
             if (root.left != null) insertNewNode(root.left, val);

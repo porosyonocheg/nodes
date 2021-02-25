@@ -270,8 +270,26 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void constructTreeFromPreorder() {
+        assertEquals("8, 5, 10, 1, 7, null, 12", new ConstructTreeFromPreorder(new int[]{8,5,1,7,10,12}).execute().toString());
+        assertEquals(root1, new ConstructTreeFromPreorder(new int[]{5,3,2,4,7,6,8}).execute());
+    }
+
+    @Test
     public void sumOfLeftLeaves() {
         assertEquals(3, new SumOfLeftLeaves(root).execute());
         assertEquals(8, new SumOfLeftLeaves(root1).execute());
+    }
+
+    @Test
+    public void insertNewNode() {
+        root.insertNewNode(10);
+        root.insertNewNode(9);
+        root.insertNewNode(8);
+        assertEquals("0, -2, 2, -4, -1, 1, 4, -6, -3, 10, 9, 8, null, 3, 5, -7, -5, null, null, null, null, null, null, null, null, null, null, null, 7, null, null, null, null, 6", root.toString());
+        root1.insertNewNode(1);
+        root1.insertNewNode(2);
+        root1.insertNewNode(3);
+        assertEquals("5, 3, 7, 2, 4, 6, 8, 1, 2, 3", root1.toString());
     }
 }
