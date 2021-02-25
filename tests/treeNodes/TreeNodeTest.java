@@ -264,6 +264,12 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void insertNewNodeInBST() {
+        assertEquals("0, -2, 2, -4, -1, 1, 4, -6, -3, null, null, null, null, 3, 5, -7, -5, null, null, null, null, null, 7, null, null, null, null, 6, 8", new InsertNewNode(root, 8).execute().toString());
+        assertEquals(root1.toString() + ", null, null, null, null, null, null, null, 9", new InsertNewNode(root1, 9).execute().toString());
+    }
+
+    @Test
     public void sumOfLeftLeaves() {
         assertEquals(3, new SumOfLeftLeaves(root).execute());
         assertEquals(8, new SumOfLeftLeaves(root1).execute());
