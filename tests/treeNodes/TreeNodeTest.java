@@ -292,4 +292,26 @@ public class TreeNodeTest {
         root1.insertNewNode(3);
         assertEquals("5, 3, 7, 2, 4, 6, 8, 1, 2, 3", root1.toString());
     }
+
+    @Test
+    public void sumOfDeepestLeaves() {
+        assertEquals(6, new SumOfDeepestLeaves(root).execute());
+        assertEquals(20, new SumOfDeepestLeaves(root1).execute());
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(null);
+        list.add(2);
+        list.add(null);
+        list.add(3);
+        list.add(null);
+        list.add(4);
+        list.add(null);
+        list.add(5);
+        list.add(null);
+        list.add(6);
+        list.add(null);
+        list.add(7);
+        TreeNode node = new TreeNode(list);
+        assertEquals(7, new SumOfDeepestLeaves(node).execute());
+    }
 }

@@ -44,9 +44,9 @@ public class TreeNode {
      * @param values  список численных значений узлов дерева
      */
     public TreeNode (List<Integer> values) {
-         this.val = values.get(0);
-        this.left = addNode(values, 1);
-        this.right = addNode(values, 2);
+            this.val = values.get(0);
+            this.left = addNode(values, 1);
+            this.right = addNode(values, 2);
     }
 
     private TreeNode addNode(List<Integer> values, int index) {
@@ -54,9 +54,27 @@ public class TreeNode {
             Integer current = values.get(index);
             if (current == null) return null;
             TreeNode node = new TreeNode(current);
-            node.left = addNode(values, 2*index+1);
-            node.right = addNode(values, 2*index+2);
-            return node;
+            LinkedList<TreeNode> queue = new LinkedList<>();
+            queue.offer(node);
+            while (true) {
+                int size = queue.size();
+                for (int i = 0; i < size; i++) {
+                    TreeNode currentNode = queue.pop();
+                    if (2*index+1 >= values.size()) return node;
+                    current = values.get(2*index+1);
+                    if (current != null) {
+                        currentNode.left = new TreeNode(current);
+                        queue.offer(currentNode.left);
+                    }
+                    if (2*index+2 >= values.size()) return node;
+                    current = values.get(2*index+2);
+                    if (current != null) {
+                        currentNode.right = new TreeNode(current);
+                        queue.offer(currentNode.right);
+                    }
+                    index++;
+                }
+            }
         }
         return null;
     }
@@ -64,7 +82,7 @@ public class TreeNode {
     public void insertNewNode(int value) {
         LinkedList<TreeNode> queue = new LinkedList<>();
         queue.offer(this);
-        while (!queue.isEmpty()) {
+        while (true) {
             TreeNode currentNode = queue.pop();
             if (currentNode.left == null) {
                 currentNode.left = new TreeNode(value);
