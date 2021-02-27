@@ -32,6 +32,37 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void addAndRemoveNodesInTree() {
+        List<Integer> list = new ArrayList<>();
+        list.add(5);
+        list.add(7);
+        list.add(9);
+        list.add(5);
+        list.add(12);
+        list.add(3);
+        list.add(4);
+        list.add(8);
+        list.add(7);
+        list.add(10);
+        list.add(6);
+        list.add(6);
+        list.add(7);
+        TreeNode node = new TreeNode(list);
+        System.out.println(node);
+        node.removeNodes(7);
+        System.out.println(node);
+        node.insertNewNode(7);
+        node.insertNewNode(5);
+        node.insertNewNode(12);
+        node.insertNewNode(8);
+        node.insertNewNode(7);
+        node.insertNewNode(10);
+        node.insertNewNode(6);
+        node.insertNewNode(7);
+        System.out.println(node);
+    }
+
+    @Test
     public void maxDepthOfTree() {
         assertEquals(6, new MaxDepthOfTree(root).execute()); // 0 -> 2 -> 4 -> 5 -> 7 -> 6
         assertEquals(5, new MaxDepthOfTree(right1).execute());
@@ -297,6 +328,10 @@ public class TreeNodeTest {
     public void sumOfDeepestLeaves() {
         assertEquals(6, new SumOfDeepestLeaves(root).execute());
         assertEquals(20, new SumOfDeepestLeaves(root1).execute());
+    }
+
+    @Test
+    public void convertToBalancedTree() {
         List<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(null);
@@ -312,6 +347,6 @@ public class TreeNodeTest {
         list.add(null);
         list.add(7);
         TreeNode node = new TreeNode(list);
-        assertEquals(7, new SumOfDeepestLeaves(node).execute());
+        assertEquals("4, 2, 6, 1, 3, 5, 7", new ConvertToBalancedTree(node).execute().toString());
     }
 }

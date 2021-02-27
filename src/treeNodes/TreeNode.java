@@ -44,13 +44,14 @@ public class TreeNode {
      * @param values  список численных значений узлов дерева
      */
     public TreeNode (List<Integer> values) {
-            this.val = values.get(0);
-            this.left = addNode(values, 1);
-            this.right = addNode(values, 2);
+            TreeNode root = createTree(values);
+            this.val = root.val;
+            this.left = root.left;
+            this.right = root.right;
     }
 
-    private TreeNode addNode(List<Integer> values, int index) {
-        if (index < values.size()) {
+    private TreeNode createTree(List<Integer> values) {
+            int index = 0;
             Integer current = values.get(index);
             if (current == null) return null;
             TreeNode node = new TreeNode(current);
@@ -75,10 +76,8 @@ public class TreeNode {
                     index++;
                 }
             }
-        }
-        return null;
     }
-
+    /**Вставка узла с заданным значением в первое свободное место в дереве*/
     public void insertNewNode(int value) {
         LinkedList<TreeNode> queue = new LinkedList<>();
         queue.offer(this);
@@ -95,6 +94,26 @@ public class TreeNode {
             }
             else queue.offer(currentNode.right);
         }
+    }
+    public boolean removeNodes(int value) {
+        boolean flag = false;
+        if (removeNode(this.left, value)) {
+            this.left = null;
+            flag = true;
+        }
+        if (removeNode(this.right, value)) {
+            this.right = null;
+            flag = true;
+        }
+        return flag;
+    }
+    public boolean removeNode(TreeNode current, int value) {
+        if (current != null) {
+            if (current.val == value) return true;
+            if (removeNode(current.left, value)) current.left = null;
+            if (removeNode(current.right, value)) current.right = null;
+        }
+        return false;
     }
 
     @Override
