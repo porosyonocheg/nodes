@@ -349,4 +349,9 @@ public class TreeNodeTest {
         TreeNode node = new TreeNode(list);
         assertEquals("4, 2, 6, 1, 3, 5, 7", new ConvertToBalancedTree(node).execute().toString());
     }
+    @Test
+    public void binaryTreeLevelTraversal() {
+        assertEquals("[[0], [-2, 2], [-4, -1, 1, 4], [-6, -3, 3, 5], [-7, -5, 7], [6]]", new BinaryTreeLevelTraversal(root).execute().toString());
+        assertEquals("[[5], [3, 7], [2, 4, 6, 8]]", new BinaryTreeLevelTraversal(root1).execute().toString());
+    }
 }
