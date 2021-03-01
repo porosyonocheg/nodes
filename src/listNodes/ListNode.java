@@ -9,11 +9,19 @@ public class ListNode {
     ListNode() {}
     ListNode(int x) { val = x; }
 
-    public void printListNode () {
-            System.out.print(val);
+    /**Удаляет переданный узел из текущего списка*/
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+
+    public String listNodeToString() {
+        StringBuilder sb = new StringBuilder();
+            sb.append(val);
             if (next != null) {
-                System.out.print("->");
-                next.printListNode();
+                sb.append(" -> ");
+                sb.append(next.listNodeToString());
             }
+            return sb.toString();
     }
 }
