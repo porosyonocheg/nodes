@@ -9,18 +9,33 @@ public class ListNode {
     ListNode() {}
     ListNode(int x) { val = x; }
 
-    /**Удаляет переданный узел из текущего списка*/
+    /**Удаляет из текущего списка переданный узел*/
     public void deleteNode(ListNode node) {
         node.val = node.next.val;
         node.next = node.next.next;
     }
 
-    public String listNodeToString() {
+    /**Удаляет из текущего списка все узлы с переданным значением*/
+    public ListNode removeElements(int val) {
+        ListNode crutch = new ListNode(-1);
+        crutch.next = this;
+        ListNode current = crutch;
+        while (current.next != null) {
+            if (current.next.val == val) {
+                current.next = current.next.next;
+            }
+            else current = current.next;
+        }
+        return crutch.next;
+    }
+
+    @Override
+    public String toString() {
         StringBuilder sb = new StringBuilder();
             sb.append(val);
             if (next != null) {
                 sb.append(" -> ");
-                sb.append(next.listNodeToString());
+                sb.append(next.toString());
             }
             return sb.toString();
     }
