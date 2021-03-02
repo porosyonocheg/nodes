@@ -15,7 +15,8 @@ public class ListNode {
         node.next = node.next.next;
     }
 
-    /**Удаляет из текущего списка все узлы с переданным значением*/
+    /**Удаляет из текущего списка все узлы с переданным значением
+     * @return обновлённый список*/
     public ListNode removeElements(int val) {
         ListNode crutch = new ListNode(-1);
         crutch.next = this;
@@ -27,6 +28,36 @@ public class ListNode {
             else current = current.next;
         }
         return crutch.next;
+    }
+
+    /**Удаляет все дупликаты из отсортированного связного списка
+     * @return обновлённый список*/
+    public ListNode deleteDuplicatesFromSortedList() {
+        if (this.next == null) return this;
+        ListNode current = this;
+        int currentValue;
+        while (current != null) {
+            currentValue = current.val;
+            while (current.next != null && current.next.val == currentValue) {
+                current.next = current.next.next;
+            }
+            current = current.next;
+        }
+        return this;
+    }
+
+    /**@return узел, находящийся в середине данного списка. Если число узлов чётное - следующий узел за "серединой"*/
+    public ListNode middleNode() {
+        ListNode head = this;
+        ListNode middle = head;
+        int depth = 1;
+        while (head.next != null) {
+            head = head.next;
+            depth++;
+            if (depth %2 == 0) middle = middle.next;
+
+        }
+        return middle;
     }
 
     @Override
