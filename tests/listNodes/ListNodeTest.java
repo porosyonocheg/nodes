@@ -126,4 +126,13 @@ public class ListNodeTest {
         assertEquals("11 -> 4", node6.middleNode().toString());
         assertEquals("11 -> 4", node5.middleNode().toString());
     }
+
+    @Test
+    public void deleteDuplicates() {
+        ListNode newNode = new ListNode("1 -> 2 -> 1 -> 5 -> 2 -> 5 -> 3 -> 4 -> 2 -> 2");
+        assertEquals("1 -> 2 -> 1 -> 5 -> 2 -> 5 -> 3 -> 4 -> 2 -> 2", newNode.toString()); // проверка нового конструктора
+        assertEquals("1 -> 2 -> 5 -> 3 -> 4", newNode.deleteDuplicates(5).toString());
+        newNode = new ListNode("11 -> 312 -> 72 -> 11 -> 11 -> 72 -> 312 -> 121");
+        assertEquals("11 -> 312 -> 72 -> 121", newNode.deleteDuplicates(312).toString());
+    }
 }

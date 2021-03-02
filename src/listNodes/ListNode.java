@@ -6,8 +6,33 @@ package listNodes;
 public class ListNode {
     int val;
     ListNode next;
-    ListNode() {}
-    ListNode(int x) { val = x; }
+    public ListNode() {}
+    public ListNode(int x) { val = x; }
+
+    /**Конструктор принимает строковое представление связного списка и парсингом целочисленных значений создаёт
+     * из них новый список*/
+    public ListNode(String list) {
+        int lastIndex = list.indexOf(' ');
+        if (lastIndex == -1 ) {
+            val = Integer.parseInt(list);
+        }
+        else {
+            int firstIndex = 0;
+            val = Integer.parseInt(list.substring(firstIndex, lastIndex));
+            ListNode current = new ListNode();
+            next = current;
+            firstIndex = lastIndex + 4;
+            lastIndex = list.indexOf(' ', firstIndex);
+            while (lastIndex != -1) {
+                current.val = Integer.parseInt(list.substring(firstIndex, lastIndex));
+                current.next = new ListNode();
+                current = current.next;
+                firstIndex = lastIndex + 4;
+                lastIndex = list.indexOf(' ', firstIndex);
+            }
+            current.val = Integer.parseInt(list.substring(firstIndex));
+        }
+    }
 
     /**Удаляет из текущего списка переданный узел*/
     public void deleteNode(ListNode node) {
@@ -28,6 +53,25 @@ public class ListNode {
             else current = current.next;
         }
         return crutch.next;
+    }
+
+    /**Метод удаляет все дупликаты из списка с переданным максимальным значением узлов*/
+    public ListNode deleteDuplicates(int maxValue) {
+        int[] set = new int[maxValue];
+        ListNode crutch = this;
+        ListNode current = crutch.next;
+        set[this.val - 1]++;
+        while (current != null) {
+            set[current.val - 1]++;
+            if (set[current.val - 1] > 1) {
+                crutch.next = current.next;
+            }
+            else {
+                crutch = crutch.next;
+            }
+            current = current.next;
+        }
+        return this;
     }
 
     /**Удаляет все дупликаты из отсортированного связного списка
