@@ -104,6 +104,20 @@ public class ListNode {
         return middle;
     }
 
+    /**Переворачивает список задом наперёд
+     * @return модифицированный список*/
+    public ListNode reverseList() {
+        ListNode previousNode = null;
+        ListNode head = this;
+        while (head != null) {
+            ListNode nextNode = head.next;
+            head.next = previousNode;
+            previousNode = head;
+            head = nextNode;
+        }
+        return previousNode;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
