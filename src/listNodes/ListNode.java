@@ -118,6 +118,26 @@ public class ListNode {
         return previousNode;
     }
 
+    /**@return true, если список является палиндромом, false - в обратном случае
+     * За то время, как бегунок fast пробегает список, slow доходит ровно до середины. Переворачиваем slow,
+     * то есть правую половину списка и сравниваем поэлементно с начала исходного списка*/
+    public boolean isPalindrome() {
+        ListNode slow = this;
+        ListNode fast = this;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        slow = slow.reverseList();
+        fast = this;
+        while (slow != null) {
+            if (fast.val != slow.val) return false;
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

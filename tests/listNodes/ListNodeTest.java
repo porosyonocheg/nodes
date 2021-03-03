@@ -87,4 +87,15 @@ public class ListNodeTest {
         assertEquals("5 -> 6", new ListNode("6 -> 5").reverseList().toString());
         assertEquals("3", new ListNode(3).reverseList().toString());
     }
+
+    @Test
+    public void isPalindrome() {
+        assertTrue(new ListNode(5).isPalindrome());
+        assertTrue(new ListNode("1 -> 1").isPalindrome());
+        assertTrue(new ListNode("3 -> 3 -> 3").isPalindrome());
+        assertFalse(base.isPalindrome());
+        assertTrue(new ListNode("5 -> 2 -> 1 -> 2 -> 5").isPalindrome());
+        assertTrue(new ListNode("5 -> 2 -> 2 -> 2 -> 3 -> 3 -> 2 -> 2 -> 2 -> 5").isPalindrome());
+        assertFalse(new ListNode("5 -> 2 -> 2").isPalindrome());
+    }
 }
