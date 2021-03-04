@@ -138,8 +138,22 @@ public class ListNode {
         return true;
     }
 
+    /**@return true, если один из узлов списка содержит ссылку на следующий узел уже встречавшийся в списке (список
+    * зациклен), false - если циклов нет*/
+    public boolean hasCycle() {
+        ListNode fast = this;
+        ListNode slow = this;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
+        if (!hasCycle()) {
         StringBuilder sb = new StringBuilder();
             sb.append(val);
             if (next != null) {
@@ -147,5 +161,7 @@ public class ListNode {
                 sb.append(next.toString());
             }
             return sb.toString();
+        }
+        return "This ListNode has cycle";
     }
 }

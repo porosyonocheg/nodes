@@ -98,4 +98,38 @@ public class ListNodeTest {
         assertTrue(new ListNode("5 -> 2 -> 2 -> 2 -> 3 -> 3 -> 2 -> 2 -> 2 -> 5").isPalindrome());
         assertFalse(new ListNode("5 -> 2 -> 2").isPalindrome());
     }
+
+    @Test
+    public void hasCycle() {
+        assertFalse(base.hasCycle());
+        assertFalse(new ListNode("3 -> 3 -> 3").hasCycle());
+        ListNode n = new ListNode("7 -> 5 -> 3");
+        ListNode n1 = new ListNode("5 -> 2 -> 6");
+        ListNode n2 = new ListNode("1 -> 3 -> 4");
+        ListNode node = new ListNode(12);
+        ListNode node1 = new ListNode(9);
+        ListNode node2 = new ListNode(15);
+        ListNode node3 = new ListNode(13);
+        ListNode node4 = new ListNode(17);
+        ListNode node5 = new ListNode(14);
+        ListNode node6 = new ListNode(16);
+        ListNode node7 = new ListNode(11);
+        ListNode node8 = new ListNode(10);
+        n.next = n1;
+        n1.next = n2;
+        n2.next = node;
+        node.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
+        node7.next = node8;
+        node8.next = n;
+        assertTrue(n.hasCycle());
+        n1.next = n2;
+        n2.next = n1;
+        assertTrue(n1.hasCycle());
+    }
 }
