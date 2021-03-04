@@ -1,5 +1,7 @@
 package listNodes;
 
+import java.util.Objects;
+
 /** Связный список. Каждый узел списка содержит численное значение и ссылку на следующий узел (если он существует).
  * @author Сергей Шершавин*/
 
@@ -163,5 +165,18 @@ public class ListNode {
             return sb.toString();
         }
         return "This ListNode has cycle";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ListNode)) return false;
+        ListNode listNode = (ListNode) o;
+        return val == listNode.val && Objects.equals(next, listNode.next);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(val, next);
     }
 }

@@ -132,4 +132,37 @@ public class ListNodeTest {
         n2.next = n1;
         assertTrue(n1.hasCycle());
     }
+
+    @Test
+    public void intersectionOfTwoLinkedLists(){
+        ListNode n = new ListNode("7 -> 5 -> 3");
+        ListNode n1 = new ListNode("5 -> 2 -> 6");
+        ListNode n2 = new ListNode("1 -> 3 -> 4");
+        n.next = n1;
+        n1.next = n2;
+        ListNode node5 = new ListNode(14);
+        ListNode node6 = new ListNode(16);
+        ListNode node7 = new ListNode(11);
+        ListNode node8 = new ListNode(10);
+        node5.next = node6;
+        node6.next = node7;
+        node7.next = node8;
+        node8.next = n2;
+        assertEquals("1 -> 3 -> 4", IntersectionOfTwoLinkedLists.getIntersectionNode(n,node5).toString());
+        assertEquals(node8, IntersectionOfTwoLinkedLists.getIntersectionNode(node7, node8));
+        assertEquals(n1, IntersectionOfTwoLinkedLists.getIntersectionNode(n1, n1));
+        assertNull(IntersectionOfTwoLinkedLists.getIntersectionNode(new ListNode("1 -> 2 -> 3"), new ListNode("1 -> 2 -> 3")));
+        ListNode node = new ListNode(12);
+        ListNode node1 = new ListNode(9);
+        ListNode node2 = new ListNode(15);
+        ListNode node3 = new ListNode(13);
+        ListNode node4 = new ListNode(17);
+        node.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        n.next = node4;
+        assertEquals(node4, IntersectionOfTwoLinkedLists.getIntersectionNode(n, node));
+    }
 }
