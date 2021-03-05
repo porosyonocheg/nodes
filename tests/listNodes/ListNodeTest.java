@@ -175,6 +175,25 @@ public class ListNodeTest {
         assertEquals("1", n.toString());
         n.addListNode(base);
         assertEquals("1 -> 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 12 -> 3 -> 6", n.toString());
+        assertTrue(n.insertNewNode(0, 333));
+        assertEquals("1 -> 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 333 -> 12 -> 3 -> 6", n.toString());
+        assertFalse(n.insertNewNode(55, 77));
+        assertTrue(n.insertNewNode(3, 77));
+        assertEquals("1 -> 5 -> 4 -> 3 -> 77 -> 2 -> 1 -> 0 -> 333 -> 12 -> 3 -> 6", n.toString());
+        ListNode node = new ListNode("5 -> 1 -> 7 -> 10 -> 12");
+        ListNode innerNode = new ListNode("6 -> 3 -> 22");
+        assertFalse(node.insertListNode(innerNode, 77));
+        assertTrue(node.insertListNode(innerNode, 7));
+        assertEquals("5 -> 1 -> 7 -> 6 -> 3 -> 22 -> 10 -> 12", node.toString());
+        ListNode newNode = new ListNode("22 -> 23 -> 21");
+        node.insertListNode(newNode);
+        assertEquals("5 -> 1 -> 7 -> 6 -> 3 -> 22 -> 23 -> 21 -> 10 -> 12", node.toString());
+        node.insertListNode(new ListNode(13));
+        assertEquals("5 -> 1 -> 7 -> 6 -> 3 -> 22 -> 23 -> 21 -> 10 -> 12 -> 13", node.toString());
+        node.insertListNode(new ListNode(1));
+        assertEquals("5 -> 1 -> 7 -> 6 -> 3 -> 22 -> 23 -> 21 -> 10 -> 12 -> 13", node.toString());
+        node.insertListNode(new ListNode("5 -> 5"));
+        assertEquals("5 -> 5 -> 1 -> 7 -> 6 -> 3 -> 22 -> 23 -> 21 -> 10 -> 12 -> 13", node.toString());
     }
 
     @Test

@@ -43,6 +43,63 @@ public class ListNode {
         head.next = node;
     }
 
+    /**Всталяет в исходный список новый узел со значением value, объединив с узлом со значением target, если он существует.
+     * Если таких элементов несколько, то объединение произойдёт с ближайшим к голове списка.
+     * @return true - если вставка прошла успешно, false - если узел со значением target отсутствует в списке*/
+    public boolean insertNewNode(int target, int value) {
+        ListNode head = this;
+        while (head != null) {
+            if (head.val == target) {
+                ListNode current = new ListNode(value);
+                current.next = head.next;
+                head.next = current;
+                return true;
+            }
+            head = head.next;
+        }
+        return false;
+    }
+
+    /**Объединяет исходный список с переданным списком в узле со значением target, если он существует.
+     * Если таких элементов несколько, то объединение произойдёт с ближайшим к голове списка.
+     * @return true - если вставка прошла успешно, false - если узел со значением target отсутствует в списке*/
+    public boolean insertListNode(ListNode node, int target) {
+        ListNode head = this;
+        while (head != null) {
+            if (head.val == target) {
+                ListNode currentNode = head.next;
+                head.next = node;
+                while (node.next != null) {
+                    node = node.next;
+                }
+                node.next = currentNode;
+                return true;
+            }
+            head = head.next;
+        }
+        return false;
+    }
+
+    /**Объединяет исходный список с переданным списком в узле со значением равным значению головного узла переданного списка,
+     * если он существует. Если таких элементов несколько, то объединение произойдёт с ближайшим к голове исходного списка.
+     * Если значение не найдено в исходном списке, переданный список будет добавлен ему в конец. */
+    public void insertListNode(ListNode node) {
+        ListNode head = this;
+        while (head != null) {
+            if (head.val == node.val) {
+                ListNode currentNode = head.next;
+               if (node.next != null) head.next = node.next;
+                while (node.next != null) {
+                    node = node.next;
+                }
+                node.next = currentNode;
+                return;
+            }
+            head = head.next;
+        }
+        addListNode(node);
+    }
+
     /**Удаляет из текущего списка переданный узел*/
     public void deleteNode(ListNode node) {
         node.val = node.next.val;
