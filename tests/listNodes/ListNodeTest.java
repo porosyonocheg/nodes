@@ -165,4 +165,28 @@ public class ListNodeTest {
         n.next = node4;
         assertEquals(node4, IntersectionOfTwoLinkedLists.getIntersectionNode(n, node));
     }
+
+    @Test
+    public void addingNodes() {
+        base.addListNode(new ListNode("12 -> 3 -> 6"));
+        assertEquals("5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 12 -> 3 -> 6", base.toString());
+        ListNode n = new ListNode(1);
+        n.addListNode(null);
+        assertEquals("1", n.toString());
+        n.addListNode(base);
+        assertEquals("1 -> 5 -> 4 -> 3 -> 2 -> 1 -> 0 -> 12 -> 3 -> 6", n.toString());
+    }
+
+    @Test
+    public void mergeTwoSortedLists() {
+        ListNode n1 = new ListNode("2 -> 4 -> 6 -> 8");
+        ListNode n2 = new ListNode("1 -> 3 -> 5 -> 7");
+        assertEquals("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8", MergeTwoSortedLists.mergeTwoLists(n1,n2).toString());
+        n1 = new ListNode("3 -> 5 -> 7 -> 9");
+        n2 = new ListNode("1 -> 1 -> 10");
+        assertEquals("1 -> 1 -> 3 -> 5 -> 7 -> 9 -> 10", MergeTwoSortedLists.mergeTwoLists(n1,n2).toString());
+        n1 = new ListNode("1 -> 10 -> 15 -> 20");
+        n2 = new ListNode("2 -> 12 -> 17");
+        assertEquals("1 -> 2 -> 10 -> 12 -> 15 -> 17 -> 20", MergeTwoSortedLists.mergeTwoLists(n1,n2).toString());
+    }
 }

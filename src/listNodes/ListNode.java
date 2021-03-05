@@ -36,6 +36,13 @@ public class ListNode {
         }
     }
 
+    /**Добавляет переданный узел в конец текущего списка*/
+    public void addListNode(ListNode node) {
+        ListNode head = this;
+        while (head.next != null) head = head.next;
+        head.next = node;
+    }
+
     /**Удаляет из текущего списка переданный узел*/
     public void deleteNode(ListNode node) {
         node.val = node.next.val;
