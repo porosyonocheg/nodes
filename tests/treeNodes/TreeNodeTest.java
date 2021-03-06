@@ -354,4 +354,20 @@ public class TreeNodeTest {
         assertEquals("[[0], [-2, 2], [-4, -1, 1, 4], [-6, -3, 3, 5], [-7, -5, 7], [6]]", new BinaryTreeLevelTraversal(root).execute().toString());
         assertEquals("[[5], [3, 7], [2, 4, 6, 8]]", new BinaryTreeLevelTraversal(root1).execute().toString());
     }
+
+    @Test
+    public void sumOfNodesWithOddOrEvenValuedGrandparent() {
+        TreeNode node8 = new TreeNode(8, new TreeNode(1), new TreeNode(14));
+        TreeNode node9 = new TreeNode(9, new TreeNode(4), new TreeNode(7));
+        TreeNode node5 = new TreeNode(5, new TreeNode(10), new TreeNode(15));
+        TreeNode node6 = new TreeNode(6, new TreeNode(3), node8);
+        TreeNode node2 = new TreeNode(2, node6, node9);
+        TreeNode node11 = new TreeNode(11, node5, new TreeNode(12));
+        TreeNode root0 = new TreeNode(13, node2, node11);
+
+        assertEquals(-6, new SumOfNodesWithOddOrEvenValuedGrandparent(root, true).execute());
+        assertEquals(6, new SumOfNodesWithOddOrEvenValuedGrandparent(root, false).execute());
+        assertEquals(37, new SumOfNodesWithOddOrEvenValuedGrandparent(root0, true).execute());
+        assertEquals(57, new SumOfNodesWithOddOrEvenValuedGrandparent(root0, false).execute());
+    }
 }
