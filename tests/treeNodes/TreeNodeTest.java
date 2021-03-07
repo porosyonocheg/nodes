@@ -370,4 +370,12 @@ public class TreeNodeTest {
         assertEquals(37, new SumOfNodesWithOddOrEvenValuedGrandparent(root0, true).execute());
         assertEquals(57, new SumOfNodesWithOddOrEvenValuedGrandparent(root0, false).execute());
     }
+
+    @Test
+    public void lowestCommonAncestorInBST() {
+        assertEquals(a, new LowestCommonAncestor(root, -3, -7).execute());
+        assertEquals(f, new LowestCommonAncestor(root, 5, 6).execute());
+        assertEquals(root, new LowestCommonAncestor(root, -1, 1).execute());
+        assertEquals(root, new LowestCommonAncestor(root, -8, 6).execute());
+    }
 }

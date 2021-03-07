@@ -208,4 +208,13 @@ public class ListNodeTest {
         n2 = new ListNode("2 -> 12 -> 17");
         assertEquals("1 -> 2 -> 10 -> 12 -> 15 -> 17 -> 20", MergeTwoSortedLists.mergeTwoLists(n1,n2).toString());
     }
+
+    @Test
+    public void sortListNode() {
+        assertEquals("0 -> 1 -> 2 -> 3 -> 4 -> 5", SortListNode.sortList(base).toString());
+        ListNode node = new ListNode("5 -> 4 -> 9 -> 6 -> 15 -> 3 -> 1 -> 11 -> 14 -> 2 -> 8 -> 7 -> 13 -> 10 -> 12");
+        assertEquals("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15", SortListNode.sortList(node).toString());
+        node = new ListNode("9 -> 5 -> 1 -> 9 -> 5 -> 9 -> 7 -> 5 -> 1 -> 9 -> 9 -> 1 -> 5 -> 7 -> 7 -> 9 -> 5 -> 1");
+        assertEquals("1 -> 1 -> 1 -> 1 -> 5 -> 5 -> 5 -> 5 -> 5 -> 7 -> 7 -> 7 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9", SortListNode.sortList(node).toString());
+    }
 }
