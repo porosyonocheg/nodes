@@ -18,8 +18,10 @@ public class LowestCommonAncestor extends Command {
         this.val2 = val2;
     }
 
-    /** @return узел, являющийся наименьшим общим предком для узлов с переданными значениями*/
+    /** @return узел, являющийся наименьшим общим предком для узлов с переданными значениями
+     * если узлов с переданными значениями нет в дереве, ищет такого предка, как если бы они были*/
     private TreeNode lowestCommonAncestor(TreeNode root, int val1, int val2) {
+        if (root.left == null && root.right == null) return root;
         if (val1  > root.val && val2 > root.val) return lowestCommonAncestor(root.right, val1, val2);
         else if (val1  < root.val && val2 < root.val) return lowestCommonAncestor(root.left, val1, val2);
         else {
