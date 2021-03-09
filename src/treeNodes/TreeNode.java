@@ -141,6 +141,19 @@ public class TreeNode {
         return builder.toString();
     }
 
+    public Object clone() {
+        if (this.left == null && this.right == null){
+            return new TreeNode(this.val);
+        }
+        if (this.left == null) {
+            return new TreeNode(this.val, null, (TreeNode)this.right.clone());
+        }
+        if (this.right == null) {
+            return new TreeNode(this.val, (TreeNode)this.left.clone(), null);
+        }
+        return new TreeNode(this.val, (TreeNode)this.left.clone(), (TreeNode)this.right.clone());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

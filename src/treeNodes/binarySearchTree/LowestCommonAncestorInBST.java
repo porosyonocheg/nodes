@@ -6,13 +6,13 @@ import treeNodes.TreeNode;
 /** Находит ближайшего общего предка (узел) для двух переданных значений узлов в данном бинарном дереве поиска
  * @author Сергей Шершавин*/
 
-public class LowestCommonAncestor extends Command {
+public class LowestCommonAncestorInBST extends Command {
     private int val1, val2;
 
     /**Конструктор содержит параметры:
      * @param val1 значение одного из искомых узлов
      * @param val2 значение второго из искомых узлов*/
-    public LowestCommonAncestor(TreeNode root, int val1, int val2) {
+    public LowestCommonAncestorInBST(TreeNode root, int val1, int val2) {
         super(root);
         this.val1 = val1;
         this.val2 = val2;

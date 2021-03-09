@@ -373,19 +373,34 @@ public class TreeNodeTest {
 
     @Test
     public void lowestCommonAncestorInBST() {
-        assertEquals(a, new LowestCommonAncestor(root, -3, -7).execute());
-        assertEquals(f, new LowestCommonAncestor(root, 5, 6).execute());
-        assertEquals(root, new LowestCommonAncestor(root, -1, 1).execute());
-        assertEquals(root, new LowestCommonAncestor(root, -8, 6).execute());
+        assertEquals(a, new LowestCommonAncestorInBST(root, -3, -7).execute());
+        assertEquals(f, new LowestCommonAncestorInBST(root, 5, 6).execute());
+        assertEquals(root, new LowestCommonAncestorInBST(root, -1, 1).execute());
+        assertEquals(root, new LowestCommonAncestorInBST(root, -8, 6).execute());
         TreeNode node2 = new TreeNode(3, new TreeNode(1), new TreeNode(5));
         TreeNode node11 = new TreeNode(9, new TreeNode(7), new TreeNode(11));
         TreeNode root0 = new TreeNode(6, node2, node11);
-        assertEquals(root0, new LowestCommonAncestor(root0, 4, 8).execute());
-        assertEquals(node2, new LowestCommonAncestor(root0, 4, 2).execute());
+        assertEquals(root0, new LowestCommonAncestorInBST(root0, 4, 8).execute());
+        assertEquals(node2, new LowestCommonAncestorInBST(root0, 4, 2).execute());
         node2.right = new TreeNode(3);
         node11.right = new TreeNode(9);
-        assertEquals(node2, new LowestCommonAncestor(root0, 2, 4).execute());
-        assertEquals(new TreeNode(9), new LowestCommonAncestor(root0, 11, 10).execute());
+        assertEquals(node2, new LowestCommonAncestorInBST(root0, 2, 4).execute());
+        assertEquals(new TreeNode(9), new LowestCommonAncestorInBST(root0, 11, 10).execute());
+    }
+
+    @Test
+    public void lowestCommonAncestor() {
+        TreeNode node8 = new TreeNode(10, new TreeNode(13), new TreeNode(8));
+        TreeNode node9 = new TreeNode(19, new TreeNode(14), new TreeNode(7));
+        TreeNode node5 = new TreeNode(4, new TreeNode(12), new TreeNode(6));
+        TreeNode node6 = new TreeNode(3, new TreeNode(0), node8);
+        TreeNode node2 = new TreeNode(9, node6, node9);
+        TreeNode node11 = new TreeNode(5, node5, new TreeNode(2));
+        TreeNode root0 = new TreeNode(1, node2, node11);
+        assertEquals(root0, new LowestCommonAncestor(root0, 6, 7).execute());
+        assertEquals(node6, new LowestCommonAncestor(root0, 8, 0).execute());
+        assertEquals(node2, new LowestCommonAncestor(root0, 9, 13).execute());
+        assertEquals(node5, new LowestCommonAncestor(root0, 12, 6).execute());
     }
 
     @Test
