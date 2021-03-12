@@ -3,7 +3,8 @@ package treeNodes.binarySearchTree;
 import treeNodes.Command;
 import treeNodes.TreeNode;
 
-/**
+/**Преобразует исходное бинарное дерево поиска следующим образом: значение каждого узла увеличивается на сумму всех
+ * значений узлов, превосходящих данное значение.
  * @author Сергей Шершавин*/
 
 public class ConvertToGreaterTree extends Command {
