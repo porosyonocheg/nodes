@@ -417,4 +417,12 @@ public class TreeNodeTest {
         TreeNode root0 = new TreeNode(0, node2, node11);
         assertEquals(8, new DiameterOfBinaryTree(root0).execute());
     }
+
+    @Test
+    public void ConvertToGreaterTree() {
+        assertEquals("26, 33, 15, 35, 30, 21, 8", new ConvertToGreaterTree(root1).execute().toString());
+        assertEquals("28, 25, 27, 18, 27, 28, 22, 7, 22, null, null, null, null, 25, 18, 0, 13, null, null, null, null, null, 7, null, null, null, null, 13", new ConvertToGreaterTree(root).execute().toString());
+        assertNull(new ConvertToGreaterTree(null).execute());
+        assertEquals("3", new ConvertToGreaterTree(new TreeNode(3)).execute().toString());
+    }
 }
