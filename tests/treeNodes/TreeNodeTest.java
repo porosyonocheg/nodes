@@ -419,10 +419,24 @@ public class TreeNodeTest {
     }
 
     @Test
-    public void ConvertToGreaterTree() {
+    public void convertToGreaterTree() {
         assertEquals("26, 33, 15, 35, 30, 21, 8", new ConvertToGreaterTree(root1).execute().toString());
         assertEquals("28, 25, 27, 18, 27, 28, 22, 7, 22, null, null, null, null, 25, 18, 0, 13, null, null, null, null, null, 7, null, null, null, null, 13", new ConvertToGreaterTree(root).execute().toString());
         assertNull(new ConvertToGreaterTree(null).execute());
         assertEquals("3", new ConvertToGreaterTree(new TreeNode(3)).execute().toString());
+    }
+
+    @Test
+    public void constructMaximumBinaryTree() {
+        int[] nums = {1,2,3,4,5};
+        assertEquals("5, 4, null, 3, null, 2, null, 1", new ConstructMaximumBinaryTree(nums).execute().toString());
+        nums = new int[]{5,4,3,2,1};
+        assertEquals("5, null, 4, null, 3, null, 2, null, 1", new ConstructMaximumBinaryTree(nums).execute().toString());
+        nums = new int[]{3,2,1,6,0,5};
+        assertEquals("6, 3, 5, null, 2, 0, null, null, 1", new ConstructMaximumBinaryTree(nums).execute().toString());
+        nums = new int[]{};
+        assertNull(new ConstructMaximumBinaryTree(nums).execute());
+        nums = new int[]{0};
+        assertEquals(new TreeNode(0), new ConstructMaximumBinaryTree(nums).execute());
     }
 }
