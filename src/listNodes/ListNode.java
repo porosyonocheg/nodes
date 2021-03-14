@@ -100,6 +100,19 @@ public class ListNode {
         addListNode(node);
     }
 
+    /**При помощи внутреннего рекурсивного метода меняет соседние пары узлов местами, возвращает обновлённый список*/
+    public ListNode swapPairs(){
+        return swapPairsInner(this);
+    }
+
+    private ListNode swapPairsInner(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode next = head.next;
+        head.next = swapPairsInner(head.next.next);
+        next.next = head;
+        return next;
+    }
+
     /**Удаляет из текущего списка переданный узел*/
     public void deleteNode(ListNode node) {
         node.val = node.next.val;
