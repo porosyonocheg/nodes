@@ -54,6 +54,14 @@ public class ListNodeTest {
     }
 
     @Test
+    public void swapNodes() {
+        assertEquals(new ListNode("1 -> 3 -> 2 -> 4"), new ListNode("1 -> 2 -> 3 -> 4").swapNodes(2));
+        assertEquals(new ListNode("1"), new ListNode("1").swapNodes(1));
+        assertEquals(new ListNode("4 -> 2 -> 3 -> 1"), new ListNode("1 -> 2 -> 3 -> 4").swapNodes(4));
+        assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 5"), new ListNode("1 -> 2 -> 3 -> 4 -> 5").swapNodes(3));
+    }
+
+    @Test
     public void middleNode() {
         assertEquals("2 -> 1 -> 0", base.middleNode().toString());
         ListNode node = new ListNode(1);

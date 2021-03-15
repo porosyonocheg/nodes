@@ -113,6 +113,23 @@ public class ListNode {
         return next;
     }
 
+    /**@return список, в котором меняются местами значения k-го узла от начала списка и k-го узла от конца списка*/
+    public ListNode swapNodes(int k) {
+        ListNode first = this;
+        for (int i = 1; i < k; i++) {
+            first = first.next;
+        }
+        ListNode second = this, secondFast = first.next;
+        while (secondFast != null) {
+            secondFast = secondFast.next;
+            second = second.next;
+        }
+        int temp = first.val;
+        first.val = second.val;
+        second.val = temp;
+        return this;
+    }
+
     /**Удаляет из текущего списка переданный узел*/
     public void deleteNode(ListNode node) {
         node.val = node.next.val;

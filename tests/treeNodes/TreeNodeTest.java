@@ -439,4 +439,19 @@ public class TreeNodeTest {
         nums = new int[]{0};
         assertEquals(new TreeNode(0), new ConstructMaximumBinaryTree(nums).execute());
     }
+
+    @Test
+    public void countGoodNodes() {
+        assertEquals(5, new CountGoodNodes(root).execute());
+        TreeNode node8 = new TreeNode(8, new TreeNode(1), new TreeNode(14));
+        TreeNode node9 = new TreeNode(4, new TreeNode(3), new TreeNode(7));
+        TreeNode node5 = new TreeNode(4, new TreeNode(10), new TreeNode(3));
+        TreeNode node6 = new TreeNode(3, new TreeNode(3), node8);
+        TreeNode node2 = new TreeNode(2, node6, node9);
+        TreeNode node11 = new TreeNode(5, node5, new TreeNode(7));
+        TreeNode root0 = new TreeNode(1, node2, node11);
+        assertEquals(11, new CountGoodNodes(root0).execute());
+        assertEquals(1, new CountGoodNodes(new TreeNode(5)).execute());
+        assertEquals(0, new CountGoodNodes(null).execute());
+    }
 }
