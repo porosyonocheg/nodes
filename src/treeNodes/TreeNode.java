@@ -95,25 +95,47 @@ public class TreeNode {
             else queue.offer(currentNode.right);
         }
     }
-    public boolean removeNodes(int value) {
-        boolean flag = false;
-        if (removeNode(this.left, value)) {
+
+    /**Удаление поддеревьев узлов, значение которых совпадает с переданным, используя
+     * реализацию метода boolean removeNodes(TreeNode current, int value).
+     * @param value значение удаляемых узлов*/
+    public void removeNodes(int value) {
+        if (removeNodes(this.left, value)) {
             this.left = null;
-            flag = true;
         }
-        if (removeNode(this.right, value)) {
+        if (removeNodes(this.right, value)) {
             this.right = null;
-            flag = true;
         }
-        return flag;
     }
-    public boolean removeNode(TreeNode current, int value) {
+
+    /**Удаление поддеревьев с переданным значением. Рекурсивным вызовом обнуляет ссылки на потомков, если их значение
+     * совпало с переданным
+     * @param value значение удаляемого узла
+     * @return  true если узел с переданным значением найден в данном поддереве, false, если узла с таким значением нет*/
+    private boolean removeNodes(TreeNode current, int value) {
         if (current != null) {
             if (current.val == value) return true;
-            if (removeNode(current.left, value)) current.left = null;
-            if (removeNode(current.right, value)) current.right = null;
+            if (removeNodes(current.left, value)) {
+                current.left = null;
+            }
+            if (removeNodes(current.right, value)) {
+                current.right = null;
+            }
         }
         return false;
+    }
+
+    /**Подсчёт числа узлов бинарного дерева, используя внутренний метод прямого обхода дерева*/
+    public int countNodes() {
+        int[] count = new int[1];
+        traversalTree(this, count);
+        return count[0];
+    }
+    private void traversalTree(TreeNode root, int[] count) {
+        if (root == null) return;
+        count[0]++;
+        traversalTree(root.left, count);
+        traversalTree(root.right, count);
     }
 
     @Override

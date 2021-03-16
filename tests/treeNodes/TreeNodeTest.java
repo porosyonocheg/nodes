@@ -193,6 +193,7 @@ public class TreeNodeTest {
         left23.val = 0;
         assertFalse((Boolean) new UnivalentBinaryTree(root1).execute());
     }
+
     TreeNode left13 = new TreeNode(2);
     TreeNode left23 = new TreeNode(6);
     TreeNode right13 = new TreeNode(4);
@@ -200,6 +201,15 @@ public class TreeNodeTest {
     TreeNode left12 = new TreeNode(3,left13, right13);
     TreeNode right12 = new TreeNode(7, left23, right23);
     TreeNode root1 = new TreeNode(5, left12, right12);
+
+    @Test
+    public void countNodes() {
+        assertEquals(7, root1.countNodes());
+        assertEquals(15, root.countNodes());
+        assertEquals(1, new TreeNode(0).countNodes());
+        assertEquals(5, new TreeNode(0, null, new TreeNode(1, new TreeNode(2, null, new TreeNode(3, new TreeNode(4), null)), null)).countNodes());
+    }
+
     @Test
     public void sortedArrayToBST() {
         assertNull( new ConvertSortedArrayToBST(new int[]{}).execute());

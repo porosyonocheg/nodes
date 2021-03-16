@@ -1,6 +1,8 @@
 package listNodes;
 
 import org.junit.Test;
+import treeNodes.TreeNode;
+
 import static org.junit.Assert.*;
 
 public class ListNodeTest {
@@ -232,5 +234,18 @@ public class ListNodeTest {
         assertEquals("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15", new SortListNode().sortList(node).toString());
         node = new ListNode("9 -> 5 -> 1 -> 9 -> 5 -> 9 -> 7 -> 5 -> 1 -> 9 -> 9 -> 1 -> 5 -> 7 -> 7 -> 9 -> 5 -> 1");
         assertEquals("1 -> 1 -> 1 -> 1 -> 5 -> 5 -> 5 -> 5 -> 5 -> 7 -> 7 -> 7 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9", new SortListNode().sortList(node).toString());
+    }
+
+    @Test
+    public void convertSortedListToBST() {
+        assertEquals(new TreeNode(0), ConvertSortedListNodeToBST.sortedListToBST(new ListNode(0)));
+        assertNull(ConvertSortedListNodeToBST.sortedListToBST(null));
+        TreeNode root = new TreeNode(1, null, new TreeNode(2));
+        assertEquals(root, ConvertSortedListNodeToBST.sortedListToBST(new ListNode("1 -> 2")));
+        root = new TreeNode(2, new TreeNode(1), new TreeNode(3));
+        assertEquals(root, ConvertSortedListNodeToBST.sortedListToBST(new ListNode("1 -> 2 -> 3")));
+        TreeNode right = new TreeNode(5, null, new TreeNode(5));
+        root = new TreeNode(1, new TreeNode(1), right);
+        assertEquals(root, ConvertSortedListNodeToBST.sortedListToBST(new ListNode("1 -> 1 -> 5 -> 5")));
     }
 }
