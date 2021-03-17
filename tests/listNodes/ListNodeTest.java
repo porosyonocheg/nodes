@@ -248,4 +248,14 @@ public class ListNodeTest {
         root = new TreeNode(1, new TreeNode(1), right);
         assertEquals(root, ConvertSortedListNodeToBST.sortedListToBST(new ListNode("1 -> 1 -> 5 -> 5")));
     }
+
+    @Test
+    public void nextLargerNodes() {
+        assertArrayEquals(new int[]{}, NextLargerNodes.getNextLargerValuesArray(null));
+        assertArrayEquals(new int[]{0,0,0,0,0,0}, NextLargerNodes.getNextLargerValuesArray(base));
+        assertArrayEquals(new int[]{0}, NextLargerNodes.getNextLargerValuesArray(new ListNode(1)));
+        assertArrayEquals(new int[]{2,3,4,5,6,0}, NextLargerNodes.getNextLargerValuesArray(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6")));
+        base = new ListNode("8 -> 2 -> 6 -> 7 -> 10 -> 5");
+        assertArrayEquals(new int[]{10,6,7,10,0,0}, NextLargerNodes.getNextLargerValuesArray(base));
+    }
 }
