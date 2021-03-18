@@ -464,4 +464,12 @@ public class TreeNodeTest {
         assertEquals(1, new CountGoodNodes(new TreeNode(5)).execute());
         assertEquals(0, new CountGoodNodes(null).execute());
     }
+
+    @Test
+    public void addNewRow(){
+        assertEquals(new TreeNode(5, new TreeNode(0), null), new AddNewRow(new TreeNode(0),5,1).execute());
+        assertEquals("0, -2, 2, -4, -1, 1, 4, 8, 8, 8, 8, 8, 8, 8, 8, -6, null, null, -3, null, null, null, null, null, null, null, null, 3, null, null, 5, -7, -5, null, null, null, null, null, 7, null, null, null, null, 6", new AddNewRow(root,8,4).execute().toString());
+        assertEquals("5, 3, 7, 2, 4, 6, 8, 1, 1, 1, 1, 1, 1, 1, 1" , new AddNewRow(root1, 1,4).execute().toString());
+    }
+
 }
