@@ -472,4 +472,14 @@ public class TreeNodeTest {
         assertEquals("5, 3, 7, 2, 4, 6, 8, 1, 1, 1, 1, 1, 1, 1, 1" , new AddNewRow(root1, 1,4).execute().toString());
     }
 
+    @Test
+    public void deleteNodeInBST(){
+//        assertEquals(new TreeNode(-1), new DeleteNode(new TreeNode(1, new TreeNode(-1), null), 1).execute());
+//        assertEquals(new TreeNode(2), new DeleteNode(new TreeNode(1, null, new TreeNode(2)), 1).execute());
+//        assertEquals(new TreeNode(1), new DeleteNode(new TreeNode(1, null, new TreeNode(2)), 2).execute());
+//        assertNull(new DeleteNode(null, 2).execute());
+        assertEquals("0, -2, 2, -4, -1, 1, 5, -6, -3, null, null, null, null, 3, 7, -7, -5, null, null, null, null, 6", new DeleteNode(root, 4).execute().toString());
+        assertEquals(root1, new DeleteNode(root1, 9).execute());
+    }
+
 }
