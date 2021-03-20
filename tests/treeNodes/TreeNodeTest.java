@@ -474,12 +474,32 @@ public class TreeNodeTest {
 
     @Test
     public void deleteNodeInBST(){
-//        assertEquals(new TreeNode(-1), new DeleteNode(new TreeNode(1, new TreeNode(-1), null), 1).execute());
-//        assertEquals(new TreeNode(2), new DeleteNode(new TreeNode(1, null, new TreeNode(2)), 1).execute());
-//        assertEquals(new TreeNode(1), new DeleteNode(new TreeNode(1, null, new TreeNode(2)), 2).execute());
-//        assertNull(new DeleteNode(null, 2).execute());
+        assertEquals(new TreeNode(-1), new DeleteNode(new TreeNode(1, new TreeNode(-1), null), 1).execute());
+        assertEquals(new TreeNode(2), new DeleteNode(new TreeNode(1, null, new TreeNode(2)), 1).execute());
+        assertEquals(new TreeNode(1), new DeleteNode(new TreeNode(1, null, new TreeNode(2)), 2).execute());
+        assertNull(new DeleteNode(null, 2).execute());
         assertEquals("0, -2, 2, -4, -1, 1, 5, -6, -3, null, null, null, null, 3, 7, -7, -5, null, null, null, null, 6", new DeleteNode(root, 4).execute().toString());
         assertEquals(root1, new DeleteNode(root1, 9).execute());
+    }
+
+    @Test
+    public void maximumAncestorNodeDifference() {
+        assertEquals(7, new MaximumAncestorNodeDifference(root).execute());
+        assertEquals(3, new MaximumAncestorNodeDifference(root1).execute());
+        assertEquals(0, new MaximumAncestorNodeDifference(new TreeNode(1, null, new TreeNode(1))).execute());
+        assertEquals(1, new MaximumAncestorNodeDifference(new TreeNode(0, new TreeNode(1), null)).execute());
+        assertEquals(2, new MaximumAncestorNodeDifference(new TreeNode(0, new TreeNode(1), new TreeNode(2))).execute());
+        assertEquals(8, new MaximumAncestorNodeDifference(new TreeNode(9, new TreeNode(1), new TreeNode(2))).execute());
+        TreeNode node8 = new TreeNode(3, new TreeNode(4), new TreeNode(6));
+        TreeNode node9 = new TreeNode(4, new TreeNode(7), new TreeNode(10));
+        TreeNode node5 = new TreeNode(12, new TreeNode(6), new TreeNode(15));
+        TreeNode node6 = new TreeNode(5, new TreeNode(12), node8);
+        TreeNode node2 = new TreeNode(9, node6, node9);
+        TreeNode node11 = new TreeNode(7, node5, new TreeNode(3));
+        TreeNode root0 = new TreeNode(8, node2, node11);
+        assertEquals(8, new MaximumAncestorNodeDifference(root0).execute());
+        node5.right = new TreeNode(9);
+        assertEquals(7, new MaximumAncestorNodeDifference(root0).execute());
     }
 
 }
