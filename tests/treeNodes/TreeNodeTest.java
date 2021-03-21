@@ -502,4 +502,35 @@ public class TreeNodeTest {
         assertEquals(7, new MaximumAncestorNodeDifference(root0).execute());
     }
 
+    @Test
+    public void isEvenOddTree() {
+        assertTrue((Boolean) new IsEvenOddTree(new TreeNode(1)).execute());
+        assertFalse((Boolean) new IsEvenOddTree(new TreeNode(2)).execute());
+        TreeNode node8 = new TreeNode(8, new TreeNode(1), new TreeNode(9));
+        TreeNode node9 = new TreeNode(7, new TreeNode(6), new TreeNode(4));
+        TreeNode node5 = new TreeNode(13, new TreeNode(2), new TreeNode(0));
+        TreeNode node6 = new TreeNode(5, new TreeNode(12), node8);
+        TreeNode node2 = new TreeNode(8, node6, node9);
+        TreeNode node11 = new TreeNode(6, node5, new TreeNode(17));
+        TreeNode root0 = new TreeNode(3, node2, node11);
+        assertTrue((Boolean) new IsEvenOddTree(root0).execute());
+        List<Integer> list = new ArrayList<>();
+        list.add(5);
+        list.add(4);
+        list.add(2);
+        list.add(3);
+        list.add(3); //should be greater than previous one
+        list.add(7);
+        TreeNode node = new TreeNode(list);
+        assertFalse((Boolean) new IsEvenOddTree(node).execute());
+        list = new ArrayList<>();
+        list.add(5);
+        list.add(9); //should be even
+        list.add(1); //should be even too
+        list.add(3);
+        list.add(5);
+        list.add(7);
+        node = new TreeNode(list);
+        assertFalse((Boolean) new IsEvenOddTree(node).execute());
+    }
 }
