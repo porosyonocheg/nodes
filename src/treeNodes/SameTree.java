@@ -4,7 +4,7 @@ package treeNodes;
  * @author  Сергей Шершавин*/
 
 public class SameTree extends Command {
-    private TreeNode target;
+    private final TreeNode target;
 
     public SameTree(TreeNode root, TreeNode target) {
         super(root);
@@ -12,7 +12,7 @@ public class SameTree extends Command {
     }
     public boolean isSameTree(TreeNode first, TreeNode second) {
         if (first == null && second == null) return true;
-        if ((first != null && second == null) || (first == null && second != null)) return false;
+        if (first == null || second == null) return false;
         if (first.val != second.val) return false;
         return isSameTree(first.left, second.left) && isSameTree(first.right, second.right);
     }

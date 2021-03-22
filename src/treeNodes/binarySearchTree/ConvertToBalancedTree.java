@@ -11,18 +11,18 @@ import java.util.List;
  * @author Сергей Шершавин*/
 
 public class ConvertToBalancedTree extends Command {
-    private List<Integer> values = new ArrayList<>();
+    private final List<Integer> values = new ArrayList<>();
 
     public ConvertToBalancedTree(TreeNode root) {
         super(root);
     }
 
     /**Создаёт список значений узлов после обхода In-order*/
-    private void createListFromBST (TreeNode node, List<Integer> values) {
+    private void createListFromBST (TreeNode node) {
         if (node == null) return;
-        createListFromBST(node.left, values);
+        createListFromBST(node.left);
         values.add(node.val);
-        createListFromBST(node.right,values);
+        createListFromBST(node.right);
     }
 
     private TreeNode sortedListToBST(int left, int right) {
@@ -36,7 +36,7 @@ public class ConvertToBalancedTree extends Command {
 
     @Override
     public Object execute() {
-        createListFromBST(root, values);
+        createListFromBST(root);
         return sortedListToBST(0, values.size()-1);
     }
 }

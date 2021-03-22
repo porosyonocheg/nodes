@@ -4,7 +4,7 @@ package treeNodes;
  * @author Сергей Шершавин*/
 
 public class MergeTwoBinaryTrees extends Command {
-    private TreeNode target;
+    private final TreeNode target;
 
     public MergeTwoBinaryTrees(TreeNode root, TreeNode target) {
         super(root);

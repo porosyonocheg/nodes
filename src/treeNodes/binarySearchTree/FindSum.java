@@ -10,7 +10,7 @@ import java.util.List;
  * @author Сергей Шершавин*/
 
 public class FindSum extends Command {
-    private int target;
+    private final int target;
 
     /**Коструктор содержит
      * @param target  - искомое значение суммы двух узлов*/

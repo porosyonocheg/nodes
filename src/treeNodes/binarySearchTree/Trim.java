@@ -7,8 +7,8 @@ import treeNodes.TreeNode;
  * @author Сергей Шершавин*/
 
 public class Trim extends Command {
-    private int low;
-    private int high;
+    private final int low;
+    private final int high;
 
 /**Конструкто содержит
  * @param low нижняя граница значений узлов
@@ -20,17 +20,17 @@ public class Trim extends Command {
         this.high = high;
     }
 
-    public TreeNode trimBST(TreeNode root, int low, int high) {
+    public TreeNode trimBST(TreeNode root) {
         if (root == null) return null;
-        if (root.val < low) return trimBST(root.right, low, high);
-        if (root.val > high) return trimBST(root.left, low, high);
-        root.left = trimBST(root.left, low, high);
-        root.right = trimBST(root.right, low, high);
+        if (root.val < low) return trimBST(root.right);
+        if (root.val > high) return trimBST(root.left);
+        root.left = trimBST(root.left);
+        root.right = trimBST(root.right);
         return root;
     }
 
     @Override
     public Object execute() {
-        return trimBST(root, low, high);
+        return trimBST(root);
     }
 }

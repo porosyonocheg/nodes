@@ -1,10 +1,12 @@
 package treeNodes.binarySearchTree;
 
 import treeNodes.TreeNode;
+
 /** Конструирует бинарное дерево поиска из массива соответствующего preorder-обходу.
  * @author  Сергей Шершавин*/
+
 public class ConstructTreeFromPreorder {
-    private int[] preorder;
+    private final int[] preorder;
 
     public ConstructTreeFromPreorder(int[] preorder) {
         this.preorder = preorder;

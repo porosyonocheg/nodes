@@ -7,7 +7,7 @@ import java.util.List;
  * @author Сергей Шершавин*/
 
 public class SimilarLeavesTrees extends Command {
-    private TreeNode target;
+    private final TreeNode target;
 
     public SimilarLeavesTrees(TreeNode root, TreeNode target) {
         super(root);

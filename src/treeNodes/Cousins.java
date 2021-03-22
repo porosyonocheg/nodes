@@ -5,23 +5,14 @@ package treeNodes;
  * @author Сергей Шершавин*/
 
 public class Cousins extends Command {
-    private int firstNodeValue, secondNodeValue;
+    private final int firstNodeValue;
+    private final int secondNodeValue;
     private boolean flag = false;
 
     public Cousins(TreeNode root, int firstNodeValue, int secondNodeValue) {
         super(root);
         this.firstNodeValue = firstNodeValue;
         this.secondNodeValue = secondNodeValue;
-    }
-
-    public boolean isCousins(TreeNode root, int x, int y) {
-        int[] first = new int[2];
-        findNode(root, x, first);
-        flag = false;
-        int[] second = new int[2];
-        findNode(root, y, second);
-        if (first[0] == second[0] && first[1] != second[1]) return true;
-        return false;
     }
 
 /**Записывает в переданный массив данные о глубине искомого узла и численном значении его родителя*/
@@ -54,6 +45,11 @@ public class Cousins extends Command {
 
     @Override
     public Object execute() {
-        return isCousins(root, firstNodeValue, secondNodeValue);
+        int[] first = new int[2];
+        findNode(root, firstNodeValue, first);
+        flag = false;
+        int[] second = new int[2];
+        findNode(root, secondNodeValue, second);
+        return first[0] == second[0] && first[1] != second[1];
     }
 }

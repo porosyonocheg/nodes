@@ -7,7 +7,8 @@ import treeNodes.TreeNode;
  * @author Сергей Шершавин*/
 
 public class LowestCommonAncestorInBST extends Command {
-    private int val1, val2;
+    private final int val1;
+    private final int val2;
 
     /**Конструктор содержит параметры:
      * @param val1 значение одного из искомых узлов
@@ -20,10 +21,10 @@ public class LowestCommonAncestorInBST extends Command {
 
     /** @return узел, являющийся наименьшим общим предком для узлов с переданными значениями
      * если узлов с переданными значениями нет в дереве, ищет такого предка, как если бы они были*/
-    private TreeNode lowestCommonAncestor(TreeNode root, int val1, int val2) {
+    private TreeNode lowestCommonAncestor(TreeNode root) {
         if (root.left == null && root.right == null) return root;
-        if (val1  > root.val && val2 > root.val) return lowestCommonAncestor(root.right, val1, val2);
-        else if (val1  < root.val && val2 < root.val) return lowestCommonAncestor(root.left, val1, val2);
+        if (val1  > root.val && val2 > root.val) return lowestCommonAncestor(root.right);
+        else if (val1  < root.val && val2 < root.val) return lowestCommonAncestor(root.left);
         else {
             return root;
         }
@@ -31,6 +32,6 @@ public class LowestCommonAncestorInBST extends Command {
 
     @Override
     public Object execute() {
-        return lowestCommonAncestor(root, val1, val2);
+        return lowestCommonAncestor(root);
     }
 }

@@ -7,8 +7,8 @@ import treeNodes.TreeNode;
  * @author Сергей Шершавин*/
 
 public class RangeSum extends Command {
-    private int low;
-    private int high;
+    private final int low;
+    private final int high;
     private int sum;
 
     /**Конструктор содержит
@@ -22,31 +22,31 @@ public class RangeSum extends Command {
 
     /**Рекурсивно вызываем метод пока значение переданного узла не окажется внутри заданного диапазона,
      * затем вызываем вспомогательный метод подсчёта суммы значений узлов*/
-    private int rangeSumBST(TreeNode root, int low, int high) {
+    private int rangeSumBST(TreeNode root) {
         if (root == null) return 0;
-        if (root.val < low) return rangeSumBST(root.right, low, high);
-        if (root.val > high) return rangeSumBST(root.left, low, high);
+        if (root.val < low) return rangeSumBST(root.right);
+        if (root.val > high) return rangeSumBST(root.left);
         sum = 0;
-        sum(root, low, high);
+        sum(root);
         return sum;
     }
 
-    private void sum (TreeNode root, int low, int high) {
+    private void sum (TreeNode root) {
         if (root != null) {
             if (root.val >= low && root.val <= high) {
                 sum += root.val;
             }
             if (root.val > low) {
-                sum(root.left, low, high);
+                sum(root.left);
             }
             if (root.val < high) {
-                sum(root.right, low, high);
+                sum(root.right);
             }
         }
     }
 
     @Override
     public Object execute() {
-        return rangeSumBST(root, low, high);
+        return rangeSumBST(root);
     }
 }

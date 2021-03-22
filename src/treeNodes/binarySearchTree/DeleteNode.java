@@ -19,13 +19,13 @@ public class DeleteNode extends Command {
     /**Рекурсивно ищем наличие значения key в дереве, если оно найдено, в общем случае возвращаем вместо найденного узла
      * наименьший дочерний узел его правого дочернего узла (или сам правый дочерний узел, если у него нет левого поддерева),
      * к которому в качестве левого дочернего узла прикрепляем ссылку на левый дочерний узел удаляемого узла*/
-    private TreeNode deleteNode(TreeNode root, int key) {
+    private TreeNode deleteNode(TreeNode root) {
         if (root == null) return null;
         if (key < root.val) {
-            root.left = deleteNode(root.left, key);
+            root.left = deleteNode(root.left);
         }
         else if (key > root.val) {
-            root.right = deleteNode(root.right, key);
+            root.right = deleteNode(root.right);
         }
         else {
             if (root.left == null) return root.right;
@@ -40,6 +40,6 @@ public class DeleteNode extends Command {
 
     @Override
     public Object execute() {
-        return deleteNode(root, key);
+        return deleteNode(root);
     }
 }

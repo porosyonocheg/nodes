@@ -7,22 +7,22 @@ import treeNodes.TreeNode;
  * @author Сергей Шершавин*/
 
 public class FindElement extends Command {
-    private int target;
+    private final int target;
 
     public FindElement(TreeNode root, int target) {
         super(root);
         this.target = target;
     }
 
-    private TreeNode searchBST(TreeNode root, int target) {
+    private TreeNode searchBST(TreeNode root) {
         if (root == null) return null;
         if (root.val == target) return root;
-        if (root.val > target) return searchBST(root.left, target);
-        return searchBST(root.right, target);
+        if (root.val > target) return searchBST(root.left);
+        return searchBST(root.right);
     }
 
     @Override
     public Object execute() {
-        return searchBST(root, target);
+        return searchBST(root);
     }
 }

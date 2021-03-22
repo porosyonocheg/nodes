@@ -13,9 +13,9 @@ public class ConstructMaximumBinaryTree {
         this.nums = nums;
     }
 
-    private TreeNode constructMaximumBinaryTree(int[] nums, int start, int end) {
+    private TreeNode constructMaximumBinaryTree(int start, int end) {
         if (start == end) return null;
-        if (end-start == 1) return new TreeNode(nums[start]);
+        if (end - start == 1) return new TreeNode(nums[start]);
         int max = nums[start];
         int indexOfMax = start;
         for (int i = start; i < end; i++) {
@@ -25,8 +25,8 @@ public class ConstructMaximumBinaryTree {
             }
         }
         TreeNode root = new TreeNode(max);
-        root.left = constructMaximumBinaryTree(nums, start, indexOfMax);
-        root.right = constructMaximumBinaryTree(nums, indexOfMax+1, end);
+        root.left = constructMaximumBinaryTree(start, indexOfMax);
+        root.right = constructMaximumBinaryTree(indexOfMax+1, end);
         return root;
     }
 
@@ -42,8 +42,8 @@ public class ConstructMaximumBinaryTree {
             }
         }
         TreeNode root = new TreeNode(max);
-        root.left = constructMaximumBinaryTree(nums, 0, indexOfMax);
-        root.right = constructMaximumBinaryTree(nums, indexOfMax+1, nums.length);
+        root.left = constructMaximumBinaryTree(0, indexOfMax);
+        root.right = constructMaximumBinaryTree(indexOfMax+1, nums.length);
         return root;
     }
 }

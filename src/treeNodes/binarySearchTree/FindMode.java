@@ -16,6 +16,7 @@ public class FindMode extends Command {
     public FindMode(TreeNode root) {
         super(root);
     }
+
         /**Подсчитывает число повторов значений, добавляет их во вспомогательную мапу, устанавливает значение
          * maxFreq - максимальное число повторов среди всех значений*/
     private void countNodeRepeats (TreeNode node, Map<Integer,Integer> values) {

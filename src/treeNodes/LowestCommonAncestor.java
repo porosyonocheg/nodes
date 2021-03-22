@@ -17,16 +17,16 @@ public class LowestCommonAncestor extends Command {
         this.val2 = val2;
     }
 
-    private TreeNode lowestCommonAncestor(TreeNode root, int val1, int val2) {
+    private TreeNode lowestCommonAncestor(TreeNode root) {
         if (root == null || root.val == val1 || root.val == val2) return root;
-        TreeNode left = lowestCommonAncestor(root.left, val1, val2);
-        TreeNode right = lowestCommonAncestor(root.right, val1, val2);
+        TreeNode left = lowestCommonAncestor(root.left);
+        TreeNode right = lowestCommonAncestor(root.right);
         if (left != null && right != null) return root;
         return left != null ? left : right;
     }
 
     @Override
     public Object execute() {
-        return lowestCommonAncestor(root, val1, val2);
+        return lowestCommonAncestor(root);
     }
 }

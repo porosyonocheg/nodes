@@ -15,7 +15,7 @@ public class AddNewRow extends Command {
         this.depth = depth;
     }
 
-    private void addRow(TreeNode node, int val, int depth, int currentDepth) {
+    private void addRow(TreeNode node, int currentDepth) {
         if (node == null) return;
         currentDepth++;
         if (depth == currentDepth) {
@@ -24,15 +24,15 @@ public class AddNewRow extends Command {
             return;
         }
 
-        addRow(node.left, val, depth, currentDepth);
-        addRow(node.right, val, depth, currentDepth);
+        addRow(node.left, currentDepth);
+        addRow(node.right, currentDepth);
 
     }
 
     @Override
     public Object execute() {
         if (depth == 1) return new TreeNode(val, root, null);
-        addRow(root, val, depth, 1);
+        addRow(root, 1);
         return root;
     }
 }

@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * @author Сергей Шершавин*/
 
 public class SubtreeOfAnotherTree extends Command {
-    private TreeNode target;
+    private final TreeNode target;
 
     public SubtreeOfAnotherTree(TreeNode root, TreeNode target) {
         super(root);

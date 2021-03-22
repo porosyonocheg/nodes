@@ -4,7 +4,7 @@ package treeNodes;
  * @author Сергей Шершавин*/
 
 public class MinDepthOfTree extends Command{
-    int minDepth = Integer.MAX_VALUE;
+    private int minDepth = Integer.MAX_VALUE;
     public MinDepthOfTree(TreeNode root) {
         super(root);
     }
