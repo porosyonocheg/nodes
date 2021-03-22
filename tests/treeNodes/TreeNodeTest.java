@@ -533,4 +533,12 @@ public class TreeNodeTest {
         node = new TreeNode(list);
         assertFalse((Boolean) new IsEvenOddTree(node).execute());
     }
+
+    @Test
+    public void allNodesDistanceK() {
+        assertEquals("[-7, -5, 1, 4]",new AllNodesDistanceK(root, -2, 3).execute().toString());
+        assertEquals("[]",new AllNodesDistanceK(root1, 2, 5).execute().toString()); //there is no nodes in such distance
+        assertEquals("[]",new AllNodesDistanceK(root1, 9, 0).execute().toString()); //there is no target
+        assertEquals("[7]",new AllNodesDistanceK(root1, 7, 0).execute().toString());
+    }
 }
