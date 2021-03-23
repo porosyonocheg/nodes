@@ -541,4 +541,31 @@ public class TreeNodeTest {
         assertEquals("[]",new AllNodesDistanceK(root1, 9, 0).execute().toString()); //there is no target
         assertEquals("[7]",new AllNodesDistanceK(root1, 7, 0).execute().toString());
     }
+
+    @Test
+    public void isValidBST() {
+        assertTrue((Boolean) new IsValidBST(root).execute());
+        assertTrue((Boolean) new IsValidBST(root1).execute());
+        assertTrue((Boolean) new IsValidBST(new TreeNode(1)).execute());
+        assertTrue((Boolean) new IsValidBST(new TreeNode(1, null, new TreeNode(2,null, new TreeNode(3)))).execute());
+        assertTrue((Boolean) new IsValidBST(new TreeNode(3, new TreeNode(2, new TreeNode(1), null), null)).execute());
+        right23.val = 7;
+        assertFalse((Boolean) new IsValidBST(root1).execute());
+        TreeNode node8 = new TreeNode(160, new TreeNode(150), new TreeNode(200));
+        TreeNode node9 = new TreeNode(130, new TreeNode(120), new TreeNode(135)); // 120 <= root0.val -> false
+        TreeNode node5 = new TreeNode(100, new TreeNode(75), new TreeNode(110));
+        TreeNode node6 = new TreeNode(50, new TreeNode(20), new TreeNode(55));
+        TreeNode node2 = new TreeNode(70, node6, node5);
+        TreeNode node11 = new TreeNode(140, node9, node8);
+        TreeNode root0 = new TreeNode(120, node2, node11);
+        assertFalse((Boolean) new IsValidBST(root0).execute());
+        node8 = new TreeNode(15, new TreeNode(13), new TreeNode(16));
+        node9 = new TreeNode(10, new TreeNode(9), new TreeNode(11));
+        node5 = new TreeNode(8, new TreeNode(6), new TreeNode(7));// 8 >= root0.val -> false
+        node6 = new TreeNode(3, new TreeNode(2), new TreeNode(4));
+        node2 = new TreeNode(5, node6, node5);
+        node11 = new TreeNode(12, node9, node8);
+        root0 = new TreeNode(8, node2, node11);
+        assertFalse((Boolean) new IsValidBST(root0).execute());
+    }
 }
