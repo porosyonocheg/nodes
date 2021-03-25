@@ -591,4 +591,20 @@ public class TreeNodeTest {
         new KthSmallestElement(root0, 16).execute();
         new KthSmallestElement(root0, 0).execute();
     }
+
+    @Test
+    public void numberOfGoodLeafPairs() {
+        TreeNode node8 = new TreeNode(160, new TreeNode(150), new TreeNode(200));
+        TreeNode node9 = new TreeNode(130, new TreeNode(121), new TreeNode(135));
+        TreeNode node5 = new TreeNode(100, new TreeNode(75), new TreeNode(110));
+        TreeNode node6 = new TreeNode(50, new TreeNode(20), new TreeNode(55));
+        TreeNode node2 = new TreeNode(70, node6, node5);
+        TreeNode node11 = new TreeNode(140, node9, node8);
+        TreeNode root0 = new TreeNode(120, node2, node11);
+        assertEquals(12, new NumberOfGoodLeafPairs(root0, 4).execute());
+        assertEquals(9, new NumberOfGoodLeafPairs(root, 4).execute());
+        assertEquals(2, new NumberOfGoodLeafPairs(root1, 2).execute());
+        assertEquals(0, new NumberOfGoodLeafPairs(root1, 1).execute());
+        assertEquals(6, new NumberOfGoodLeafPairs(root1, 5).execute());
+    }
 }

@@ -6,7 +6,8 @@ import treeNodes.TreeNode;
 import java.util.LinkedList;
 
 /**Возвращает значение k-го наименьшего узла бинарного дерева поиска. Если k превышает значение числа узлов дерева или
- * меньше 1, пробрасывает RuntimeException*/
+ * меньше 1, пробрасывает RuntimeException
+ * @author Сергей Шершавин*/
 
 public class KthSmallestElement extends Command {
     private final int k;
