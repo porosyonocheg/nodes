@@ -1,6 +1,8 @@
 package treeNodes;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import treeNodes.binarySearchTree.*;
 
 import java.util.ArrayList;
@@ -567,5 +569,26 @@ public class TreeNodeTest {
         node11 = new TreeNode(12, node9, node8);
         root0 = new TreeNode(8, node2, node11);
         assertFalse((Boolean) new IsValidBST(root0).execute());
+    }
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
+
+    @Test
+    public void kthSmallestElement() {
+        assertEquals(3, new KthSmallestElement(root, 11).execute());
+        TreeNode node8 = new TreeNode(160, new TreeNode(150), new TreeNode(200));
+        TreeNode node9 = new TreeNode(130, new TreeNode(121), new TreeNode(135));
+        TreeNode node5 = new TreeNode(100, new TreeNode(75), new TreeNode(110));
+        TreeNode node6 = new TreeNode(50, new TreeNode(20), new TreeNode(55));
+        TreeNode node2 = new TreeNode(70, node6, node5);
+        TreeNode node11 = new TreeNode(140, node9, node8);
+        TreeNode root0 = new TreeNode(120, node2, node11);
+        assertEquals(20, new KthSmallestElement(root0, 1).execute());
+        assertEquals(200, new KthSmallestElement(root0, 15).execute());
+        exceptionRule.expect(RuntimeException.class);
+        exceptionRule.expectMessage("Incorrect k");
+        new KthSmallestElement(root0, 16).execute();
+        new KthSmallestElement(root0, 0).execute();
     }
 }
