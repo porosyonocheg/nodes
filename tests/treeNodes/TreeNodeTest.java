@@ -1,5 +1,6 @@
 package treeNodes;
 
+import listNodes.ListNode;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -606,5 +607,15 @@ public class TreeNodeTest {
         assertEquals(2, new NumberOfGoodLeafPairs(root1, 2).execute());
         assertEquals(0, new NumberOfGoodLeafPairs(root1, 1).execute());
         assertEquals(6, new NumberOfGoodLeafPairs(root1, 5).execute());
+    }
+
+    @Test
+    public void doesTreeContainListNode() {
+        assertTrue((Boolean) new DoesTreeContainListNode(root, null).execute());
+        assertTrue((Boolean) new DoesTreeContainListNode(null, null).execute());
+        assertFalse((Boolean) new DoesTreeContainListNode(null, new ListNode(0)).execute());
+        assertFalse((Boolean) new DoesTreeContainListNode(root, new ListNode("3 -> 4 -> 5 -> 7 -> 6")).execute());
+        assertTrue((Boolean) new DoesTreeContainListNode(root, new ListNode("2 -> 4 -> 5 -> 7 -> 6")).execute());
+        assertTrue((Boolean) new DoesTreeContainListNode(root, new ListNode("-2 -> -4 -> -6")).execute());
     }
 }

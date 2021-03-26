@@ -2,12 +2,13 @@ package listNodes;
 
 import java.util.Objects;
 
-/** Связный список. Каждый узел списка содержит численное значение и ссылку на следующий узел (если он существует).
+/** Односвязный список. Каждый узел списка содержит численное значение и ссылку на следующий узел (если он существует).
  * @author Сергей Шершавин*/
 
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
+
     public ListNode() {}
     public ListNode(int x) { val = x; }
 
