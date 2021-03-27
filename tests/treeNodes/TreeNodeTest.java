@@ -35,6 +35,43 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void constructorsTest() {
+        assertEquals(root, new TreeNode("0, -2, 2, -4, -1, 1, 4, -6, -3, null, null, null, null, 3, 5, -7, -5, null, null, null, null, null, 7, null, null, null, null, 6"));
+        assertEquals(new TreeNode(0), new TreeNode(""));
+        assertEquals(new TreeNode(0), new TreeNode(new ArrayList<>()));
+        List<Integer> list = new ArrayList<>();
+        list.add(0);
+        list.add(-2);
+        list.add(2);
+        list.add(-4);
+        list.add(-1);
+        list.add(1);
+        list.add(4);
+        list.add(-6);
+        list.add(-3);
+        list.add(null);
+        list.add(null);
+        list.add(null);
+        list.add(null);
+        list.add(3);
+        list.add(5);
+        list.add(-7);
+        list.add(-5);
+        list.add(null);
+        list.add(null);
+        list.add(null);
+        list.add(null);
+        list.add(null);
+        list.add(7);
+        list.add(null);
+        list.add(null);
+        list.add(null);
+        list.add(null);
+        list.add(6);
+        assertEquals(root, new TreeNode(list));
+    }
+
+    @Test
     public void addAndRemoveNodesInTree() {
         List<Integer> list = new ArrayList<>();
         list.add(5);

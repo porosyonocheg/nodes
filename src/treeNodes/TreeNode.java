@@ -1,5 +1,6 @@
 package treeNodes;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -41,13 +42,42 @@ public class TreeNode {
     /**
      * Конструктор содержит
      *
-     * @param values  список численных значений узлов дерева
+     * @param values  список численных значений узлов дерева при обходе в ширину, нулевой дочерний узел: null
+     *                Если values пуст, создаётся узел с нулевым значением.
      */
     public TreeNode (List<Integer> values) {
+        if (!values.isEmpty()) {
             TreeNode root = createTree(values);
             this.val = root.val;
             this.left = root.left;
             this.right = root.right;
+        }
+    }
+
+    /**
+     * Конструктор содержит
+     *
+     * @param data  строковое представление дерева при обходе в ширину, нулевой дочерний узел: "null",
+     *              узлы отделяются: ", ". Если data пуста, создаётся узел с нулевым значением.
+     */
+    public TreeNode (String data) {
+        if (!data.isEmpty()) {
+        List<Integer> values = new ArrayList<>();
+        int prevIndex = 0;
+        int indexOfNextComma = data.indexOf(',');
+        while(indexOfNextComma > 0) {
+            String currentNodeValue = data.substring(prevIndex, indexOfNextComma);
+            if (currentNodeValue.equals("null")) values.add(null);
+            else values.add(Integer.parseInt(currentNodeValue));
+            prevIndex = indexOfNextComma + 2;
+            indexOfNextComma = data.indexOf(',', prevIndex);
+        }
+        values.add(Integer.parseInt(data.substring(prevIndex)));
+        TreeNode root = createTree(values);
+        this.val = root.val;
+        this.left = root.left;
+        this.right = root.right;
+        }
     }
 
     private TreeNode createTree(List<Integer> values) {
