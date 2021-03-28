@@ -655,4 +655,24 @@ public class TreeNodeTest {
         assertTrue((Boolean) new DoesTreeContainListNode(root, new ListNode("2 -> 4 -> 5 -> 7 -> 6")).execute());
         assertTrue((Boolean) new DoesTreeContainListNode(root, new ListNode("-2 -> -4 -> -6")).execute());
     }
+
+    @Test
+    public void sumRootToLeafNumbers() {
+        assertEquals(1, new SumRootToLeafNumbers(new TreeNode(1)).execute());
+        assertEquals(3, new SumRootToLeafNumbers(new TreeNode(0, new TreeNode(1), new TreeNode(2))).execute());
+        assertEquals(2220, new SumRootToLeafNumbers(root1).execute());
+        TreeNode g = new TreeNode(5,null,null);
+        TreeNode j = new TreeNode(4,null,new TreeNode(7));
+        TreeNode i = new TreeNode(2,null,null);
+        TreeNode f = new TreeNode(6,i,g);
+        TreeNode e = new TreeNode(3,null,null);
+        TreeNode d = new TreeNode(8, e, null);
+        TreeNode c = new TreeNode(1, null, j);
+        TreeNode b = new TreeNode(5, f, null);
+        TreeNode a = new TreeNode(2, null, d);
+        TreeNode left1 = new TreeNode(0, a, b);
+        TreeNode right1 = new TreeNode(3, c, null);
+        TreeNode root = new TreeNode(1, left1, right1);
+        assertEquals(44557, new SumRootToLeafNumbers(root).execute());
+    }
 }
