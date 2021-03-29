@@ -675,4 +675,30 @@ public class TreeNodeTest {
         TreeNode root = new TreeNode(1, left1, right1);
         assertEquals(44557, new SumRootToLeafNumbers(root).execute());
     }
+
+    @Test
+    public void maximumWidthOfBinaryTree() {
+        assertEquals(0, new MaximumWidthOfBinaryTree(null).execute());
+        assertEquals(1, new MaximumWidthOfBinaryTree(new TreeNode(0)).execute());
+        assertEquals(1, new MaximumWidthOfBinaryTree(new TreeNode(0, null, new TreeNode(1, null, new TreeNode(2)))).execute());
+        assertEquals(1, new MaximumWidthOfBinaryTree(new TreeNode(0, new TreeNode(1, null, new TreeNode(2)), null)).execute());
+        assertEquals(16, new MaximumWidthOfBinaryTree(root).execute()); // -7 -> 7
+        k.right = new TreeNode(-9);
+        assertEquals(30, new MaximumWidthOfBinaryTree(root).execute()); // -9 -> 6
+        TreeNode g = new TreeNode(5,null,null);
+        TreeNode j = new TreeNode(4,null,new TreeNode(7));
+        TreeNode i = new TreeNode(2,null,null);
+        TreeNode f = new TreeNode(6,i,g);
+        TreeNode e = new TreeNode(3,null,null);
+        TreeNode d = new TreeNode(8, e, null);
+        TreeNode c = new TreeNode(1, null, j);
+        TreeNode b = new TreeNode(5, f, null);
+        TreeNode a = new TreeNode(2, null, d);
+        TreeNode left1 = new TreeNode(0, a, b);
+        TreeNode right1 = new TreeNode(3, c, null);
+        TreeNode root = new TreeNode(1, left1, right1);
+        assertEquals(10, new MaximumWidthOfBinaryTree(root).execute());
+        root = new TreeNode("0, 0, 0, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0");
+        assertEquals(2, new MaximumWidthOfBinaryTree(root).execute());
+    }
 }
