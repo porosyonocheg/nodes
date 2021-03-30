@@ -701,4 +701,23 @@ public class TreeNodeTest {
         root = new TreeNode("0, 0, 0, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0");
         assertEquals(2, new MaximumWidthOfBinaryTree(root).execute());
     }
+
+    @Test
+    public void recoverBST() {
+        assertEquals(new TreeNode(1, new TreeNode(-2147483648), new TreeNode(2147483647)), new RecoverBST(new TreeNode(1, new TreeNode(2147483647), new TreeNode(-2147483648))).execute());
+        TreeNode root0 = new TreeNode("0, -2, 2, -4, -1, 1, 4, -6, -3, null, null, null, null, 3, 5, 7, -5, null, null, null, null, null, -7, null, null, null, null, 6");
+        assertEquals(root, new RecoverBST(root0).execute());
+        root0 = new TreeNode("5, 3, 9, -2147483648, 2");
+        TreeNode sample = new TreeNode("5, 2, 9, -2147483648, 3");
+        assertEquals(sample, new RecoverBST(root0).execute());
+        TreeNode node8 = new TreeNode(160, new TreeNode(150), new TreeNode(200));
+        TreeNode node9 = new TreeNode(130, new TreeNode(119), new TreeNode(135));
+        TreeNode node5 = new TreeNode(100, new TreeNode(75), new TreeNode(110));
+        TreeNode node6 = new TreeNode(50, new TreeNode(20), new TreeNode(55));
+        TreeNode node2 = new TreeNode(70, node6, node5);
+        TreeNode node11 = new TreeNode(140, node9, node8);
+        root0 = new TreeNode(120, node2, node11);
+        sample = new TreeNode("119, 70, 140, 50, 100, 130, 160, 20, 55, 75, 110, 120, 135, 150, 200");
+        assertEquals(sample, new RecoverBST(root0).execute());
+    }
 }
