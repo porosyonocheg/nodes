@@ -720,4 +720,21 @@ public class TreeNodeTest {
         sample = new TreeNode("119, 70, 140, 50, 100, 130, 160, 20, 55, 75, 110, 120, 135, 150, 200");
         assertEquals(sample, new RecoverBST(root0).execute());
     }
+
+    @Test
+    public void isComplete() {
+        assertTrue((Boolean) new IsComplete(root1).execute());
+        assertFalse((Boolean) new IsComplete(root).execute());
+        TreeNode node8 = new TreeNode(160, null, null);
+        TreeNode node9 = new TreeNode(130, new TreeNode(119), null);
+        TreeNode node5 = new TreeNode(100, new TreeNode(75), new TreeNode(110));
+        TreeNode node6 = new TreeNode(50, new TreeNode(20), new TreeNode(55));
+        TreeNode node2 = new TreeNode(70, node6, node5);
+        TreeNode node11 = new TreeNode(140, node9, node8);
+        TreeNode root0 = new TreeNode(120, node2, node11);
+        assertTrue((Boolean) new IsComplete(root0).execute());
+        node8.left = new TreeNode(180);
+        node8.right = new TreeNode(200);
+        assertFalse((Boolean) new IsComplete(root0).execute());
+    }
 }
