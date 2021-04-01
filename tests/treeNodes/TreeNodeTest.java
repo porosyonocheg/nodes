@@ -737,4 +737,22 @@ public class TreeNodeTest {
         node8.right = new TreeNode(200);
         assertFalse((Boolean) new IsComplete(root0).execute());
     }
+
+    @Test
+    public void distributeCoinsInBinaryTree() {
+        TreeNode node = new TreeNode("3, 0, 0");
+        assertEquals(2, new DistributeCoinsInBinaryTree(node).execute());
+        node = new TreeNode("0, 3, 0");
+        assertEquals(3, new DistributeCoinsInBinaryTree(node).execute());
+        node = new TreeNode("1, 0, 2");
+        assertEquals(2, new DistributeCoinsInBinaryTree(node).execute());
+        node = new TreeNode("1, 0, 0, null, 3");
+        assertEquals(4, new DistributeCoinsInBinaryTree(node).execute());
+        node = new TreeNode("1");
+        assertEquals(0, new DistributeCoinsInBinaryTree(node).execute());
+        node = new TreeNode("1, 1, 1, 1, null, 1, 1, null, 1, 1, 1, 1, null, null, 1, 1, 1");
+        assertEquals(0, new DistributeCoinsInBinaryTree(node).execute());
+        node = new TreeNode("0, 1, 0, 1, null, 1, 1, null, 1, 1, 1, 0, null, null, 2, 1, 3");
+        assertEquals(12, new DistributeCoinsInBinaryTree(node).execute());
+    }
 }
