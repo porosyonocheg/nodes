@@ -755,4 +755,15 @@ public class TreeNodeTest {
         node = new TreeNode("0, 1, 0, 1, null, 1, 1, null, 1, 1, 1, 0, null, null, 2, 1, 3");
         assertEquals(12, new DistributeCoinsInBinaryTree(node).execute());
     }
+
+    @Test
+    public void deleteLeavesByValue() {
+        assertNull(new DeleteLeavesByValue(null,1).execute());
+        assertNull(new DeleteLeavesByValue(new TreeNode("1, 1, 1, 1, 1, 1, 1, 1, 1, 1"),1).execute());
+        assertEquals(new TreeNode("1, 2, 3, 4, 5, 6, 7, 8"), new DeleteLeavesByValue(new TreeNode("1, 2, 3, 4, 5, 6, 7, 8"),1).execute());
+        assertEquals(new TreeNode("1, 2, 3, 8, null, null, null, 4"), new DeleteLeavesByValue(new TreeNode("1, 2, 3, 8, 8, 8, 8, 4"),8).execute());
+        assertEquals(new TreeNode("3, 3, 6, 6, null, 5"), new DeleteLeavesByValue(new TreeNode("3, 3, 6, 6, 3, 5"), 3).execute());
+        assertEquals(new TreeNode("5, 5, 5, 5, 5, 5"), new DeleteLeavesByValue(new TreeNode("5, 5, 5, 5, 5, 5"), 1).execute());
+        assertEquals(new TreeNode("2, null, 3"), new DeleteLeavesByValue(new TreeNode("2, null, 3, null, 2, null, 2, null, 2, null, 2"), 2).execute());
+    }
 }
