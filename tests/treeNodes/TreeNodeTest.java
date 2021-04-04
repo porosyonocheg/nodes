@@ -766,4 +766,12 @@ public class TreeNodeTest {
         assertEquals(new TreeNode("5, 5, 5, 5, 5, 5"), new DeleteLeavesByValue(new TreeNode("5, 5, 5, 5, 5, 5"), 1).execute());
         assertEquals(new TreeNode("2, null, 3"), new DeleteLeavesByValue(new TreeNode("2, null, 3, null, 2, null, 2, null, 2, null, 2"), 2).execute());
     }
+
+    @Test
+    public void binaryTreeTilt() {
+        assertEquals(155, new BinaryTreeTilt(root).execute());
+        assertEquals(16, new BinaryTreeTilt(root1).execute());
+        assertEquals(15, new BinaryTreeTilt(new TreeNode("4, 2, 9, 3, 5, null, 7")).execute());
+        assertEquals(9, new BinaryTreeTilt(new TreeNode("21, 7, 14, 1, 1, 2, 2, 3, 3")).execute());
+    }
 }
