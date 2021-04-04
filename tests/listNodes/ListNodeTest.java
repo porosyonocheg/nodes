@@ -12,6 +12,17 @@ public class ListNodeTest {
     }
 
     @Test
+    public void printRandomValues() {
+        GetRandomValueOfListNode getRandomValueOfListNode = new GetRandomValueOfListNode(base);
+        System.out.println(getRandomValueOfListNode.getRandom());
+        System.out.println(getRandomValueOfListNode.getRandom());
+        System.out.println(getRandomValueOfListNode.getRandom());
+        System.out.println(getRandomValueOfListNode.getRandom());
+        System.out.println(getRandomValueOfListNode.getRandom());
+        System.out.println(getRandomValueOfListNode.getRandom());
+    }
+
+    @Test
     public void listNodeToString() {
         assertEquals("5 -> 4 -> 3 -> 2 -> 1 -> 0", base.toString());
     }
