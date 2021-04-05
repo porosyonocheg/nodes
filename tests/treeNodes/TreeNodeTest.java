@@ -774,4 +774,42 @@ public class TreeNodeTest {
         assertEquals(15, new BinaryTreeTilt(new TreeNode("4, 2, 9, 3, 5, null, 7")).execute());
         assertEquals(9, new BinaryTreeTilt(new TreeNode("21, 7, 14, 1, 1, 2, 2, 3, 3")).execute());
     }
+
+    @Test
+    public void createForestByDeletingValues() {
+        List<TreeNode> answer = new ArrayList<>();
+        answer.add(k);
+        answer.add(l);
+        answer.add(h);
+        answer.add(j);
+        answer.add(new TreeNode("4, 3, 5"));
+        answer.add(new TreeNode("0, -2, null, -4, -1, null, -3"));
+        assertEquals(answer, new CreateForestByDeletingValues(root, new int[]{2,-6,7}).execute());
+        answer = new ArrayList<>();
+        answer.add(left13);
+        answer.add(right13);
+        answer.add(left23);
+        answer.add(right23);
+        answer.add(new TreeNode(5));
+        assertEquals(answer, new CreateForestByDeletingValues(root1, new int[]{7,3}).execute());
+
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7");
+        answer = new ArrayList<>();
+        answer.add(new TreeNode(6));
+        answer.add(new TreeNode(7));
+        answer.add(new TreeNode("1, 2, null, 4"));
+        assertEquals(answer, new CreateForestByDeletingValues(root, new int[]{3,5}).execute());
+
+        root = new TreeNode("1, 1, 1, 1, 1, 1, 1");
+        answer = new ArrayList<>();
+        assertEquals(answer, new CreateForestByDeletingValues(root, new int[]{1}).execute());
+
+        root = new TreeNode("1, 2, 3, 1, 1, null, 6, 2, 3, null, 8, 4, 5, 6, 8, 2, 5, 3");
+        answer.add(new TreeNode("2, 6, 8"));
+        answer.add(new TreeNode("3, 2, 5"));
+        answer.add(new TreeNode("8, 3"));
+        answer.add(new TreeNode(2));
+        answer.add(new TreeNode("3, null, 6, 4, 5"));
+        assertEquals(answer, new CreateForestByDeletingValues(root, new int[]{1}).execute());
+    }
 }
