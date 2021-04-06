@@ -152,6 +152,23 @@ public class ListNode {
         return crutch.next;
     }
 
+    /**Удаляет n-ый элемент с конца списка за один проход. n должно быть в пределах от 1 до размера списка включительно.*/
+    public void removeNthFromEnd(int n) {
+        ListNode tail = this;
+        while (n-- > 0) tail = tail.next;
+        if (tail == null) {
+            this.deleteNode(this);
+            return;
+        }
+        ListNode newHead = this;
+        tail = tail.next;
+        while (tail != null) {
+            tail = tail.next;
+            newHead = newHead.next;
+        }
+        newHead.next = newHead.next.next;
+    }
+
     /**Метод удаляет все дупликаты из списка с переданным максимальным значением узлов*/
     public ListNode deleteDuplicates(int maxValue) {
         int[] set = new int[maxValue];

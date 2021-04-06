@@ -49,6 +49,19 @@ public class ListNodeTest {
     }
 
     @Test
+    public void removeNthFromEnd() {
+        base.removeNthFromEnd(3);
+        assertEquals("5 -> 4 -> 3 -> 1 -> 0", base.toString());
+        ListNode t = new ListNode("8 -> 7 -> 6 -> 5 -> 4 -> 3 -> 2 -> 1");
+        t.removeNthFromEnd(8);
+        assertEquals("7 -> 6 -> 5 -> 4 -> 3 -> 2 -> 1", t.toString());
+        t.removeNthFromEnd(1);
+        assertEquals("7 -> 6 -> 5 -> 4 -> 3 -> 2", t.toString());
+        t.removeNthFromEnd(6);
+        assertEquals("6 -> 5 -> 4 -> 3 -> 2", t.toString());
+    }
+
+    @Test
     public void deleteDuplicatesFromSortedList() {
         ListNode t = new ListNode("7 -> 6 -> 5 -> 5 -> 4 -> 4 -> 3 -> 3");
         assertEquals("7 -> 6 -> 5 -> 4 -> 3", t.deleteDuplicatesFromSortedList().toString());
