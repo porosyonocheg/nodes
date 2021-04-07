@@ -812,4 +812,14 @@ public class TreeNodeTest {
         answer.add(new TreeNode("3, null, 6, 4, 5"));
         assertEquals(answer, new CreateForestByDeletingValues(root, new int[]{1}).execute());
     }
+
+    @Test
+    public void smallestSubtreeWithAllTheDeepestNodes() {
+        assertEquals(new TreeNode(1), new SmallestSubtreeWithAllTheDeepestNodes(new TreeNode(1)).execute());
+        assertEquals(new TreeNode(6), new SmallestSubtreeWithAllTheDeepestNodes(root).execute());
+        root = new TreeNode("3, 5, 1, 6, 2, 0, 8, null, null, 7, 4, 11, 9");
+        assertEquals(root, new SmallestSubtreeWithAllTheDeepestNodes(root).execute());
+        root = new TreeNode("3, 5, 1, 6, 2, 0, 8, null, null, 7, 4");
+        assertEquals(new TreeNode("2, 7, 4"), new SmallestSubtreeWithAllTheDeepestNodes(root).execute());
+    }
 }
