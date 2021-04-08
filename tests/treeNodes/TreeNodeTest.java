@@ -822,4 +822,16 @@ public class TreeNodeTest {
         root = new TreeNode("3, 5, 1, 6, 2, 0, 8, null, null, 7, 4");
         assertEquals(new TreeNode("2, 7, 4"), new SmallestSubtreeWithAllTheDeepestNodes(root).execute());
     }
+
+    @Test
+    public void insufficientNodesInRootToLeafPaths() {
+        assertNull(new InsufficientNodesInRootToLeafPaths(null, 11).execute());
+        assertEquals(new TreeNode("5, null, 7, null, 8"),new InsufficientNodesInRootToLeafPaths(root1, 19).execute());
+        root1 = new TreeNode("1, 2, 3, 4, -99, -99, 7, 8, 9, -99, -99, 12, 13, -99, 14");
+        assertEquals(new TreeNode("1, 2, 3, 4, null, null, 7, 8, 9, null, 14"),new InsufficientNodesInRootToLeafPaths(root1, 1).execute());
+        root1 = new TreeNode("5, 4, 8, 11, null, 17, 4, 7, 1, null, null, 5, 3");
+        assertEquals(new TreeNode("5, 4, 8, 11, null, 17, 4, 7, null, null, null, 5"),new InsufficientNodesInRootToLeafPaths(root1, 22).execute());
+        root1 = new TreeNode("1, 2, -3, -5, null, 4");
+        assertEquals(new TreeNode("1, null, -3, 4"),new InsufficientNodesInRootToLeafPaths(root1, -1).execute());
+    }
 }
