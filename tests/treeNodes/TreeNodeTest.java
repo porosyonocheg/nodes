@@ -834,4 +834,30 @@ public class TreeNodeTest {
         root1 = new TreeNode("1, 2, -3, -5, null, 4");
         assertEquals(new TreeNode("1, null, -3, 4"),new InsufficientNodesInRootToLeafPaths(root1, -1).execute());
     }
+
+    @Test
+    public void allPossibleFullBinaryTrees() {
+        List<TreeNode> result = new ArrayList<>();
+        assertEquals(result, new AllPossibleFullBinaryTrees().allPossibleFBT(20));
+        result.add(new TreeNode());
+        assertEquals(result, new AllPossibleFullBinaryTrees().allPossibleFBT(1));
+        assertEquals("[0, 0, 0]", new AllPossibleFullBinaryTrees().allPossibleFBT(3).toString());
+        assertEquals("[0, 0, 0, null, null, 0, 0, 0, 0, 0, 0, 0]", new AllPossibleFullBinaryTrees().allPossibleFBT(5).toString());
+        result = new ArrayList<>();
+        result.add(new TreeNode("0, 0, 0, null, null, 0, 0, null, null, 0, 0"));
+        result.add(new TreeNode("0, 0, 0, null, null, 0, 0, 0, 0"));
+        result.add(new TreeNode("0, 0, 0, 0, 0, 0, 0"));
+        result.add(new TreeNode("0, 0, 0, 0, 0, null, null, null, null, 0, 0"));
+        result.add(new TreeNode("0, 0, 0, 0, 0, null, null, 0, 0"));
+        assertEquals(result, new AllPossibleFullBinaryTrees().allPossibleFBT(7));
+        assertEquals("[0, 0, 0, null, null, 0, 0, null, null, 0, 0, null, null, 0, 0, 0, 0, 0, null, null, 0, " +
+                        "0, null, null, 0, 0, 0, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, 0, 0, " +
+                        "0, 0, null, null, null, null, 0, 0, 0, 0, 0, null, null, 0, 0, 0, 0, null, null, 0, 0, 0, 0, " +
+                        "0, 0, 0, 0, 0, null, null, null, null, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, " +
+                        "null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, " +
+                        "0, 0, null, null, null, null, 0, 0, null, null, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, " +
+                        "0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, 0, 0, null, " +
+                        "null, null, null, 0, 0, 0, 0, 0, 0, 0, null, null, 0, 0, null, null, 0, 0]",
+                            new AllPossibleFullBinaryTrees().allPossibleFBT(9).toString());
+    }
 }
