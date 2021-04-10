@@ -860,4 +860,15 @@ public class TreeNodeTest {
                         "null, null, null, 0, 0, 0, 0, 0, 0, 0, null, null, 0, 0, null, null, 0, 0]",
                             new AllPossibleFullBinaryTrees().allPossibleFBT(9).toString());
     }
+
+    @Test
+    public void maxLevelSum() {
+        assertEquals(0, new MaximumLevelSum(null).execute());
+        assertEquals(1, new MaximumLevelSum(new TreeNode(-100, new TreeNode(-99), new TreeNode(-1))).execute());
+        assertEquals(6, new MaximumLevelSum(root).execute());
+        root = new TreeNode("989, null, 10250, 98693, -89388, null, null, null, -32127");
+        assertEquals(2, new MaximumLevelSum(root).execute());
+        root = new TreeNode("-100, -200, -300, -20, -5, -10");
+        assertEquals(3, new MaximumLevelSum(root).execute());
+    }
 }
