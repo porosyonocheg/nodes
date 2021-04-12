@@ -871,4 +871,13 @@ public class TreeNodeTest {
         root = new TreeNode("-100, -200, -300, -20, -5, -10");
         assertEquals(3, new MaximumLevelSum(root).execute());
     }
+
+    @Test
+    public void binaryTreeColoringGame() {
+        assertTrue((Boolean) new BinaryTreeColoringGame(root,-2,15).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15");
+        assertTrue((Boolean) new BinaryTreeColoringGame(root,3,15).execute());
+        assertFalse((Boolean) new BinaryTreeColoringGame(new TreeNode(1),1,1).execute());
+        assertFalse((Boolean) new BinaryTreeColoringGame(root,1,15).execute());
+    }
 }
