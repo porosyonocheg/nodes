@@ -282,4 +282,12 @@ public class ListNodeTest {
         base = new ListNode("8 -> 2 -> 6 -> 7 -> 10 -> 5");
         assertArrayEquals(new int[]{10,6,7,10,0,0}, NextLargerNodes.getNextLargerValuesArray(base));
     }
+
+    @Test
+    public void removeZeroSumSublists() {
+        assertEquals(new ListNode("3 -> 1"), RemoveZeroSumConsecutiveNodes.removeZeroSumSublists(new ListNode("1 -> 2 -> -3 -> 3 -> 1")));
+        assertEquals(new ListNode("8"), RemoveZeroSumConsecutiveNodes.removeZeroSumSublists(new ListNode("1 -> -2 -> 1 -> 5 -> -6 -> -3 -> 4 -> 8")));
+        assertNull(RemoveZeroSumConsecutiveNodes.removeZeroSumSublists(new ListNode("1 -> 2 -> 3 -> -3 -> -2 -> -1")));
+        assertEquals(new ListNode("1 -> 5 -> 1"), RemoveZeroSumConsecutiveNodes.removeZeroSumSublists(new ListNode("1 -> 3 -> 2 -> -3 -> -2 -> 5 -> 100 -> -100 -> 1")));
+    }
 }
