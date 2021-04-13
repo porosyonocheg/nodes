@@ -880,4 +880,13 @@ public class TreeNodeTest {
         assertFalse((Boolean) new BinaryTreeColoringGame(new TreeNode(1),1,1).execute());
         assertFalse((Boolean) new BinaryTreeColoringGame(root,1,15).execute());
     }
+
+    @Test
+    public void binaryTreeRightSideView() {
+        assertEquals("[0, 2, 4, 5, 7, 6]", new BinaryTreeRightSideView(root).execute().toString());
+        assertEquals("[]", new BinaryTreeRightSideView(null).execute().toString());
+        assertEquals("[1, 2]", new BinaryTreeRightSideView(new TreeNode(1, new TreeNode(2), null)).execute().toString());
+        root = new TreeNode("1, 2, 3, 4, 5, null, null, 6, 7, 8, 9, 10, 11, null, null, 12, null, 13, null, 14, null, null, 15, null, 16, null, null, null, 17, 18, null, null, null, null, 19");
+        assertEquals("[1, 3, 5, 9, 13, 16, 18, 19]", new BinaryTreeRightSideView(root).execute().toString());
+    }
 }
