@@ -1,6 +1,8 @@
 package listNodes;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import treeNodes.TreeNode;
 
 import static org.junit.Assert.*;
@@ -289,5 +291,23 @@ public class ListNodeTest {
         assertEquals(new ListNode("8"), RemoveZeroSumConsecutiveNodes.removeZeroSumSublists(new ListNode("1 -> -2 -> 1 -> 5 -> -6 -> -3 -> 4 -> 8")));
         assertNull(RemoveZeroSumConsecutiveNodes.removeZeroSumSublists(new ListNode("1 -> 2 -> 3 -> -3 -> -2 -> -1")));
         assertEquals(new ListNode("1 -> 5 -> 1"), RemoveZeroSumConsecutiveNodes.removeZeroSumSublists(new ListNode("1 -> 3 -> 2 -> -3 -> -2 -> 5 -> 100 -> -100 -> 1")));
+    }
+
+    @Rule
+    public ExpectedException exceptionRule = ExpectedException.none();
+
+    @Test
+    public void replacingSublist() {
+        assertEquals(new ListNode("5 -> 6 -> 7 -> 0"), ReplacingSublist.replaceSublist(base, new ListNode("6 -> 7"), 1, 4));
+        assertEquals(new ListNode("1 -> 2"), ReplacingSublist.replaceSublist(base, new ListNode("1 -> 2"), 0, 5));
+        assertEquals(new ListNode("1 -> 12 -> 10 -> 3"), ReplacingSublist.replaceSublist(new ListNode("1 -> 2"), new ListNode("12 -> 10 -> 3"), 1, 1));
+        assertEquals(new ListNode(3), ReplacingSublist.replaceSublist(new ListNode(1), new ListNode(3), 0, 0));
+        assertEquals(new ListNode("1 -> 2 -> 3 -> 6"), ReplacingSublist.replaceSublist(new ListNode("1 -> 2 -> 3 -> 4 -> 5"), new ListNode(6), 4, 3));
+        assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 3 -> 2 -> 1"), ReplacingSublist.replaceSublist(new ListNode("6 -> 5 -> 4 -> 3 -> 2 -> 1"), new ListNode("1 -> 2 -> 3 -> 4"), 2, 0));
+        assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 4 -> 3 -> 2 -> 1"), ReplacingSublist.replaceSublist(new ListNode("7 -> 6 -> 5 -> 4 -> 3 -> 2 -> 1"), new ListNode("1 -> 2 -> 3 -> 4"), 0, 1));
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expect(IllegalArgumentException.class);
+        ReplacingSublist.replaceSublist(new ListNode(0), new ListNode(1),0, -1);
+        ReplacingSublist.replaceSublist(new ListNode("1 -> 2 -> 3"), new ListNode(0),-2, 2);
     }
 }
