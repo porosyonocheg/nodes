@@ -1,7 +1,9 @@
 package treeNodes.nAryTree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**Узел N-арного дерева*/
 
@@ -34,15 +36,36 @@ public class NaryTree {
         return 1 + depth;
     }
 
-    /**Передаёт список значений узлов дерева в порядке их обхода:
+    /**Возвращает список значений узлов дерева в порядке их обхода:
      * @param order порядок перечисления узлов в списке: post - обратный, по умолчанию - прямой*/
     public List<Integer> treeToList(String order) {
         List<Integer> listOfNodes = new ArrayList<>();
-        switch (order.toLowerCase()){
-            case ("post"): postorder(listOfNodes); break;
-            default: preorder(listOfNodes);
+        if ("post".equalsIgnoreCase(order)) {
+            postorder(listOfNodes);
+        } else {
+            preorder(listOfNodes);
         }
         return listOfNodes;
+    }
+
+    /**Возвращает список списков значений узлов по уровням от корня к потомкам*/
+    public List<List<Integer>> levelOrder() {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<NaryTree> queue = new LinkedList<>();
+        queue.offer(this);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> currentList = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                NaryTree current = queue.poll();
+                currentList.add(current.val);
+                if (current.children != null) {
+                    for (NaryTree n : current.children) queue.offer(n);
+                }
+            }
+            result.add(currentList);
+        }
+        return result;
     }
 
     private void postorder(List<Integer> list) {
