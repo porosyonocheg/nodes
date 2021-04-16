@@ -917,4 +917,13 @@ public class TreeNodeTest {
         nodes.add(null);
         assertEquals("[]", AllElementsFromListOfTrees.getAllElements(nodes).toString());
     }
+
+    @Test
+    public void maxNodeOfEachLevel() {
+        assertEquals("[]", new MaxNodeOfEachLevel(null).execute().toString());
+        assertEquals("[-2147483648]", new MaxNodeOfEachLevel(new TreeNode(-2147483648)).execute().toString());
+        assertEquals("[0, 2, 4, 5, 7, 6]", new MaxNodeOfEachLevel(root).execute().toString());
+        root = new TreeNode("2147483647, null, 1, 1, 2147483647, 1, null, 1");
+        assertEquals("[2147483647, 1, 2147483647, 1]", new MaxNodeOfEachLevel(root).execute().toString());
+    }
 }
