@@ -8,6 +8,7 @@ import treeNodes.binarySearchTree.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
@@ -925,5 +926,30 @@ public class TreeNodeTest {
         assertEquals("[0, 2, 4, 5, 7, 6]", new MaxNodeOfEachLevel(root).execute().toString());
         root = new TreeNode("2147483647, null, 1, 1, 2147483647, 1, null, 1");
         assertEquals("[2147483647, 1, 2147483647, 1]", new MaxNodeOfEachLevel(root).execute().toString());
+    }
+
+    @Test
+    public void bstIterator() {
+        BSTIterator bstIterator = new BSTIterator(root);
+        assertTrue(bstIterator.hasNext());
+        assertEquals(-7, bstIterator.next());
+        assertEquals(-6, bstIterator.next());
+        assertEquals(-5, bstIterator.next());
+        assertEquals(-4, bstIterator.next());
+        assertEquals(-3, bstIterator.next());
+        assertEquals(-2, bstIterator.next());
+        assertEquals(-1, bstIterator.next());
+        assertEquals(0, bstIterator.next());
+        assertEquals(1, bstIterator.next());
+        assertEquals(2, bstIterator.next());
+        assertEquals(3, bstIterator.next());
+        assertEquals(4, bstIterator.next());
+        assertEquals(5, bstIterator.next());
+        assertEquals(6, bstIterator.next());
+        assertEquals(7, bstIterator.next());
+        assertFalse(bstIterator.hasNext());
+        exceptionRule.expect(NoSuchElementException.class);
+        exceptionRule.expectMessage("There are no nodes anymore");
+        bstIterator.next();
     }
 }
