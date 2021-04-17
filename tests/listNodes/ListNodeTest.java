@@ -310,4 +310,37 @@ public class ListNodeTest {
         ReplacingSublist.replaceSublist(new ListNode(0), new ListNode(1),0, -1);
         ReplacingSublist.replaceSublist(new ListNode("1 -> 2 -> 3"), new ListNode(0),-2, 2);
     }
+
+    @Test
+    public void breakCycle() {
+        ListNode node = new ListNode(12);
+        ListNode node1 = new ListNode(9);
+        ListNode node2 = new ListNode(15);
+        ListNode node3 = new ListNode(13);
+        ListNode node4 = new ListNode(17);
+        ListNode node5 = new ListNode(14);
+        ListNode node6 = new ListNode(16);
+        ListNode node7 = new ListNode(11);
+        ListNode node8 = new ListNode(10);
+        node.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
+        node7.next = node8;
+        node8.next = node7;
+        node.breakCycle();
+        assertEquals(new ListNode("12 -> 9 -> 15 -> 13 -> 17 -> 14 -> 16 -> 11 -> 10"), node);
+        node6.next = node;
+        node.breakCycle();
+        assertEquals(new ListNode("12 -> 9 -> 15 -> 13 -> 17 -> 14 -> 16"), node);
+        node1.next = node1;
+        node.breakCycle();
+        assertEquals(new ListNode("12 -> 9"), node);
+        node = new ListNode("1 -> 1 -> 1 -> 1 -> 1 -> 1 -> 1");
+        node.breakCycle();
+        assertEquals(new ListNode("1 -> 1 -> 1 -> 1 -> 1 -> 1 -> 1"), node);
+    }
 }

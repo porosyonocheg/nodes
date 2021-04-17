@@ -1,6 +1,8 @@
 package listNodes;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /** Односвязный список. Каждый узел списка содержит численное значение и ссылку на следующий узел (если он существует).
  * @author Сергей Шершавин*/
@@ -265,6 +267,32 @@ public class ListNode {
         return false;
     }
 
+    public void breakCycle() {
+        if (hasCycle()) {
+            Set<ListNode> nodes = new HashSet<>();
+            ListNode head = this;
+            while (true) {
+                nodes.add(head);
+                if (nodes.contains(head.next)) {
+                    head.next = null;
+                    break;
+                }
+                    head = head.next;
+            }
+        }
+    }
+
+//    private ListNode getMeetingNode() {
+//        ListNode fast = this;
+//        ListNode slow = this;
+//        while(fast != null && fast.next != null) {
+//            fast = fast.next.next;
+//            slow = slow.next;
+//            if (fast == slow) return slow;
+//        }
+//        return null;
+//    }
+
     @Override
     public String toString() {
         if (!hasCycle()) {
@@ -289,6 +317,6 @@ public class ListNode {
 
     @Override
     public int hashCode() {
-        return Objects.hash(val, next);
+        return val;
     }
 }
