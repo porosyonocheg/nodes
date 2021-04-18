@@ -952,4 +952,15 @@ public class TreeNodeTest {
         exceptionRule.expectMessage("There are no nodes anymore");
         bstIterator.next();
     }
+
+    @Test
+    public void areTreesEqualAfterFlipping() {
+        TreeNode root0 = new TreeNode("0, 2, -2, 4, 1, -4, -1, 3, 5, null, null, -3, -6, null, null, null, null, 7, null, null, null, -7, -5, null, 6");
+        assertTrue((Boolean) new AreTreesEqualAfterFlipping(root, root0).execute());
+        assertFalse((Boolean) new AreTreesEqualAfterFlipping(new TreeNode(0), null).execute());
+        assertTrue((Boolean) new AreTreesEqualAfterFlipping(null, null).execute());
+        assertFalse((Boolean) new AreTreesEqualAfterFlipping(new TreeNode("1, 2, 3, 4, 5"), new TreeNode("1, 2, 3, 4, 5, 6")).execute());
+        assertTrue((Boolean) new AreTreesEqualAfterFlipping(new TreeNode(1), new TreeNode(1)).execute());
+        assertFalse((Boolean) new AreTreesEqualAfterFlipping(new TreeNode("1, 2, 3, 4, 5, 6, 7"), new TreeNode("1, 3, 2, 4, 5, 6, 7")).execute());
+    }
 }
