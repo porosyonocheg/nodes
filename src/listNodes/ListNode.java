@@ -267,6 +267,7 @@ public class ListNode {
         return false;
     }
 
+    /**При наличии цикла "разрывает" его в точке образования, меняя ссылку на null*/
     public void breakCycle() {
         if (hasCycle()) {
             Set<ListNode> nodes = new HashSet<>();
@@ -281,17 +282,6 @@ public class ListNode {
             }
         }
     }
-
-//    private ListNode getMeetingNode() {
-//        ListNode fast = this;
-//        ListNode slow = this;
-//        while(fast != null && fast.next != null) {
-//            fast = fast.next.next;
-//            slow = slow.next;
-//            if (fast == slow) return slow;
-//        }
-//        return null;
-//    }
 
     @Override
     public String toString() {

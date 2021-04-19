@@ -306,7 +306,7 @@ public class ListNodeTest {
         assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 3 -> 2 -> 1"), ReplacingSublist.replaceSublist(new ListNode("6 -> 5 -> 4 -> 3 -> 2 -> 1"), new ListNode("1 -> 2 -> 3 -> 4"), 2, 0));
         assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 4 -> 3 -> 2 -> 1"), ReplacingSublist.replaceSublist(new ListNode("7 -> 6 -> 5 -> 4 -> 3 -> 2 -> 1"), new ListNode("1 -> 2 -> 3 -> 4"), 0, 1));
         exceptionRule.expect(IllegalArgumentException.class);
-        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("One or both arguments are negative");
         ReplacingSublist.replaceSublist(new ListNode(0), new ListNode(1),0, -1);
         ReplacingSublist.replaceSublist(new ListNode("1 -> 2 -> 3"), new ListNode(0),-2, 2);
     }
@@ -342,5 +342,20 @@ public class ListNodeTest {
         node = new ListNode("1 -> 1 -> 1 -> 1 -> 1 -> 1 -> 1");
         node.breakCycle();
         assertEquals(new ListNode("1 -> 1 -> 1 -> 1 -> 1 -> 1 -> 1"), node);
+    }
+
+    @Test
+    public void reverseSublist() {
+        assertEquals(new ListNode("1 -> 2 -> 3"), ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 1, 1));
+        assertEquals(new ListNode("3 -> 2 -> 1"), ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 1, 3));
+        assertEquals(new ListNode("500 -> -700 -> 333 -> 222 -> 77 -> -532"), ReverseSublist.reverseBetween(new ListNode("500 -> -700 -> 333 -> 222 -> -532 -> 77"), 5, 6));
+        assertEquals(new ListNode("-532 -> 222 -> 333 -> -700 -> 500 -> 77"), ReverseSublist.reverseBetween(new ListNode("500 -> -700 -> 333 -> 222 -> -532 -> 77"), 1, 5));
+        assertNull(ReverseSublist.reverseBetween(null, 1, 1));
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("Left position is wrong");
+        ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 0, 2);
+        assertEquals(new ListNode("3 -> 2 -> 1"), ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 3, 1));
+        assertEquals(new ListNode("1 -> 2 -> 3"), ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 3, 4));
+        assertEquals(new ListNode("1 -> 2 -> 3"), ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 5, 7));
     }
 }
