@@ -358,4 +358,14 @@ public class ListNodeTest {
         assertEquals(new ListNode("1 -> 2 -> 3"), ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 3, 4));
         assertEquals(new ListNode("1 -> 2 -> 3"), ReverseSublist.reverseBetween(new ListNode("1 -> 2 -> 3"), 5, 7));
     }
+
+    @Test
+    public void rotateListToTheRight() {
+        assertNull(RotateListToTheRight.rotateRight(null, 10));
+        assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), RotateListToTheRight.rotateRight(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), 64));
+        assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), RotateListToTheRight.rotateRight(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), 0));
+        assertEquals(new ListNode("2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 1"), RotateListToTheRight.rotateRight(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), 99999999));
+        assertEquals(new ListNode("8 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7"), RotateListToTheRight.rotateRight(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), 1));
+        assertEquals(new ListNode("2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 1"), RotateListToTheRight.rotateRight(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), 7));
+    }
 }
