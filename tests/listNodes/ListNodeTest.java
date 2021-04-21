@@ -368,4 +368,13 @@ public class ListNodeTest {
         assertEquals(new ListNode("8 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7"), RotateListToTheRight.rotateRight(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), 1));
         assertEquals(new ListNode("2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 1"), RotateListToTheRight.rotateRight(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), 7));
     }
+
+    @Test
+    public void countingComponents() {
+        assertEquals(0, CountingComponents.countComponents(null, new int[]{0}));
+        assertEquals(2, CountingComponents.countComponents(base, new int[]{0, 4, 5, 1}));
+        assertEquals(1, CountingComponents.countComponents(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), new int[]{2, 4, 8, 1, 3, 6, 5, 7}));
+        assertEquals(4, CountingComponents.countComponents(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), new int[]{8, 6, 2, 4}));
+        assertEquals(0, CountingComponents.countComponents(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), new int[]{0}));
+    }
 }
