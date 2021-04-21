@@ -377,4 +377,15 @@ public class ListNodeTest {
         assertEquals(4, CountingComponents.countComponents(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), new int[]{8, 6, 2, 4}));
         assertEquals(0, CountingComponents.countComponents(new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8"), new int[]{0}));
     }
+
+    @Test
+    public void partitioningValues() {
+        assertNull(PartitioningValues.partition(null, 4));
+        assertEquals(new ListNode("3 -> 2 -> 1 -> 0 -> 5 -> 4"), PartitioningValues.partition(base, 4));
+        assertEquals(new ListNode("1 -> 0 -> 1 -> 2 -> 2 -> 3 -> 2 -> 2 -> 2"), PartitioningValues.partition(new ListNode("2 -> 1 -> 2 -> 3 -> 2 -> 0 -> 2 -> 1 -> 2"), 2));
+        assertEquals(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), PartitioningValues.partition(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), 1));
+        assertEquals(new ListNode("1 -> 1 -> 2 -> 1 -> 2 -> 3 -> 3"), PartitioningValues.partition(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), 3));
+        assertEquals(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), PartitioningValues.partition(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), 4));
+        assertEquals(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), PartitioningValues.partition(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), -1));
+    }
 }
