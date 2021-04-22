@@ -388,4 +388,14 @@ public class ListNodeTest {
         assertEquals(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), PartitioningValues.partition(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), 4));
         assertEquals(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), PartitioningValues.partition(new ListNode("1 -> 1 -> 2 -> 3 -> 1 -> 2 -> 3"), -1));
     }
+
+    @Test
+    public void leaveUniqueValues() {
+        assertNull(LeaveUniqueValues.deleteDuplicates(null));
+        assertEquals(new ListNode(3), LeaveUniqueValues.deleteDuplicates(new ListNode("1 -> 1 -> 1 -> 2 -> 2 -> 3")));
+        assertNull(LeaveUniqueValues.deleteDuplicates(new ListNode("1 -> 1 -> 1 -> 1 -> 1 -> 1")));
+        assertNull(LeaveUniqueValues.deleteDuplicates(new ListNode("1 -> 1 -> 1 -> 1 -> 2 -> 2 -> 2 -> 3 -> 3")));
+        assertEquals(new ListNode("1 -> 3 -> 5"), LeaveUniqueValues.deleteDuplicates(new ListNode("1 -> 2 -> 2 -> 2 -> 2 -> 3 -> 4 -> 4 -> 5")));
+        assertEquals(new ListNode("1 -> 3"), LeaveUniqueValues.deleteDuplicates(new ListNode("1 -> 2 -> 2 -> 2 -> 3 -> 4 -> 4 -> 5 -> 5")));
+    }
 }
