@@ -2475,4 +2475,17 @@ public class TreeNodeTest {
         result.add(new TreeNode("8, 7, null, 6, null, 5, null, 4, null, 3, null, 2, null, 1"));
         assertEquals(result, AllPossibleBST.getBinarySearchTrees(8));
     }
+    @Test
+    public void findBottomLeftValue() {
+        assertEquals(1, new FindBottomLeftTreeValue(new TreeNode(1)).execute());
+        assertEquals(2, new FindBottomLeftTreeValue(root1).execute());
+        assertEquals(6, new FindBottomLeftTreeValue(root).execute());
+        TreeNode node = new TreeNode("1, null, 2, null, 3, null, 4, null, 5, null, 6, null, 7, 8, null, null, 9, null, 10, 11, null, null, 12");
+        assertEquals(12, new FindBottomLeftTreeValue(node).execute());
+        node = new TreeNode("0, 2, -2, 4, 1, -4, -1, 3, 5, null, null, -3, -6, null, null, null, null, null, null, null, 7, -7, -5");
+        assertEquals(7, new FindBottomLeftTreeValue(node).execute());
+        exceptionRule.expect(IllegalArgumentException.class);
+        exceptionRule.expectMessage("Nothing to look for");
+        new FindBottomLeftTreeValue(null).execute();
+    }
 }
