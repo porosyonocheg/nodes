@@ -398,4 +398,28 @@ public class ListNodeTest {
         assertEquals(new ListNode("1 -> 3 -> 5"), LeaveUniqueValues.deleteDuplicates(new ListNode("1 -> 2 -> 2 -> 2 -> 2 -> 3 -> 4 -> 4 -> 5")));
         assertEquals(new ListNode("1 -> 3"), LeaveUniqueValues.deleteDuplicates(new ListNode("1 -> 2 -> 2 -> 2 -> 3 -> 4 -> 4 -> 5 -> 5")));
     }
+
+    @Test
+    public void reorderList() {
+        ReorderList.reorderList(base);
+        assertEquals(new ListNode("5 -> 0 -> 4 -> 1 -> 3 -> 2"), base);
+        base = null;
+        ReorderList.reorderList(base);
+        assertNull(base);
+        base = new ListNode(1);
+        ReorderList.reorderList(base);
+        assertEquals(new ListNode(1), base);
+        base = new ListNode("1 -> 9");
+        ReorderList.reorderList(base);
+        assertEquals(new ListNode("1 -> 9"), base);
+        base = new ListNode("1 -> 9 -> 5");
+        ReorderList.reorderList(base);
+        assertEquals(new ListNode("1 -> 5 -> 9"), base);
+        base = new ListNode("1 -> 3 -> 4 -> 2");
+        ReorderList.reorderList(base);
+        assertEquals(new ListNode("1 -> 2 -> 3 -> 4"), base);
+        base = new ListNode("1 -> 2 -> 3 -> 4 -> 5");
+        ReorderList.reorderList(base);
+        assertEquals(new ListNode("1 -> 5 -> 2 -> 4 -> 3"), base);
+    }
 }
