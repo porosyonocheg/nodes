@@ -2488,4 +2488,16 @@ public class TreeNodeTest {
         exceptionRule.expectMessage("Nothing to look for");
         new FindBottomLeftTreeValue(null).execute();
     }
+
+    @Test
+    public void checkValidPreorderSerialization() {
+        assertTrue(CheckValidPreorderSerialization.isValidSerialization("#"));
+        assertFalse(CheckValidPreorderSerialization.isValidSerialization("1"));
+        assertTrue(CheckValidPreorderSerialization.isValidSerialization("11,#,99,#,#"));
+        assertFalse(CheckValidPreorderSerialization.isValidSerialization("1,2,3,#,#,#,4,#,#,5,#"));
+        assertTrue(CheckValidPreorderSerialization.isValidSerialization("1,2,3,#,#,#,4,#,5,#,#"));
+        assertFalse(CheckValidPreorderSerialization.isValidSerialization("1,2,3,#,#,#,#,4,#,#"));
+        assertTrue(CheckValidPreorderSerialization.isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#"));
+        assertFalse(CheckValidPreorderSerialization.isValidSerialization("#,1,#,#"));
+    }
 }
