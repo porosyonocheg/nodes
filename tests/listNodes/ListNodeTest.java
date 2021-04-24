@@ -440,4 +440,15 @@ public class ListNodeTest {
         ReorderList.reorderList(base);
         assertEquals(new ListNode("1 -> 5 -> 2 -> 4 -> 3"), base);
     }
+
+    @Test
+    public void oddEvenList() {
+        assertNull(OddEvenList.oddEvenList(null));
+        assertEquals(new ListNode(-1), OddEvenList.oddEvenList(new ListNode(-1)));
+        assertEquals(new ListNode("5 -> 3 -> 1 -> 4 -> 2 -> 0"), OddEvenList.oddEvenList(base));
+        base = new ListNode("1 -> 2 -> 3 -> 4 -> 5");
+        assertEquals(new ListNode("1 -> 3 -> 5 -> 2 -> 4"), OddEvenList.oddEvenList(base));
+        base = new ListNode("2 -> 1");
+        assertEquals(new ListNode("2 -> 1"), OddEvenList.oddEvenList(base));
+    }
 }
