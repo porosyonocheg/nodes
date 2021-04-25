@@ -2500,4 +2500,29 @@ public class TreeNodeTest {
         assertTrue(CheckValidPreorderSerialization.isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#"));
         assertFalse(CheckValidPreorderSerialization.isValidSerialization("#,1,#,#"));
     }
+
+    @Test
+    public void constructBinaryTreeFromPreorderAndInorderTraversal() {
+        assertNull(ConstructBinaryTreeFromPreorderAndInorderTraversal.buildTree(new int[]{}, new int[]{}));
+        assertEquals(new TreeNode(0), ConstructBinaryTreeFromPreorderAndInorderTraversal.buildTree(new int[]{0}, new int[]{0}));
+        int[] preorder = {0,-2,-4,-6,-7,-5,-3,-1,2,1,4,3,5,7,6};
+        int[] inorder = {-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7};
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndInorderTraversal.buildTree(preorder, inorder));
+        preorder = new int[]{1,2,4,8,5,3,6,7};
+        inorder = new int[]{8,4,2,5,1,6,3,7};
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndInorderTraversal.buildTree(preorder, inorder));
+        preorder = new int[]{1,2,3,5,6,4,7,8};
+        inorder = new int[]{1,3,5,6,2,7,4,8};
+        root = new TreeNode("1, null, 2, 3, 4, null, 5, 7, 8, null, 6");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndInorderTraversal.buildTree(preorder, inorder));
+        preorder = new int[]{1,2,3,4,5,6};
+        inorder = new int[]{1,2,3,4,5,6};
+        root = new TreeNode("1, null, 2, null, 3, null, 4, null, 5, null, 6");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndInorderTraversal.buildTree(preorder, inorder));
+        preorder = new int[]{1,2,3,4,5,6};
+        inorder = new int[]{6,5,4,3,2,1};
+        root = new TreeNode("1, 2, null, 3, null, 4, null, 5, null, 6");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndInorderTraversal.buildTree(preorder, inorder));
+    }
 }
