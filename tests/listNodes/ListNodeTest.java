@@ -451,4 +451,24 @@ public class ListNodeTest {
         base = new ListNode("2 -> 1");
         assertEquals(new ListNode("2 -> 1"), OddEvenList.oddEvenList(base));
     }
+
+    @Test
+    public void splitListInParts() {
+        ListNode[] result = {new ListNode("5 -> 4"), new ListNode("3 -> 2"), new ListNode("1 -> 0")};
+        assertArrayEquals(result, SplitListInParts.split(base, 3));
+        result = new ListNode[]{null, null, null, null, null};
+        assertArrayEquals(result, SplitListInParts.split(null, 5));
+        result = new ListNode[]{new ListNode("5 -> 4"), new ListNode(3), new ListNode(2), new ListNode(1), new ListNode(0)};
+        base = new ListNode("5 -> 4 -> 3 -> 2 -> 1 -> 0");
+        assertArrayEquals(result, SplitListInParts.split(base, 5));
+        result = new ListNode[]{new ListNode(1), new ListNode(2), new ListNode(3),new ListNode(4),new ListNode(5),new ListNode(6),new ListNode(7),new ListNode(8),new ListNode(9),new ListNode(10),new ListNode(11), null, null, null, null};
+        base = new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11");
+        assertArrayEquals(result, SplitListInParts.split(base, 15));
+        base = new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11");
+        result = new ListNode[]{new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6"), new ListNode("7 -> 8 -> 9 -> 10 -> 11")};
+        assertArrayEquals(result, SplitListInParts.split(base, 2));
+        base = new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11");
+        result = new ListNode[]{new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11")};
+        assertArrayEquals(result, SplitListInParts.split(base, 1));
+    }
 }
