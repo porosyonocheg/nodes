@@ -6,10 +6,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import treeNodes.binarySearchTree.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -2561,6 +2558,13 @@ public class TreeNodeTest {
         assertEquals(root0, root);
     }
 
+    @Test
+    public void ifIsPreorderTraversalAfterSwappingNodes() {
+        assertEquals(Collections.singletonList(-1), new IfIsPreorderTraversalAfterSwappingNodes(new TreeNode(1, new TreeNode(2), null), new int[]{2, 1}).execute());
+        assertEquals(new ArrayList<>(), new IfIsPreorderTraversalAfterSwappingNodes(root, new int[]{0, -2, -4, -6, -7, -5, -3, -1, 2, 1, 4, 3, 5, 7, 6}).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27");
+        assertEquals(Arrays.asList(1,3,7,6,13,12,2,5,11,10,8), new IfIsPreorderTraversalAfterSwappingNodes(root, new int[]{1,3,7,15,14,6,13,27,26,12,25,24,2,5,11,23,22,10,21,20,4,8,17,16,9,18,19}).execute());
+    }
 
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
