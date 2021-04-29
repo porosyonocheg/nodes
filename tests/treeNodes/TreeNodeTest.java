@@ -2566,6 +2566,32 @@ public class TreeNodeTest {
         assertEquals(Arrays.asList(1,3,7,6,13,12,2,5,11,10,8), new IfIsPreorderTraversalAfterSwappingNodes(root, new int[]{1,3,7,15,14,6,13,27,26,12,25,24,2,5,11,23,22,10,21,20,4,8,17,16,9,18,19}).execute());
     }
 
+    @Test
+    public void constructBinaryTreeFromPreorderAndPostorderTraversal() {
+        assertNull(ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(new int[]{}, new int[]{}));
+        assertEquals(new TreeNode(0), ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(new int[]{0}, new int[]{0}));
+        int[] preorder = {0,-2,-4,-6,-7,-5,-3,-1,2,1,4,3,5,7,6};
+        int[] postorder = {-7,-5,-6,-3,-4,-1,-2,1,3,6,7,5,4,2,0};
+        root = new TreeNode("0, -2, 2, -4, -1, 1, 4, -6, -3, null, null, null, null, 3, 5, -7, -5, null, null, null, null, 7, null, null, null, null, null, 6");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(preorder, postorder));
+        preorder = new int[]{1,2,4,8,5,3,6,7};
+        postorder = new int[]{8,4,5,2,6,7,3,1};
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(preorder, postorder));
+        preorder = new int[]{1,2,3,5,6,4,7,8};
+        postorder = new int[]{6,5,3,7,8,4,2,1};
+        root = new TreeNode("1, 2, null, 3, 4, 5, null, 7, 8, 6");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(preorder, postorder));
+        preorder = new int[]{3, 0, 5, 12, 8, 1, 9, 16, 7, 6, 4, 18, 13, 2, 14, 10, 15, 11, 17};
+        postorder = new int[]{12, 1, 16, 9, 8, 5, 6, 4, 7, 0, 10, 14, 15, 2, 11, 13, 17, 18, 3};
+        root = new TreeNode("3, 0, 18, 5, 7, 13, 17, 12, 8, 6, 4, 2, 11, null, null, null, null, 1, 9, null, null, null, null, 14, 15, null, null, null, null, 16, null, 10");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(preorder, postorder));
+        preorder = new int[]{1,2,3,4,5,6};
+        postorder = new int[]{6,5,4,3,2,1};
+        root = new TreeNode("1, 2, null, 3, null, 4, null, 5, null, 6");
+        assertEquals(root, ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(preorder, postorder));
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
