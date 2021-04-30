@@ -2592,6 +2592,17 @@ public class TreeNodeTest {
         assertEquals(root, ConstructBinaryTreeFromPreorderAndPostorderTraversal.buildTree(preorder, postorder));
     }
 
+    @Test
+    public void maxPathSum() {
+        assertEquals(25, new MaximumPathSum(root).execute());
+        root = new TreeNode("-10, 9, 20, null, null, 15, 7");
+        assertEquals(42, new MaximumPathSum(root).execute());
+        root = new TreeNode("-1, -3, -2, -6, -4, -11, -5");
+        assertEquals(-1, new MaximumPathSum(root).execute());
+        root = new TreeNode("-3, -2, 0, -4, 3, -3, 3, null, null, -4, 1, 3, 3, -2, 3");
+        assertEquals(6, new MaximumPathSum(root).execute());
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
@@ -2605,8 +2616,7 @@ public class TreeNodeTest {
             indexOfNextComma = data.indexOf(',', prevIndex);
         }
         values.add(Integer.parseInt(data.substring(prevIndex)));
-        TreeNode root = createTree(values);
-        return root;
+        return createTree(values);
     }
 
     private TreeNode createTree(List<Integer> values) {
