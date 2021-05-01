@@ -2603,6 +2603,16 @@ public class TreeNodeTest {
         assertEquals(6, new MaximumPathSum(root).execute());
     }
 
+    @Test
+    public void recoverTreeFromPreorderTraversal() {
+        assertEquals(new TreeNode(1), RecoverTreeFromPreorderTraversal.recover("1"));
+        assertNull(RecoverTreeFromPreorderTraversal.recover(""));
+        assertEquals(new TreeNode("1, 2, 5, 3, null, 6, null, 4, null, 7"), RecoverTreeFromPreorderTraversal.recover("1-2--3---4-5--6---7"));
+        assertEquals(new TreeNode("1, 2, 5, 3, 4, 6, 7"), RecoverTreeFromPreorderTraversal.recover("1-2--3--4-5--6--7"));
+        assertEquals(new TreeNode("1, 401, null, 349, 88, 90"), RecoverTreeFromPreorderTraversal.recover("1-401--349---90--88"));
+        assertEquals(new TreeNode("8, 5, 10, 1, 7, 9, 15, 6, 12, null, null, null, null, 13, 14, 5, 10, null, null, 7, 9, null, null, null, null, 8"), RecoverTreeFromPreorderTraversal.recover("8-5--1---6----5----10-----8---12--7-10--9--15---13----7----9---14"));
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
