@@ -2613,6 +2613,14 @@ public class TreeNodeTest {
         assertEquals(new TreeNode("8, 5, 10, 1, 7, 9, 15, 6, 12, null, null, null, null, 13, 14, 5, 10, null, null, 7, 9, null, null, null, null, 8"), RecoverTreeFromPreorderTraversal.recover("8-5--1---6----5----10-----8---12--7-10--9--15---13----7----9---14"));
     }
 
+    @Test
+    public void maximumSumOfBinarySearchSubtree() {
+        assertEquals(0, new MaximumSumOfBinarySearchSubtree(new TreeNode("-8, -3, -11, -1, -5, -9, -12")).execute());
+        assertEquals(28, new MaximumSumOfBinarySearchSubtree(root).execute());
+        assertEquals(20, new MaximumSumOfBinarySearchSubtree(new TreeNode("1, 4, 3, 2, 4, 2, 5, null, null, null, null, null, null, 4, 6")).execute());
+        assertEquals(74, new MaximumSumOfBinarySearchSubtree(new TreeNode("8, 5, 10, 15, 7, 9, 17, 6, 16, null, null, null, null, 13, 16, 5, 10, null, null, 7, 9, null, null, null, null, 74, 13")).execute());
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
