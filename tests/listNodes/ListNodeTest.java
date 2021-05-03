@@ -471,4 +471,13 @@ public class ListNodeTest {
         result = new ListNode[]{new ListNode("1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11")};
         assertArrayEquals(result, SplitListInParts.split(base, 1));
     }
+
+    @Test
+    public void reverseGroupOfNodes() {
+        assertEquals(new ListNode("5 -> 4 -> 3 -> 2 -> 1 -> 0"), ReverseGroupOfNodes.reverse(base, 1));
+        assertEquals(new ListNode("4 -> 5 -> 2 -> 3 -> 0 -> 1"), ReverseGroupOfNodes.reverse(base, 2));
+        assertEquals(new ListNode("3 -> 4 -> 5 -> 0 -> 1 -> 2"), ReverseGroupOfNodes.reverse(new ListNode("5 -> 4 -> 3 -> 2 -> 1 -> 0"), 3));
+        assertEquals(new ListNode("2 -> 3 -> 4 -> 5 -> 1 -> 0"), ReverseGroupOfNodes.reverse(new ListNode("5 -> 4 -> 3 -> 2 -> 1 -> 0"), 4));
+        assertEquals(new ListNode("0 -> 1 -> 2 -> 3 -> 4 -> 5"), ReverseGroupOfNodes.reverse(new ListNode("5 -> 4 -> 3 -> 2 -> 1 -> 0"), 6));
+    }
 }
