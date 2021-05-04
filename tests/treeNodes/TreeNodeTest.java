@@ -2621,6 +2621,15 @@ public class TreeNodeTest {
         assertEquals(74, new MaximumSumOfBinarySearchSubtree(new TreeNode("8, 5, 10, 15, 7, 9, 17, 6, 16, null, null, null, null, 13, 16, 5, 10, null, null, 7, 9, null, null, null, null, 74, 13")).execute());
     }
 
+    @Test
+    public void binaryTreeZigzagLevelOrderTraversal() {
+        assertEquals("[]", new BinaryTreeZigzagLevelOrderTraversal(null).execute().toString());
+        assertEquals("[[1]]", new BinaryTreeZigzagLevelOrderTraversal(new TreeNode(1)).execute().toString());
+        assertEquals("[[0], [2, -2], [-4, -1, 1, 4], [5, 3, -3, -6], [-7, -5, 7], [6]]", new BinaryTreeZigzagLevelOrderTraversal(root).execute().toString());
+        root = new TreeNode("8, 5, 10, 15, 7, 9, 17, 6, 16, null, null, null, null, 13, 18, 5, 10, null, null, 7, 9, null, null, null, null, 74, 13, 55, null, 22, null, 7");
+        assertEquals("[[8], [10, 5], [15, 7, 9, 17], [18, 13, 16, 6], [5, 10, 7, 9], [22, 55, 13, 74], [7]]", new BinaryTreeZigzagLevelOrderTraversal(root).execute().toString());
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
