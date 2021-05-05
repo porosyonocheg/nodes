@@ -2630,6 +2630,21 @@ public class TreeNodeTest {
         assertEquals("[[8], [10, 5], [15, 7, 9, 17], [18, 13, 16, 6], [5, 10, 7, 9], [22, 55, 13, 74], [7]]", new BinaryTreeZigzagLevelOrderTraversal(root).execute().toString());
     }
 
+    @Test
+    public void constructBinaryTreeFromInorderAndPostorderTraversal() {
+        assertNull(ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{}, new int[]{}));
+        assertEquals(new TreeNode(-1), ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{-1}, new int[]{-1}));
+        assertEquals(root, ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7}, new int[]{-7,-5,-6,-3,-4,-1,-2,1,3,6,7,5,4,2,0}));
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8");
+        assertEquals(root, ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{8,4,2,5,1,6,3,7}, new int[]{8,4,5,2,6,7,3,1}));
+        root = new TreeNode("1, null, 2, null, 3, null, 4, null, 5, null, 6");
+        assertEquals(root, ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{1,2,3,4,5,6}, new int[]{6,5,4,3,2,1}));
+        root = new TreeNode("1, 2, null, 3, 4, 5, null, 7, 8, 6");
+        assertEquals(root, ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{6, 5, 3, 2, 7, 4, 8, 1}, new int[]{6, 5, 3, 7, 8, 4, 2, 1}));
+        root = new TreeNode("3, 0, 18, 5, 7, 13, 17, 12, 8, 6, 4, 2, 11, null, null, null, null, 1, 9, null, null, null, null, 14, 15, null, null, null, null, 16, null, 10");
+        assertEquals(root, ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{12, 5, 1, 8, 16, 9, 0, 6, 7, 4, 3, 10, 14, 2, 15, 13, 11, 18, 17}, new int[]{12, 1, 16, 9, 8, 5, 6, 4, 7, 0, 10, 14, 15, 2, 11, 13, 17, 18, 3}));
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
