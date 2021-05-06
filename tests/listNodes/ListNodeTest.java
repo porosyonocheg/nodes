@@ -480,4 +480,14 @@ public class ListNodeTest {
         assertEquals(new ListNode("2 -> 3 -> 4 -> 5 -> 1 -> 0"), ReverseGroupOfNodes.reverse(new ListNode("5 -> 4 -> 3 -> 2 -> 1 -> 0"), 4));
         assertEquals(new ListNode("0 -> 1 -> 2 -> 3 -> 4 -> 5"), ReverseGroupOfNodes.reverse(new ListNode("5 -> 4 -> 3 -> 2 -> 1 -> 0"), 6));
     }
+
+    @Test
+    public void mergeKSortedLists() {
+        //assertNull(MergeKSortedLists.mergeLists(null));
+        //assertNull(MergeKSortedLists.mergeLists(new ListNode[]{}));
+        ListNode[] lists = new ListNode[]{new ListNode("1 -> 3 -> 7 -> 9 -> 12"), new ListNode("-2 -> 0 -> 5 -> 11 -> 14 -> 22"), new ListNode(-1), new ListNode("2 -> 4 -> 6 -> 8 -> 10 -> 13 -> 33"), new ListNode("-3 -> 15 -> 44")};
+        assertEquals(new ListNode("-3 -> -2 -> -1 -> 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> 11 -> 12 -> 13 -> 14 -> 15 -> 22 -> 33 -> 44"), MergeKSortedLists.mergeLists(lists));
+        lists = new ListNode[]{new ListNode("1 -> 99"), new ListNode("2 -> 98 -> 101"), new ListNode("3 -> 100 -> 102 -> 107"), new ListNode("5 -> 95 -> 105 -> 108 -> 111"), new ListNode("0 -> 4 -> 7 -> 90 -> 104 -> 110 -> 115")};
+        assertEquals(new ListNode("0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 7 -> 90 -> 95 -> 98 -> 99 -> 100 -> 101 -> 102 -> 104 -> 105 -> 107 -> 108 -> 110 -> 111 -> 115"), MergeKSortedLists.mergeLists(lists));
+    }
 }
