@@ -2657,6 +2657,15 @@ public class TreeNodeTest {
         assertEquals(5, new LongestUnivaluePath(root).execute());
     }
 
+    @Test
+    public void printTNRC() {
+        TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
+        TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
+        TreeNodeRightConnected tnrc = new TreeNodeRightConnected(1, left, right);
+        System.out.println(tnrc);
+        System.out.println(TreeNodeRightConnected.connect(tnrc));
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
