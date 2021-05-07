@@ -2645,6 +2645,18 @@ public class TreeNodeTest {
         assertEquals(root, ConstructBinaryTreeFromInorderAndPostorderTraversal.buildTree(new int[]{12, 5, 1, 8, 16, 9, 0, 6, 7, 4, 3, 10, 14, 2, 15, 13, 11, 18, 17}, new int[]{12, 1, 16, 9, 8, 5, 6, 4, 7, 0, 10, 14, 15, 2, 11, 13, 17, 18, 3}));
     }
 
+    @Test
+    public void longestUnivaluePath() {
+        assertEquals(0, new LongestUnivaluePath(null).execute());
+        assertEquals(1, new LongestUnivaluePath(new TreeNode(1, new TreeNode(1), new TreeNode(-1))).execute());
+        root = new TreeNode("1, 1, 1, 2, 3, 4, 1, 1");
+        assertEquals(3, new LongestUnivaluePath(root).execute());
+        root = new TreeNode("1, 2, 3, 4, 2, 3, 6, null, null, 2, null, 3, 7, null, null, null, null, null, 3");
+        assertEquals(3, new LongestUnivaluePath(root).execute());
+        root = new TreeNode("1, 1, 1, 2, 2, 3, 3, 2, null, 2, 2, null, 3, null, 3, 2, 3, null, 2, 3, 2, null, 3, 3, 2, 1, null, 2, 3, 1, 2, null, null, 3, null, 3, null, null, null, null, null, null, null, null, null, null, null, 3, 1, 1, 3, null, 3, null, null, null, null, 2, 1");
+        assertEquals(5, new LongestUnivaluePath(root).execute());
+    }
+
     private TreeNode deserialize(String data) {
         if (data.isEmpty()) return null;
         List<Integer> values = new ArrayList<>();
