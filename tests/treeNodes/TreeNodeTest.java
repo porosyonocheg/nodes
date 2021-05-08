@@ -2658,6 +2658,22 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void findDuplicateSubtrees() {
+        List<TreeNode> result = new ArrayList<>();
+        assertEquals(result, new FindDuplicateSubtrees(null).execute());
+        assertEquals(result, new FindDuplicateSubtrees(root).execute());
+        result.add(new TreeNode(3));
+        result.add(new TreeNode(2, new TreeNode(3), null));
+        assertEquals(result, new FindDuplicateSubtrees(new TreeNode("2, 2, 2, 3, null, 3")).execute());
+        result = new ArrayList<>();
+        result.add(new TreeNode(7));
+        result.add(new TreeNode(1));
+        result.add(new TreeNode(5, new TreeNode(7), new TreeNode(1)));
+        result.add(new TreeNode(4));
+        assertEquals(result, new FindDuplicateSubtrees(new TreeNode("2, 3, 12, 5, 12, 6, 4, 7, 1, 6, 4, 3, 5, null, null, null, null, null, null, null, null, null, null, null, null, 7, 1")).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
