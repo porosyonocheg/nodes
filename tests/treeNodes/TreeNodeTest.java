@@ -2680,6 +2680,8 @@ public class TreeNodeTest {
         TreeNodeRightConnected tnrc = new TreeNodeRightConnected(1, left, right);
         System.out.println(tnrc);
         System.out.println(TreeNodeRightConnected.connect(tnrc));
+        tnrc = new TreeNodeRightConnected(root);
+        System.out.println(tnrc);
     }
 
     private TreeNode deserialize(String data) {

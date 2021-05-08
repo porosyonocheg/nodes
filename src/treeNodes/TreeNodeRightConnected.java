@@ -33,6 +33,22 @@ public class TreeNodeRightConnected  {
         this.next = next;
     }
 
+    public TreeNodeRightConnected(TreeNode root) {
+        TreeNodeRightConnected node = constructTree(root);
+        this.left = node.left;
+        this.right = node.right;
+        this.val = node.val;
+        connect(this);
+    }
+
+    private TreeNodeRightConnected constructTree(TreeNode root) {
+        if (root == null) return null;
+        TreeNodeRightConnected node = new TreeNodeRightConnected(root.val);
+        node.left = constructTree(root.left);
+        node.right = constructTree(root.right);
+        return node;
+    }
+
     /**Заполняет поле next для всех потомков дерева в соответствии со структурой*/
     public static TreeNodeRightConnected connect(TreeNodeRightConnected root) {
         if (root == null) return null;
