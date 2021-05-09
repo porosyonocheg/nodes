@@ -2674,6 +2674,20 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void smallestStringStartingFromLeaf() {
+        root = new TreeNode("2, 2, 1, null, 1, 0, null, 0");
+        assertEquals("abc", new SmallestStringStartingFromLeaf(root).execute());
+        root = new TreeNode("25, 1, 3, 1, 3, 0, 2");
+        assertEquals("adz", new SmallestStringStartingFromLeaf(root).execute());
+        root = new TreeNode("25, 1, null, 0, 0, 1, null, null, null, 0");
+        assertEquals("ababz", new SmallestStringStartingFromLeaf(root).execute());
+        root = new TreeNode("0, null, 0, 0, 0, 0, 0, null, 0, 0, null, null, null, 0, 0, null, null, 0, null, null, 0");
+        assertEquals("aaaa", new SmallestStringStartingFromLeaf(root).execute());
+        root = new TreeNode("0, 1, 2, null, null, 0, 1, 1, null, null, 0, null, 0");
+        assertEquals("abaca", new SmallestStringStartingFromLeaf(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
