@@ -2688,6 +2688,19 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void longestZigZagPath() {
+        assertEquals(0, new LongestZigZagPath(null).execute());
+        assertEquals(0, new LongestZigZagPath(new TreeNode(5)).execute());
+        assertEquals(2, new LongestZigZagPath(root).execute());
+        root = new TreeNode("1, null, 1, 1, 1, null, null, 1, 1, null, 1, null, null, null, 1, null, 1");
+        assertEquals(3, new LongestZigZagPath(root).execute());
+        root = new TreeNode("1, 1, 1, null, 1, null, null, 1, 1, null, 1");
+        assertEquals(4, new LongestZigZagPath(root).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, null, null, null, null, null, null,24, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,25,26, null, null,27,28");
+        assertEquals(6, new LongestZigZagPath(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
