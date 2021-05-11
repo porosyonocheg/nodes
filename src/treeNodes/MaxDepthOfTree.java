@@ -14,9 +14,6 @@ public class MaxDepthOfTree extends Command {
     }
 
     private int maxDepth(TreeNode root) {
-        if (root == null) return 0;
-        int rightMaxDepth = maxDepth(root.right);
-        int leftMaxDepth = maxDepth(root.left);
-        return rightMaxDepth > leftMaxDepth ? rightMaxDepth + 1 : leftMaxDepth + 1;
+        return root == null ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 }
