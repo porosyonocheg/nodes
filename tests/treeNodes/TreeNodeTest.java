@@ -2701,6 +2701,20 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void insertNodeInMaximumBinaryTree(){
+        assertEquals(new TreeNode(5), InsertNodeInMaximumBinaryTree.insertNode(null, 5));
+        assertEquals(new TreeNode(7, null, new TreeNode(5)), InsertNodeInMaximumBinaryTree.insertNode(new TreeNode(7), 5));
+        root = new TreeNode("4, 1, 3, null, null, 2");
+        assertEquals(new TreeNode("5, 4, null, 1, 3, null, null, 2"), InsertNodeInMaximumBinaryTree.insertNode(root, 5));
+        root = new TreeNode("5, 2, 4, null, 1");
+        assertEquals(new TreeNode("5, 2, 4, null, 1, null, 3"), InsertNodeInMaximumBinaryTree.insertNode(root, 3));
+        root = new TreeNode("5, 2, 3, null, 1");
+        assertEquals(new TreeNode("5, 2, 4, null, 1, 3"), InsertNodeInMaximumBinaryTree.insertNode(root, 4));
+        root = new ConstructMaximumBinaryTree(new int[]{1,2,3,4,6,7}).execute();
+        assertEquals(new TreeNode("7, 6, 5, 4, null, null, null, 3, null, 2, null, 1"), InsertNodeInMaximumBinaryTree.insertNode(root, 5));
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
