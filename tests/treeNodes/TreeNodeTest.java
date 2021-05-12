@@ -2715,6 +2715,20 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void countNumberOfSumsOfPathsValues() {
+        assertEquals(0, new CountNumberOfSumsOfPathsValues(null, 5).execute());
+        assertEquals(3, new CountNumberOfSumsOfPathsValues(root, -6).execute());
+        root = new TreeNode("1, null, 2, null, 3, null, 4, null, 5");
+        assertEquals(2, new CountNumberOfSumsOfPathsValues(root, 3).execute());
+        root = new TreeNode("1, -2, -3, 1, 3, -2, null, -1");
+        assertEquals(4, new CountNumberOfSumsOfPathsValues(root, -1).execute());
+        root = new TreeNode("10, 5, -3, 3, 2, null, 11, 3, -2, null, 1");
+        assertEquals(3, new CountNumberOfSumsOfPathsValues(root, 8).execute());
+        root = new TreeNode("5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1");
+        assertEquals(3, new CountNumberOfSumsOfPathsValues(root, 22).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
