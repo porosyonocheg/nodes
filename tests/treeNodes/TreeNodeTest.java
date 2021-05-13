@@ -2729,6 +2729,23 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void RootLeafPathsEqualTargetSum() {
+        assertEquals(new ArrayList<>(), new RootLeafPathsEqualTargetSum(null, 1).execute());
+        assertEquals(new ArrayList<>(), new RootLeafPathsEqualTargetSum(new TreeNode(1, new TreeNode(2), null), 1).execute());
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(Arrays.asList(5,4,11,2));
+        result.add(Arrays.asList(5,8,4,5));
+        root = new TreeNode("5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1");
+        assertEquals(result, new RootLeafPathsEqualTargetSum(root, 22).execute());
+        result = new ArrayList<>();
+        result.add(Arrays.asList(1,3,2,1,0,1));
+        result.add(Arrays.asList(1,3,2,2));
+        result.add(Arrays.asList(1,3,4));
+        root = new TreeNode("1, 2, 3, 4, 5, 2, 4, null, null, 1, null, 1, 2, null, null, null, null, 3, 0, null, null, null, null, 2, 1");
+        assertEquals(result, new RootLeafPathsEqualTargetSum(root, 8).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
