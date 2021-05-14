@@ -2746,6 +2746,16 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void binaryTreeCameras() {
+        assertEquals(0, new BinaryTreeCameras(null).execute());
+        assertEquals(1, new BinaryTreeCameras(new TreeNode("1, 2, null, 3, 4")).execute());
+        assertEquals(2, new BinaryTreeCameras(new TreeNode("1, 2, null, 3, null, 4, null, null, 5")).execute());
+        assertEquals(6, new BinaryTreeCameras(root).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 2, 4, null, null, 1, null, 1, 2, null, null, null, null, 3, 0, null, null, null, null, 2, 1");
+        assertEquals(6, new BinaryTreeCameras(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
