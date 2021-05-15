@@ -2756,6 +2756,15 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void countUnivalueSubtrees() {
+        assertEquals(0, new CountUnivalueSubtrees(null).execute());
+        assertEquals(1, new CountUnivalueSubtrees(new TreeNode(5)).execute());
+        assertEquals(2, new CountUnivalueSubtrees(new TreeNode(5, new TreeNode(1), new TreeNode(3))).execute());
+        assertEquals(5, new CountUnivalueSubtrees(new TreeNode("5, 4, 5, 4, 4, 5")).execute());
+        assertEquals(8, new CountUnivalueSubtrees(new TreeNode("2, 1, 2, 2, 1, 3, 2, null, null, null, null, 3, 2, 2, 2, null, null, null, null, null, null, null, 2")).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
