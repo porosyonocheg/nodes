@@ -2765,6 +2765,20 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void houseRobber() {
+        assertEquals(0, new HouseRobber(null).execute());
+        assertEquals(5, new HouseRobber(new TreeNode(5)).execute());
+        assertEquals(6, new HouseRobber(new TreeNode(5, new TreeNode(5), new TreeNode(1))).execute());
+        root = new TreeNode("3, 2, 3, null, 3, null, 1");
+        assertEquals(7, new HouseRobber(root).execute());
+        root = new TreeNode("3, 4, 5, 1, 3, null, 1");
+        assertEquals(9, new HouseRobber(root).execute());
+        assertEquals(25, new HouseRobber(root1).execute());
+        root = new TreeNode("11, 2, 5, 6, 9, 4, 12, 3, 8, 4, 7, 2, 3, null, null, null, null, 1, 5");
+        assertEquals(51, new HouseRobber(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
