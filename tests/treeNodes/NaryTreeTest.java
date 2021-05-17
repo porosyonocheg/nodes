@@ -2,6 +2,7 @@ package treeNodes;
 
 import org.junit.Test;
 import treeNodes.nAryTree.NaryTree;
+import treeNodes.nAryTree.Trie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,5 +106,34 @@ public class NaryTreeTest {
         list.add(new NaryTree(5, list3));
         NaryTree root = new NaryTree(1, list);
         assertEquals("[[1], [2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13], [14]]", root.levelOrder().toString());
+    }
+
+    @Test
+    public void trieTest() {
+        Trie trie = new Trie();
+        trie.insert("app");
+        trie.insert("apple");
+        trie.insert("beer");
+        trie.insert("add");
+        trie.insert("jam");
+        trie.insert("rental");
+        assertTrue(trie.search("app"));
+        assertFalse(trie.search("apps"));
+        assertFalse(trie.search("ad")); //false
+        assertFalse(trie.search("applepie")); //false
+        assertFalse(trie.search("rest")); //false
+        assertFalse(trie.search("jan")); //false
+        assertFalse(trie.search("rent")); //false
+        assertTrue(trie.search("beer")); //true
+        assertTrue(trie.search("jam")); //true
+        assertFalse(trie.startsWith("apps")); //false
+        assertTrue(trie.startsWith("app")); //true
+        assertTrue(trie.startsWith("ad")); //true
+        assertFalse(trie.startsWith("applepie")); //false
+        assertFalse(trie.startsWith("rest")); //false
+        assertFalse(trie.startsWith("jan")); //false
+        assertTrue(trie.startsWith("rent")); //true
+        assertTrue(trie.startsWith("beer")); //true
+        assertTrue(trie.startsWith("jam")); //true
     }
 }
