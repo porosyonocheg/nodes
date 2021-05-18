@@ -2779,6 +2779,14 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void upsideDown() {
+       assertEquals(new TreeNode(1), new UpsideDown(new TreeNode(1)).execute());
+       assertEquals(new TreeNode("4, 5, 2, null, null, 3, 1"), new UpsideDown(new TreeNode("1, 2, 3, 4, 5")).execute());
+       assertEquals(new TreeNode("6, 7, 5, null, null, null, 4, null, 2, 3, 1"), new UpsideDown(new TreeNode("1, 2, 3, 4, null, null, null, 5, null, 6, 7")).execute());
+       assertEquals(new TreeNode("8, null, 7, null, 5, 6, 3, null, null, 4, 2, null, null, null, 1"), new UpsideDown(new TreeNode("1, 2, null, 3, 4, 5, 6, null, null, 7, null, null, null, 8")).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
