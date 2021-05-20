@@ -2787,6 +2787,16 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void equalTreePartition() {
+        assertFalse((Boolean) new EqualTreePartition(new TreeNode(1)).execute());
+        assertTrue((Boolean) new EqualTreePartition(new TreeNode("5, 10, 10, 2, 3")).execute());
+        assertFalse((Boolean) new EqualTreePartition(new TreeNode("5, 2, 11, 6, 9, 5, 12, 3, 8, 4, 7, 15, 10, null, null, null, null, 1, 17")).execute());
+        assertTrue((Boolean) new EqualTreePartition(root).execute());
+        assertFalse((Boolean) new EqualTreePartition(new TreeNode("1, 2, 3, 4, 5, 6, 7")).execute());
+        assertTrue((Boolean) new EqualTreePartition(new TreeNode("1, null, 2, null, 3, null, 4, 1, null, 5, null, 6")).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
