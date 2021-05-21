@@ -2797,6 +2797,18 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void longestConsecutiveSequence() {
+        assertEquals(0, new LongestConsecutiveSequence(null).execute());
+        assertEquals(1, new LongestConsecutiveSequence(new TreeNode(-1)).execute());
+        assertEquals(2, new LongestConsecutiveSequence(new TreeNode(5, new TreeNode(4), new TreeNode(6))).execute());
+        assertEquals(2, new LongestConsecutiveSequence(root).execute());
+        root = new TreeNode("1, 2, 6, 7, 3, 4, 7, null, null, 4, 5, null, null, 5, 8, 1, 5, null, null, null, null, 9, 7, null, null, null, null, 10, 8, null, null, 7, 11");
+        assertEquals(6, new LongestConsecutiveSequence(root).execute());
+        root = new TreeNode("1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, null, null, 5, 5, null, 5, 5, 4, 6, null, 5, null, 7, 5, 5, null, null, 6, null, 6, 6, null, 6, 7, 5, null, 5, 6, 6, 5, null, null, 8, 7, 6, null, 5, 6, 6, 7, null, 7, 6, 5, null, null, 8, 7, 6, 5, null, null, 7, null, null, 7, 6, 7, 9, 7, null, null, null, 7, 6, null, 7, null, 7, 7, 7, 8, 8, null, null, 7, 6, null, 9, null, 8, 7, 7, null, null, null, null, 8, 8, null, null, null, null, null, null, null, null, null, null, null, null, null, 8, null, 7, null, null, null, 8, null, null, 9, null, 9, null, null, null, null, null, 10, 9, null, 8, null, null, 8, 9, null, null, 9, 9, null, 8, null, null, null, 10, null, null, 10, 11, null, null, null, null, 9, null, 9, 10, null, null, 9, null, null, null, 8, 11, null, 10, null, null, 12, 10, null, null, 11, 9, null, 9, null, null, 12, null, null, 13, null, null, 10, 11, null, null, null, 9, null, null, null, 14, null, null, null, null, null, 10, null, null, 15");
+        assertEquals(11, new LongestConsecutiveSequence(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
