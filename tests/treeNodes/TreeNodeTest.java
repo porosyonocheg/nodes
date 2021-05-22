@@ -2817,6 +2817,23 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void boundaryOfBinaryTree() {
+        assertEquals(new ArrayList<>(), new BoundaryOfBinaryTree(null).execute());
+        assertEquals(Collections.singletonList(5), new BoundaryOfBinaryTree(new TreeNode(5)).execute());
+        List<Integer> list = Arrays.asList(0,-2,-4,-6,-7,-5,-3,-1,1,3,6,7,5,4,2);
+        assertEquals(list, new BoundaryOfBinaryTree(root).execute());
+        root = new TreeNode("1, null, 2, null, 3, null, 4, null, 5, null, 6");
+        list = Arrays.asList(1,6,5,4,3,2);
+        assertEquals(list, new BoundaryOfBinaryTree(root).execute());
+        root = new TreeNode("1, 2, null, 3, null, 4, null, 5, null, 6");
+        list = Arrays.asList(1,2,3,4,5,6);
+        assertEquals(list, new BoundaryOfBinaryTree(root).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, null, 8, 9, 10, 11, 12, 13, null, null, 14, null, 15, 16, 17, 18, 19, 20, 21, 22, null, 23, 24, null, 25, 26, null, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, null, null, null, 38, 39, null, null, 40, null, 41, 42, null, null, null, null, 43, 44, null, null, 45, 46, 47, 48, null, null, 49, null, null, 50, null, null, null, null, 51, 52, 53, 54, null, 55, null, null, 56, 57, null, null, null, null, 58, null, null, 59, null, null, 60, 61, null, null, 62, null, null, null, 63, 64, null, null, null, null, 65, 66, null, null, null, null, 67, null, null, null, 68, 69, null, null, 70");
+        list = Arrays.asList(1,2,4,8,14,23,38,62,52,25,70,64,54,55,42,28,29,65,66,57,44,31,45,58,67,48,34,60,68,69,50,37,22,13,7,3);
+        assertEquals(list, new BoundaryOfBinaryTree(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
