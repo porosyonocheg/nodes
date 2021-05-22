@@ -2809,6 +2809,14 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void serialization() {
+        String serial = new Serialization().serialize(root);
+        String serial1 = new Serialization().serialize(root1);
+        assertEquals(root1, new Serialization().deserialize(serial1));
+        assertEquals(root, new Serialization().deserialize(serial));
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
