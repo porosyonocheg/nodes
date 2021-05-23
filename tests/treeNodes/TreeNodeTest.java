@@ -2834,6 +2834,21 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void closestLeaf() {
+        assertEquals(-1, new ClosestLeaf(null, 1).execute());
+        assertEquals(1, new ClosestLeaf(new TreeNode(1), 1).execute());
+        assertEquals(-1, new ClosestLeaf(new TreeNode(1), 0).execute());
+        assertEquals(6, new ClosestLeaf(root, 5).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, null, null, 17, 18, 19, 20, 21, 22, 23, null, 24, null, 25, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 26, 27, null, 28, null, 29, null, null, 30, null, 31, null, 32, 33, null, 34, 35, 36, 37, 38, null, 39, 40, 41, 42, 43, 44, 45, 46, null, null, 47, 48, 49, 50, 51, 52, 53, 54, 55");
+        assertEquals(15, new ClosestLeaf(root, 12).execute());
+        assertEquals(50, new ClosestLeaf(root, 23).execute());
+        assertEquals(-1, new ClosestLeaf(root, 56).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, null, 8, 9, 10, 11, 12, 13, null, null, 14, null, 15, 16, 17, 18, 19, 20, 21, 22, null, 23, 24, null, 25, 26, null, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, null, null, null, 38, 39, null, null, 40, null, 41, 42, null, null, null, null, 43, 44, null, null, 45, 46, 47, 48, null, null, 49, null, null, 50, null, null, null, null, 51, 52, 53, 54, null, 55, null, null, 56, 57, null, null, null, null, 58, null, null, 59, null, null, 60, 61, null, null, 62, null, null, null, 63, 64, null, null, null, null, 65, 66, null, null, null, null, 67, null, null, null, 68, 69, null, null, 70");
+        assertEquals(23, new ClosestLeaf(root, 1).execute());
+        assertEquals(29, new ClosestLeaf(root, 6).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
