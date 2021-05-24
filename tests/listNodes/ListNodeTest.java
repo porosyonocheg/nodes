@@ -499,4 +499,28 @@ public class ListNodeTest {
         assertEquals(new ListNode("1 -> 2 -> 3 -> 4 -> 5"), SumForIntegerRepresentedByLinkedList.accumulate(new ListNode("1 -> 2 -> 3 -> 4 -> 5"), 0));
         assertEquals(new ListNode("2 -> 1 -> 4 -> 8 -> 0 -> 2 -> 6 -> 8 -> 5 -> 7"), SumForIntegerRepresentedByLinkedList.accumulate(base, Integer.MAX_VALUE));
     }
+
+    @Test
+    public void doublyLinkedListToString(){
+        DoublyLinkedListNode l1 = new DoublyLinkedListNode(1);
+        DoublyLinkedListNode l2 = new DoublyLinkedListNode(2);
+        DoublyLinkedListNode l3 = new DoublyLinkedListNode(3);
+        DoublyLinkedListNode l4 = new DoublyLinkedListNode(4);
+        DoublyLinkedListNode l5 = new DoublyLinkedListNode(5);
+        DoublyLinkedListNode l6 = new DoublyLinkedListNode(6);
+        l1.right = l2;
+        l2.left = l1;
+        l2.right = l3;
+        l3.left = l2;
+        l3.right = l4;
+        l4.left = l3;
+        l4.right = l5;
+        l5.left = l4;
+        l5.right = l6;
+        l6.left = l5;
+        System.out.println(l1);
+        l6.right = l1;
+        l1.left = l6;
+        System.out.println(l1);
+    }
 }
