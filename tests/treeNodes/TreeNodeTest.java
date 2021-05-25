@@ -2849,6 +2849,37 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void leavesOfBinaryTree() {
+        assertEquals(new ArrayList<>(), new LeavesOfBinaryTree(null ).execute());
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(Arrays.asList(-7, -5, -3, -1, 1, 3, 6));
+        result.add(Arrays.asList(-6, 7));
+        result.add(Arrays.asList(-4, 5));
+        result.add(Arrays.asList(-2, 4));
+        result.add(Collections.singletonList(2));
+        result.add(Collections.singletonList(0));
+        assertEquals(result, new LeavesOfBinaryTree(root).execute());
+        root = new TreeNode("5, 2, 11, 6, 9, 5, 12, 3, 8, 4, 7, 15, 10, null, null, null, null, 1, 14");
+        result = new ArrayList<>();
+        result.add(Arrays.asList(3, 1, 14, 4, 7, 15, 10, 12));
+        result.add(Arrays.asList(8, 9, 5));
+        result.add(Arrays.asList(6, 11));
+        result.add(Collections.singletonList(2));
+        result.add(Collections.singletonList(5));
+        assertEquals(result, new LeavesOfBinaryTree(root).execute());
+        root = new TreeNode("1, null, 2, null, 3, null, 4, null, 5, null, 6");
+        result = new ArrayList<>();
+        result.add(Collections.singletonList(6));
+        result.add(Collections.singletonList(5));
+        result.add(Collections.singletonList(4));
+        result.add(Collections.singletonList(3));
+        result.add(Collections.singletonList(2));
+        result.add(Collections.singletonList(1));
+        assertEquals(result, new LeavesOfBinaryTree(root).execute());
+
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
