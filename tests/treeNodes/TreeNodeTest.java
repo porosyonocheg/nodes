@@ -2880,6 +2880,20 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void isSequenceAPathFromRootToLeaf() {
+        assertTrue(IsSequenceAPathFromRootToLeaf.check(null, new int[]{}));
+        assertTrue(IsSequenceAPathFromRootToLeaf.check(new TreeNode("1, 2, 3"), new int[]{1, 3}));
+        assertFalse(IsSequenceAPathFromRootToLeaf.check(null, new int[]{1, 2}));
+        assertFalse(IsSequenceAPathFromRootToLeaf.check(new TreeNode("1, 2, 3"), new int[]{}));
+        assertFalse(IsSequenceAPathFromRootToLeaf.check(new TreeNode(1), new int[]{1, 3, 5}));
+        assertFalse(IsSequenceAPathFromRootToLeaf.check(root, new int[]{0, 2, 4, 5, 7}));
+        assertFalse(IsSequenceAPathFromRootToLeaf.check(root, new int[]{0, 2, 4, 5, 8, 6}));
+        assertTrue(IsSequenceAPathFromRootToLeaf.check(root, new int[]{0, -2, -4, -6, -5}));
+        root = new TreeNode("1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, null, 1, null, 0, null, null, null, null, 1, null, null, 0, null, null, 0, null, null, null, 1");
+        assertTrue(IsSequenceAPathFromRootToLeaf.check(root, new int[]{1,0,0,0,0}));
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
