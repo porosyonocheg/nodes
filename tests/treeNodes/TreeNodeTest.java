@@ -2894,6 +2894,23 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void splitBST() {
+        assertArrayEquals(new TreeNode[]{null,null}, (TreeNode[]) new Split(null, 1).execute());
+        root1 = new TreeNode("4, 2, 6, 1, 3, 5, 7");
+        TreeNode[] result = new TreeNode[]{new TreeNode("2, 1"), new TreeNode("4, 3, 6, null, null, 5, 7")};
+        assertArrayEquals(result, (TreeNode[]) new Split(root1, 2).execute());
+        result = new TreeNode[]{new TreeNode("-2, -4, -1, -6, -3, null, null, -7, -5"), new TreeNode("0, null, 2, 1, 4, null, null, 3, 5, null, null, null, 7, 6")};
+        assertArrayEquals(result, (TreeNode[]) new Split(root, -1).execute());
+        result = new TreeNode[] {root, null};
+        assertArrayEquals(result, (TreeNode[]) new Split(root, 8).execute());
+        result = new TreeNode[] {null, root};
+        assertArrayEquals(result, (TreeNode[]) new Split(root, -10).execute());
+        root1 = new TreeNode("1, null, 2, null, 3, null, 4, null, 5, null, 6, null, 7");
+        result = new TreeNode[] {new TreeNode("1, null, 2, null, 3, null, 4, null, 5, null, 6"), new TreeNode(7)};
+        assertArrayEquals(result, (TreeNode[])  new Split(root1, 6).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
