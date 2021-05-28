@@ -2911,6 +2911,16 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void inorderSuccessor() {
+        assertNull(new InorderSuccessor(new TreeNode(7), null).execute());
+        assertNull(new InorderSuccessor(null, new TreeNode(1)).execute());
+        assertNull(new InorderSuccessor(new TreeNode(1), new TreeNode(1)).execute());
+        assertEquals(new TreeNode(6), new InorderSuccessor(root, new TreeNode("5, null, 7, 6")).execute());
+        assertEquals(new TreeNode(1), new InorderSuccessor(root, root).execute());
+        assertEquals(new TreeNode("-2, -4, -1, -6, -3, null, null, -7, -5"), new InorderSuccessor(root, new TreeNode(-3)).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
