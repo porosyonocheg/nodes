@@ -2921,6 +2921,16 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void largestBSTSubtree() {
+        assertEquals(0, new LargestBSTSubtree(null).execute());
+        assertEquals(1, new LargestBSTSubtree(new TreeNode(5)).execute());
+        assertEquals(1, new LargestBSTSubtree(new TreeNode("2, -1, 1")).execute());
+        assertEquals(7, new LargestBSTSubtree(new TreeNode("10, 3, 9, 1, 7, 2, 11, -2, 4, 5, 9, 1, 4, null, 13, -4, 0, 2, null, 3, 6, 8, 12")).execute());
+        assertEquals(9, new LargestBSTSubtree(new TreeNode("8, 4, 15, 2, 7, 10, 25, null, null, 5, 9, 8, 13, 20, 27, 4, 6, 8, null, null, null, null, null, 16, 22")).execute());
+        assertEquals(15, new LargestBSTSubtree(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
