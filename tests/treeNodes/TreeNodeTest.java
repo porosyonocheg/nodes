@@ -2931,6 +2931,20 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void twoSumBSTs() {
+        assertFalse((Boolean) new TwoSum(null, new TreeNode(1), 1).execute());
+        assertFalse((Boolean) new TwoSum(new TreeNode(2), null,0).execute());
+        assertTrue((Boolean) new TwoSum(new TreeNode(1), new TreeNode(5), 6).execute());
+        assertFalse((Boolean) new TwoSum(new TreeNode(2, new TreeNode(1), null), new TreeNode(2), 2).execute());
+        assertTrue((Boolean) new TwoSum(root, root1, -5).execute());
+        assertFalse((Boolean) new TwoSum(root, root1, 16).execute());
+        root = new TreeNode("10, 3, 15, -1, 7, 11, 17, -3, 1, 5, 9, null, null, null, 19");
+        root1 = new TreeNode("25, 13, 33, 9, 20, 28, 38, 7, 11, 15, 23, 27, 31, 42");
+        assertTrue((Boolean) new TwoSum(root, root1, 29).execute());
+        assertFalse((Boolean) new TwoSum(root, root1, 11).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
