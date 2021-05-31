@@ -2945,6 +2945,31 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void recoverContaminatedBinaryTree() {
+        RecoverContaminatedBinaryTree recoverContaminatedBinaryTree = new RecoverContaminatedBinaryTree(root);
+        assertFalse(recoverContaminatedBinaryTree.find(9));
+        assertTrue(recoverContaminatedBinaryTree.find(13));
+        assertFalse(recoverContaminatedBinaryTree.find(12));
+        assertTrue(recoverContaminatedBinaryTree.find(16));
+        assertFalse(recoverContaminatedBinaryTree.find(17));
+        assertTrue(recoverContaminatedBinaryTree.find(30));
+        assertFalse(recoverContaminatedBinaryTree.find(29));
+        assertTrue(recoverContaminatedBinaryTree.find(61));
+        root = new TreeNode("-1, null, -1, -1, null, -1, -1, -1, null, null, -1, null, -1, -1, null, -1, -1, -1, -1");
+        recoverContaminatedBinaryTree = new RecoverContaminatedBinaryTree(root);
+        assertFalse(recoverContaminatedBinaryTree.find(1));
+        assertTrue(recoverContaminatedBinaryTree.find(5));
+        assertFalse(recoverContaminatedBinaryTree.find(24));
+        assertTrue(recoverContaminatedBinaryTree.find(26));
+        assertFalse(recoverContaminatedBinaryTree.find(47));
+        assertTrue(recoverContaminatedBinaryTree.find(48));
+        assertFalse(recoverContaminatedBinaryTree.find(54));
+        assertTrue(recoverContaminatedBinaryTree.find(53));
+        assertFalse(recoverContaminatedBinaryTree.find(100));
+        assertTrue(recoverContaminatedBinaryTree.find(107));
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
