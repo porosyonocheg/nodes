@@ -11,10 +11,9 @@ public class NaryTree {
     public int val;
     public List<NaryTree> children;
 
-    public NaryTree() {}
-
     public NaryTree(int val) {
         this.val = val;
+        children = new ArrayList<>();
     }
 
 /**Конструктор содержит
@@ -28,7 +27,7 @@ public class NaryTree {
 
 /**@return число узлов от корня до самого дальнего (глубокого) листового узла дерева*/
     public int maximumDepthOfTree() {
-        if (children == null) return 1;
+        if (children.isEmpty()) return 1;
         int depth = 0;
         for (NaryTree naryTree : children){
             depth = Math.max(depth, naryTree.maximumDepthOfTree());
@@ -52,16 +51,14 @@ public class NaryTree {
     public List<List<Integer>> levelOrder() {
         List<List<Integer>> result = new ArrayList<>();
         Queue<NaryTree> queue = new LinkedList<>();
-        queue.offer(this);
+        queue.add(this);
         while (!queue.isEmpty()) {
             int size = queue.size();
             List<Integer> currentList = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 NaryTree current = queue.poll();
                 currentList.add(current.val);
-                if (current.children != null) {
-                    for (NaryTree n : current.children) queue.offer(n);
-                }
+                queue.addAll(current.children);
             }
             result.add(currentList);
         }

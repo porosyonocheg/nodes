@@ -1,6 +1,7 @@
 package treeNodes;
 
 import org.junit.Test;
+import treeNodes.nAryTree.NaryToBinaryTreeAndBackConverter;
 import treeNodes.nAryTree.NaryTree;
 import treeNodes.nAryTree.Trie;
 
@@ -135,5 +136,36 @@ public class NaryTreeTest {
         assertTrue(trie.startsWith("rent")); //true
         assertTrue(trie.startsWith("beer")); //true
         assertTrue(trie.startsWith("jam")); //true
+    }
+
+    @Test
+    public void naryToBinaryTreeAndBackConverter() {
+        assertNull(NaryToBinaryTreeAndBackConverter.toBinaryTree(null));
+        assertNull(NaryToBinaryTreeAndBackConverter.toNaryTree(null));
+        assertEquals(new TreeNode(5), NaryToBinaryTreeAndBackConverter.toBinaryTree(new NaryTree(5)));
+        assertEquals(new NaryTree(1).toString(), NaryToBinaryTreeAndBackConverter.toNaryTree(new TreeNode(1)).toString());
+        TreeNode root = new TreeNode("5, 1, null, null, 2, null, 3, null, 4, null, 10, 6, null, null, 7, null, 8, null, 9, null, 15, 11, null, null, 12, null, 13, null, 14");
+        assertEquals(root, NaryToBinaryTreeAndBackConverter.toBinaryTree(base));
+        assertEquals(base.toString(), NaryToBinaryTreeAndBackConverter.toNaryTree(root).toString());
+        base.val = 0;
+        base.children = new ArrayList<>();
+        for (int i = 1; i < 7; i++)
+        base.children.add(new NaryTree(i));
+        for (int i = 7; i < 10; i++) base.children.get(0).children.add(new NaryTree(i));
+        base.children.get(1).children.add(new NaryTree(10));
+        base.children.get(2).children.add(new NaryTree(11));
+        base.children.get(2).children.add(new NaryTree(12));
+        for (int i = 13; i < 18; i++) base.children.get(3).children.add(new NaryTree(i));
+        base.children.get(0).children.get(0).children.add(new NaryTree(18));
+        base.children.get(0).children.get(2).children.add(new NaryTree(19));
+        base.children.get(0).children.get(2).children.add(new NaryTree(20));
+        base.children.get(2).children.get(0).children.add(new NaryTree(21));
+        base.children.get(2).children.get(0).children.add(new NaryTree(22));
+        base.children.get(2).children.get(0).children.add(new NaryTree(23));
+        base.children.get(3).children.get(4).children.add(new NaryTree(24));
+        base.children.get(3).children.get(4).children.add(new NaryTree(25));
+        root = new TreeNode("0, 1, null, 7, 2, 18, 8, 10, 3, null, null, null, 9, null, null, 11, 4, 19, null, 21, 12, 13, 5, null, 20, null, 22, null, null, null, 14, null, 6, null, null, null, 23, null, 15, null, null, null, null, null, 16, null, 17, 24, null, null, 25");
+        assertEquals(root, NaryToBinaryTreeAndBackConverter.toBinaryTree(base));
+        assertEquals(base.toString(), NaryToBinaryTreeAndBackConverter.toNaryTree(root).toString());
     }
 }
