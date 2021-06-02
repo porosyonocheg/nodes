@@ -586,4 +586,16 @@ public class ListNodeTest {
         l1.previous = l15;
         assertEquals(l1.toString(), BSTtoSortedDoublyLinkedList.convert(new TreeNode("0, -2, 2, -4, -1, 1, 4, -6, -3, null, null, null, null, 3, 5, -7, -5, null, null, null, null, null, 7, null, null, null, null, 6")).toString());
     }
+
+    @Test
+    public void sumOfTwoIntegersRepresentedByLinkedLists() {
+        assertEquals(new ListNode(0), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(new ListNode(0), new ListNode(0)));
+        assertEquals(new ListNode("1 -> 2"), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(new ListNode(3), new ListNode(9)));
+        assertEquals(new ListNode("9 -> 5"), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(new ListNode("3 -> 7"), new ListNode("5 -> 8")));
+        assertEquals(new ListNode("1 -> 0 -> 0 -> 0 -> 0 -> 0 -> 0"), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(new ListNode("9 -> 9 -> 9 -> 9 -> 9 -> 9"), new ListNode(1)));
+        assertEquals(new ListNode("5 -> 4 -> 4 -> 1 -> 0 -> 9"), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(new ListNode("8 -> 9 -> 9"), base));
+        assertEquals(new ListNode("1 -> 0 -> 8 -> 6 -> 4 -> 2 -> 0"), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(base, base));
+        base = new ListNode("9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9");
+        assertEquals(new ListNode("1 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 8"), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(base, base));
+    }
 }
