@@ -2970,6 +2970,16 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void maximumAverageSubtree() {
+        assertEquals(0.0, new MaximumAverageSubtree(null).execute());
+        assertEquals(1.0, new MaximumAverageSubtree(new TreeNode(1)).execute());
+        assertEquals(8.0, new MaximumAverageSubtree(root1).execute());
+        assertEquals( 6.5, new MaximumAverageSubtree(root).execute());
+        root = new TreeNode("22, 19, 18, 16, 20, 21, 14, null, 10, 5, 12, 10, 16, null, 13, 3, 12, null, -3, 11, 13, 12, 5, 8, 14, 2, -1, null, null, 6, null, null, null, 4, null, null, 8, 7, 5, null, null, null, null, 1, 9");
+        assertEquals(10.5, new MaximumAverageSubtree(root).execute());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
