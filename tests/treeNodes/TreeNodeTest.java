@@ -2980,6 +2980,37 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void distanceBetweenTwoNodes() {
+        assertEquals(-1, new DistanceBetweenTwoNodes(null, 1, 2).execute());
+        assertEquals(-1, new DistanceBetweenTwoNodes(new TreeNode(5), 1, 2).execute());
+        assertEquals(0, new DistanceBetweenTwoNodes(new TreeNode(2), 2, 2).execute());
+        assertEquals(2, new DistanceBetweenTwoNodes(new TreeNode(2, new TreeNode(1), new TreeNode(3)), 1, 3).execute());
+        assertEquals(4, new DistanceBetweenTwoNodes(root, 6, 3).execute());
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, null, null, 17, 18, 19, 20, 21, 22, 23, null, 24, null, 25, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 26, 27, null, 28, null, 29, null, null, 30, null, 31, null, 32, 33, null, 34, 35, 36, 37, 38, null, 39, 40, 41, 42, 43, 44, 45, 46, null, null, 47, 48, 49, 50, 51, 52, 53, 54, 55");
+        long t1 = System.nanoTime();
+        int result = (int) new DistanceBetweenTwoNodes(root, 51, 46).execute();
+        long t2 = System.nanoTime();
+        System.out.println("Time for two recursive methods: " + (t2-t1));
+        t1 = System.nanoTime();
+        int result1 = (int) new DistanceBetweenTwoNodes(root, 51, 46, true).execute();
+        t2 = System.nanoTime();
+        System.out.println("Time for level traversal: " + (t2-t1));
+        assertEquals(10, result);
+        assertEquals(10, result1);
+        root = new TreeNode("1, 2, 3, 4, 5, 6, 7, null, 8, 9, 10, 11, 12, 13, null, null, 14, null, 15, 16, 17, 18, 19, 20, 21, 22, null, 23, 24, null, 25, 26, null, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, null, null, null, 38, 39, null, null, 40, null, 41, 42, null, null, null, null, 43, 44, null, null, 45, 46, 47, 48, null, null, 49, null, null, 50, null, null, null, null, 51, 52, 53, 54, null, 55, null, null, 56, 57, null, null, null, null, 58, null, null, 59, null, null, 60, 61, null, null, 62, null, null, null, 63, 64, null, null, null, null, 65, 66, null, null, null, null, 67, null, null, null, 68, 69, null, null, 70");
+        t1 = System.nanoTime();
+        result = (int) new DistanceBetweenTwoNodes(root, 41, 62, true).execute();
+        t2 = System.nanoTime();
+        System.out.println("Time for level traversal: " + (t2-t1));
+        t1 = System.nanoTime();
+        result1 = (int) new DistanceBetweenTwoNodes(root, 41, 62).execute();
+        t2 = System.nanoTime();
+        System.out.println("Time for two recursive methods: " + (t2-t1));
+        assertEquals(12, result1);
+        assertEquals(12, result);
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
