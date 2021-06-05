@@ -3,6 +3,7 @@ package treeNodes;
 import org.junit.Test;
 import treeNodes.nAryTree.NaryToBinaryTreeAndBackConverter;
 import treeNodes.nAryTree.NaryTree;
+import treeNodes.nAryTree.SerializationOfNAryTree;
 import treeNodes.nAryTree.Trie;
 
 import java.util.ArrayList;
@@ -167,5 +168,34 @@ public class NaryTreeTest {
         root = new TreeNode("0, 1, null, 7, 2, 18, 8, 10, 3, null, null, null, 9, null, null, 11, 4, 19, null, 21, 12, 13, 5, null, 20, null, 22, null, null, null, 14, null, 6, null, null, null, 23, null, 15, null, null, null, null, null, 16, null, 17, 24, null, null, 25");
         assertEquals(root, NaryToBinaryTreeAndBackConverter.toBinaryTree(base));
         assertEquals(base.toString(), NaryToBinaryTreeAndBackConverter.toNaryTree(root).toString());
+    }
+
+    @Test
+    public void serializationOfNaryTree() {
+        assertNull(new SerializationOfNAryTree().deserialize(""));
+        assertEquals("", new SerializationOfNAryTree().serialize(null));
+        assertEquals("1,0", new SerializationOfNAryTree().serialize(new NaryTree(1)));
+        assertEquals(new NaryTree(5).toString(), new SerializationOfNAryTree().deserialize("5,0").toString());
+        String serialize = new SerializationOfNAryTree().serialize(base);
+        assertEquals(base.toString(), new SerializationOfNAryTree().deserialize(serialize).toString());
+        base.val = 0;
+        base.children = new ArrayList<>();
+        for (int i = 1; i < 7; i++)
+            base.children.add(new NaryTree(i));
+        for (int i = 7; i < 10; i++) base.children.get(0).children.add(new NaryTree(i));
+        base.children.get(1).children.add(new NaryTree(10));
+        base.children.get(2).children.add(new NaryTree(11));
+        base.children.get(2).children.add(new NaryTree(12));
+        for (int i = 13; i < 18; i++) base.children.get(3).children.add(new NaryTree(i));
+        base.children.get(0).children.get(0).children.add(new NaryTree(18));
+        base.children.get(0).children.get(2).children.add(new NaryTree(19));
+        base.children.get(0).children.get(2).children.add(new NaryTree(20));
+        base.children.get(2).children.get(0).children.add(new NaryTree(21));
+        base.children.get(2).children.get(0).children.add(new NaryTree(22));
+        base.children.get(2).children.get(0).children.add(new NaryTree(23));
+        base.children.get(3).children.get(4).children.add(new NaryTree(24));
+        base.children.get(3).children.get(4).children.add(new NaryTree(25));
+        serialize = new SerializationOfNAryTree().serialize(base);
+        assertEquals(base.toString(), new SerializationOfNAryTree().deserialize(serialize).toString());
     }
 }
