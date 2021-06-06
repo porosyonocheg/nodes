@@ -598,4 +598,12 @@ public class ListNodeTest {
         base = new ListNode("9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9");
         assertEquals(new ListNode("1 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 9 -> 8"), new SumOfTwoIntegersRepresentedByLinkedLists().getSum(base, base));
     }
+    @Test
+    public void listNodeWithRandomPointer() {
+        int[][] array = new int[][]{{1,-1},{2,0},{3,5},{4,1},{5,6},{6,3},{7,0}};
+        ListNodeWithRandomPointer head = ListNodeWithRandomPointer.createList(array);
+        assertEquals("[1,null] -> [2,1] -> [3,6] -> [4,2] -> [5,7] -> [6,4] -> [7,1]", head.toString());
+        ListNodeWithRandomPointer copyOfHead = ListNodeWithRandomPointer.copyList(head);
+        assertEquals(copyOfHead.toString(), head.toString());
+    }
 }

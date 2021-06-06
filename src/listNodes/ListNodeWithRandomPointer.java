@@ -8,6 +8,7 @@ public class ListNodeWithRandomPointer {
     public int val;
     public ListNodeWithRandomPointer next;
     public ListNodeWithRandomPointer random;
+
     public ListNodeWithRandomPointer(int val) {
         this.val = val;
     }
@@ -33,11 +34,91 @@ public class ListNodeWithRandomPointer {
         int length = getLength();
         ListNodeWithRandomPointer head = this, current = this;
         while (head != null) {
-        int index = (int) (Math.random() * length);
-        for (int i = 0; i <= index; i++) current = current.next;
-        head.random = current;
-        head = head.next;
-        current = this;
+            int index = (int) (Math.random() * length);
+            for (int i = 0; i <= index; i++) current = current.next;
+            head.random = current;
+            head = head.next;
+            current = this;
         }
+    }
+
+    /**Создаёт список по представлению в виде двумерного массива. representation[i][0] - значение i-го узла,
+     * representation[i][1] - индекс узла для ссылки random i-го узла. Если индекс выходит за пределы от нуля до размера
+     * списка, ссылке random i-го узла присваивается значение null*/
+    public static ListNodeWithRandomPointer createList(int[][] representation) {
+        if (representation == null || representation.length == 0) return null;
+        ListNodeWithRandomPointer head = new ListNodeWithRandomPointer(representation[0][0]);
+        ListNodeWithRandomPointer current = head;
+        for (int i = 1; i < representation.length; i++) {
+            current.next = new ListNodeWithRandomPointer(representation[i][0]);
+            current = current.next;
+        }
+        current = head;
+        ListNodeWithRandomPointer randomNode;
+        for (int i = 0; i < representation.length; i++) {
+            if (representation[i][1] >= 0 && representation[i][1] <= representation.length) {
+                randomNode = head;
+                for (int j = 0; j < representation[i][1]; j++) {
+                    randomNode = randomNode.next;
+                }
+                current.random = randomNode;
+            }
+            current = current.next;
+        }
+        return head;
+    }
+
+    /**Создаёт глубокую копию переданного листа*/
+    public static ListNodeWithRandomPointer copyList(ListNodeWithRandomPointer head) {
+        ListNodeWithRandomPointer current = head, next;
+        /*Создаём копию каждого узла прямо в списке следом за текущим*/
+        while (current != null) {
+            next = new ListNodeWithRandomPointer(current.val);
+            next.next = current.next;
+            current.next = next;
+            current = next.next;
+        }
+
+        /*Выставляем ссылки random для копий, учитывая, что все копии следуют за текущим элементом*/
+        current = head;
+        while (current != null) {
+            if (current.random != null) {
+                current.next.random = current.random.next;
+            }
+            current = current.next.next;
+        }
+
+        /*Перебрасываем ссылки копий в отдельное поле, связывая их между собой, затираем ссылки на копии в оригинале,
+        * связывая оригинальные узлы*/
+        current = head;
+        ListNodeWithRandomPointer copy = head.next;
+        next = copy;
+        while (next.next != null) {
+            current.next = current.next.next;
+            current = current.next;
+
+            next.next = next.next.next;
+            next = next.next;
+        }
+        current.next = current.next.next;
+        return copy;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        ListNodeWithRandomPointer head = this;
+        while (head.next != null) {
+            sb.append('[').append(head.val).append(',');
+            if (head.random == null) sb.append("null");
+            else sb.append(head.random.val);
+            sb.append(']').append(" -> ");
+            head = head.next;
+        }
+        sb.append('[').append(head.val).append(',');
+        if (head.random == null) sb.append("null");
+        else sb.append(head.random.val);
+        sb.append(']');
+        return sb.toString();
     }
 }
