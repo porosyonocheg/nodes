@@ -604,6 +604,8 @@ public class ListNodeTest {
         ListNodeWithRandomPointer head = ListNodeWithRandomPointer.createList(array);
         assertEquals("[1,null] -> [2,1] -> [3,6] -> [4,2] -> [5,7] -> [6,4] -> [7,1]", head.toString());
         ListNodeWithRandomPointer copyOfHead = ListNodeWithRandomPointer.copyList(head);
-        assertEquals(copyOfHead.toString(), head.toString());
+        assertEquals(copyOfHead, head);
+        System.out.println(new ListNodeWithRandomPointer(new int[]{1, 2, 3, 4, 5, 6, 7}));
+        System.out.println(new ListNodeWithRandomPointer(base));
     }
 }

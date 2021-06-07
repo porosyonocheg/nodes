@@ -1,5 +1,7 @@
 package listNodes;
 
+import java.util.Objects;
+
 /**Связный список с указателем на случайный узел в данном списке. Узлы содержат целочисленные значения val, ссылку
  * на следующий узел next и ссылку на случайный узел - random (может быть null).
  * @author Сергей Шершавин*/
@@ -16,6 +18,33 @@ public class ListNodeWithRandomPointer {
     public ListNodeWithRandomPointer(int val, ListNodeWithRandomPointer next) {
         this.val = val;
         this.next = next;
+    }
+
+    /**Создание списка на основе массива целочисленных значений*/
+    public ListNodeWithRandomPointer(int[] array) {
+        ListNodeWithRandomPointer head = new ListNodeWithRandomPointer(array[0]), current = head;
+        for (int i = 1; i < array.length; i++) {
+            current.next = new ListNodeWithRandomPointer(array[i]);
+            current = current.next;
+        }
+        head.generateRandomPointers();
+        this.val = head.val;
+        this.next = head.next;
+        this.random = head.random;
+    }
+
+    /**Создание списка на основе односвязного списка*/
+    public ListNodeWithRandomPointer(ListNode head) {
+        ListNodeWithRandomPointer randomHead = new ListNodeWithRandomPointer(head.val), current = randomHead;
+        while (head.next != null) {
+            current.next = new ListNodeWithRandomPointer(head.next.val);
+            head = head.next;
+            current = current.next;
+        }
+        randomHead.generateRandomPointers();
+        this.val = randomHead.val;
+        this.next = randomHead.next;
+        this.random = randomHead.random;
     }
 
     /**@return длину списка (количество узлов, которые он содержит)*/
@@ -70,6 +99,7 @@ public class ListNodeWithRandomPointer {
 
     /**Создаёт глубокую копию переданного листа*/
     public static ListNodeWithRandomPointer copyList(ListNodeWithRandomPointer head) {
+        if (head == null) return null;
         ListNodeWithRandomPointer current = head, next;
         /*Создаём копию каждого узла прямо в списке следом за текущим*/
         while (current != null) {
@@ -120,5 +150,18 @@ public class ListNodeWithRandomPointer {
         else sb.append(head.random.val);
         sb.append(']');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ListNodeWithRandomPointer)) return false;
+        ListNodeWithRandomPointer that = (ListNodeWithRandomPointer) o;
+        return val == that.val && Objects.equals(next, that.next) && (random == null && that.random == null) || (random != null && that.random != null && random.val == that.random.val);
+    }
+
+    @Override
+    public int hashCode() {
+        return random.val + val;
     }
 }
