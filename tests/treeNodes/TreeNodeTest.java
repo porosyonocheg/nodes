@@ -3023,6 +3023,26 @@ public class TreeNodeTest {
     }
 
     @Test
+    public void CBTInserter() {
+        root = new TreeNode(5);
+        assertEquals(5, new CBTInserter(root).insert(1));
+        assertEquals(5, new CBTInserter(root).insert(9));
+        assertEquals(1, new CBTInserter(root).insert(3));
+        assertEquals(1, new CBTInserter(root).insert(4));
+        assertEquals(9, new CBTInserter(root).insert(0));
+        assertEquals(9, new CBTInserter(root).insert(5));
+        assertEquals(3, new CBTInserter(root).insert(7));
+        assertEquals(3, new CBTInserter(root).insert(11));
+        assertEquals(4, new CBTInserter(root).insert(-5));
+        assertEquals(4, new CBTInserter(root).insert(8));
+        assertEquals(0, new CBTInserter(root).insert(18));
+        assertEquals(0, new CBTInserter(root).insert(-1));
+        assertEquals(5, new CBTInserter(root).insert(1));
+        TreeNode result = new TreeNode("5, 1, 9, 3, 4, 0, 5, 7, 11, -5, 8, 18, -1, 1");
+        assertEquals(result, new CBTInserter(root).getRoot());
+    }
+
+    @Test
     public void printTNRC() {
         TreeNodeRightConnected left = new TreeNodeRightConnected(2, new TreeNodeRightConnected(4, new TreeNodeRightConnected(8), new TreeNodeRightConnected(9)), new TreeNodeRightConnected(5));
         TreeNodeRightConnected right = new TreeNodeRightConnected(3, new TreeNodeRightConnected(6), new TreeNodeRightConnected(7));
