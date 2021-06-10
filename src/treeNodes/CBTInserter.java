@@ -13,30 +13,27 @@ public class CBTInserter {
     public CBTInserter(TreeNode root) {
         this.root = root;
         lastParents = new LinkedList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            for (int i = 0; i < queue.size(); i++) {
-                    root = queue.poll();
-                    if (root.left != null) queue.add(root.left);
-                    else lastParents.add(root);
-                    if (root.right != null) queue.add(root.right);
-                    else lastParents.add(root);
-            }
+        lastParents.add(root);
+        while (true) {
+            root = lastParents.peek();
+            if (root.left == null || root.right == null) break;
+            lastParents.poll();
+            lastParents.add(root.left);
+            lastParents.add(root.right);
         }
+        if (root.left != null) lastParents.add(root.left);
     }
 
     public int insert(int val) {
-        TreeNode parent = lastParents.poll();
+        TreeNode parent = lastParents.peek();
         if (parent.left == null) {
             parent.left = new TreeNode(val);
-            lastParents.add(parent.left);
             lastParents.add(parent.left);
         }
         else {
             parent.right = new TreeNode(val);
             lastParents.add(parent.right);
-            lastParents.add(parent.right);
+            lastParents.poll();
         }
         return parent.val;
     }
